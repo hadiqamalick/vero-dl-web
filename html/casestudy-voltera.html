@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voltera · Vero Case Study by Datumlabs</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --blue: #4a9eed;
+    --blue-bg: #eaf3fd;
+    --green: #22c55e;
+    --green-bg: #e6f7ec;
+    --amber: #f59e0b;
+    --amber-bg: #fff4e0;
+    --red: #ef4444;
+    --red-bg: #fde8e8;
+    --purple: #8b5cf6;
+    --purple-bg: #efeaff;
+    --dark: #0f172a;
+    --dark-card: #1e293b;
+    --dark-border: #334155;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; }
+  p { margin: 0 0 1rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem;
+    display: block;
+  }
+  .eyebrow.light { color: #4a9eed; }
+  h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.65rem; line-height: 1.15; }
+  h2.light { color: #f1f5f9; }
+  .section-sub { font-size: 1rem; color: var(--muted); margin: 0 0 2.5rem; max-width: 560px; line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,23,42,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--dark-border);
+    padding: 0 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 4rem;
+  }
+  .nav-logo { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: #f1f5f9; }
+  .nav-logo span { color: var(--blue); }
+  .nav-back { font-size: 0.82rem; color: #64748b; display: flex; align-items: center; gap: 0.4rem; }
+  .nav-back:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue); color: #fff;
+    border-radius: 999px; padding: 0.5rem 1.35rem;
+    font-size: 0.875rem; font-weight: 600; transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    padding: 5.5rem 4rem 4.5rem;
+  }
+  .hero .container { max-width: 960px; }
+  .hero-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap;
+  }
+  .hero-left { flex: 1; min-width: 300px; }
+  .client-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 999px; padding: 0.35rem 1rem 0.35rem 0.5rem;
+    font-size: 0.78rem; color: #94a3b8; margin-bottom: 1.5rem;
+  }
+  .client-dot {
+    width: 1.5rem; height: 1.5rem; background: var(--blue);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; font-weight: 800; color: #fff;
+  }
+  .hero h1 {
+    font-size: 2.75rem; font-weight: 800; letter-spacing: -0.04em;
+    color: #f1f5f9; line-height: 1.12; margin: 0 0 1rem;
+  }
+  .hero-desc { font-size: 1rem; color: #94a3b8; max-width: 480px; margin: 0; }
+
+  /* outcome stats */
+  .hero-outcomes {
+    display: flex; flex-direction: column; gap: 0.5rem; min-width: 220px;
+  }
+  .outcome-stat {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 10px; padding: 1rem 1.25rem;
+  }
+  .outcome-stat .os-val {
+    font-size: 1.6rem; font-weight: 800; color: #f1f5f9;
+    letter-spacing: -0.03em; line-height: 1;
+  }
+  .outcome-stat .os-val.green { color: var(--green); }
+  .outcome-stat .os-val.blue  { color: var(--blue); }
+  .outcome-stat .os-val.amber { color: var(--amber); }
+  .outcome-stat .os-label { font-size: 0.72rem; color: #64748b; margin-top: 0.2rem; }
+
+  /* meta strip */
+  .hero-meta {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    border-top: 1px solid var(--dark-border); padding-top: 1.5rem;
+  }
+  .meta-item .mi-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #475569; margin-bottom: 0.2rem; }
+  .meta-item .mi-val   { font-size: 0.875rem; color: #94a3b8; font-weight: 500; }
+
+  /* SECTIONS */
+  section { padding: 5rem 4rem; }
+  section.alt { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  section.dark-sec { background: var(--dark); }
+
+  /* CHALLENGE */
+  .challenge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+  .challenge-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    border-radius: 12px; padding: 1.4rem 1.25rem;
+  }
+  .ch-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 0.5rem; text-transform: uppercase; }
+  .ch-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; line-height: 1.3; }
+  .ch-desc  { font-size: 0.825rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* WHAT WE BUILT */
+  .built-flow { display: flex; flex-direction: column; gap: 0; }
+  .built-step {
+    display: grid; grid-template-columns: 2.5rem 1fr;
+    gap: 1.25rem; align-items: start;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 0.6rem;
+  }
+  .bs-num { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; color: var(--blue); padding-top: 0.2rem; }
+  .bs-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .bs-desc  { font-size: 0.825rem; color: var(--muted); margin: 0; line-height: 1.55; }
+  .bs-tags  { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .bs-tag   {
+    font-size: 0.62rem; font-weight: 700;
+    background: var(--blue-bg); border: 1px solid rgba(74,158,237,0.3);
+    color: var(--blue); border-radius: 4px; padding: 0.18rem 0.5rem;
+  }
+  .bs-tag.green  { background: var(--green-bg); border-color: rgba(34,197,94,0.3); color: var(--green); }
+  .bs-tag.amber  { background: var(--amber-bg); border-color: rgba(245,158,11,0.3); color: var(--amber); }
+  .bs-tag.purple { background: var(--purple-bg); border-color: rgba(139,92,246,0.3); color: var(--purple); }
+
+  /* SOURCES TABLE */
+  .sources-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .sources-table th {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); text-align: left; padding: 0.6rem 1rem;
+    border-bottom: 2px solid var(--border); background: var(--bg);
+  }
+  .sources-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sources-table tr:last-child td { border-bottom: none; }
+  .src-domain {
+    display: inline-block; font-size: 0.62rem; font-weight: 700; border-radius: 4px;
+    padding: 0.18rem 0.5rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .src-domain.crm { background: var(--blue-bg);   color: var(--blue); }
+  .src-domain.erp { background: var(--purple-bg); color: var(--purple); }
+  .src-domain.mkt { background: var(--amber-bg);  color: var(--amber); }
+  .src-domain.fin { background: var(--green-bg);  color: var(--green); }
+  .src-domain.hr  { background: var(--red-bg);    color: var(--red); }
+  .src-name { font-weight: 700; color: var(--ink); }
+  .src-desc { color: var(--muted); font-size: 0.8rem; }
+
+  /* DASHBOARDS */
+  .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  .dash-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.4rem 1.25rem;
+    border-left: 3px solid;
+  }
+  .dash-card.ops  { border-left-color: var(--blue); }
+  .dash-card.sales{ border-left-color: var(--green); }
+  .dash-label {
+    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .dash-card.ops  .dash-label { color: var(--blue); }
+  .dash-card.sales .dash-label { color: var(--green); }
+  .dash-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .dash-desc  { font-size: 0.825rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.75rem; }
+  .dash-kpis  { display: flex; flex-direction: column; gap: 0.25rem; }
+  .dash-kpi   { font-size: 0.75rem; color: var(--muted); padding-left: 0.75rem; position: relative; }
+  .dash-kpi::before { content: "·"; position: absolute; left: 0; color: var(--blue); font-weight: 800; }
+  .dash-card.sales .dash-kpi::before { color: var(--green); }
+
+  /* RESULTS */
+  .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .result-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    display: flex; gap: 1.1rem; align-items: flex-start;
+  }
+  .result-icon {
+    width: 2.5rem; height: 2.5rem; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+  .result-icon.green  { background: var(--green-bg); }
+  .result-icon.blue   { background: var(--blue-bg); }
+  .result-icon.amber  { background: var(--amber-bg); }
+  .result-icon.purple { background: var(--purple-bg); }
+  .result-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .result-desc  { font-size: 0.825rem; color: var(--muted); margin: 0; line-height: 1.5; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-left: 4px solid var(--blue);
+    border-radius: 14px; padding: 2rem 2.5rem;
+    margin-top: 1rem;
+  }
+  .quote-text {
+    font-size: 1.15rem; color: #f1f5f9; line-height: 1.65;
+    font-style: italic; margin: 0 0 1rem;
+  }
+  .quote-attr { font-size: 0.8rem; color: #64748b; }
+  .quote-attr strong { color: #94a3b8; }
+
+  /* STACK */
+  .stack-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .stack-table th {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #475569; text-align: left; padding: 0.6rem 1rem;
+    border-bottom: 2px solid var(--dark-border);
+  }
+  .stack-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--dark-border); vertical-align: middle; }
+  .stack-table tr:last-child td { border-bottom: none; }
+  .stack-layer { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .stack-tool  { font-weight: 800; color: #f1f5f9; font-size: 0.95rem; }
+  .stack-tool.blue   { color: #4a9eed; }
+  .stack-tool.amber  { color: #f59e0b; }
+  .stack-tool.purple { color: #8b5cf6; }
+  .stack-tool.cyan   { color: #06b6d4; }
+  .stack-tool.green  { color: #22c55e; }
+  .stack-resp { font-size: 0.825rem; color: #64748b; }
+
+  /* CTA */
+  .cta-section { background: var(--dark); text-align: center; padding: 5rem 4rem 6rem; }
+  .cta-inner {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 18px; padding: 3rem; max-width: 540px; margin: 0 auto;
+  }
+  .cta-inner h2 { font-size: 2rem; color: #f1f5f9; margin-bottom: 0.6rem; }
+  .cta-inner .cta-sub { font-size: 0.95rem; color: #64748b; margin-bottom: 1.75rem; }
+  .btn-primary {
+    background: var(--blue); color: #fff; border-radius: 999px;
+    padding: 0.8rem 1.85rem; font-size: 0.95rem; font-weight: 600;
+    transition: opacity 0.15s; display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .cta-email { display: block; font-size: 0.82rem; color: #475569; font-family: ui-monospace, monospace; margin-top: 0.85rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); border-top: 1px solid var(--dark-border);
+    padding: 1.75rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: #475569;
+  }
+
+  @media (max-width: 820px) {
+    nav { padding: 0 1.5rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2rem; }
+    h2 { font-size: 1.65rem; }
+    .hero-top { flex-direction: column; }
+    .challenge-grid, .dash-grid, .results-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">VERO <span>·</span> Datumlabs</span>
+  <a class="nav-back" href="vero-landing.html">← Back to Vero</a>
+  <a class="nav-cta" href="mailto:vero@datumlabs.io">Book a free call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div class="hero-left">
+        <div class="client-badge">
+          <div class="client-dot">V</div>
+          Case Study · Voltera
+        </div>
+        <h1>CRM, ERP, ads, and finance — finally in one warehouse.</h1>
+        <p class="hero-desc">Voltera ran sales on a Postgres CRM, operations on an MSSQL ERP, and spend across ad and accounting platforms. Nothing talked to each other, every report was a manual export, and no metric carried across systems.</p>
+      </div>
+      <div class="hero-outcomes">
+        <div class="outcome-stat">
+          <div class="os-val green">5</div>
+          <div class="os-label">data sources connected</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="os-val blue">15 min</div>
+          <div class="os-label">CRM refresh cadence</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="mi-label">Client</div>
+        <div class="mi-val">Voltera</div>
+      </div>
+      <div class="meta-item">
+        <div class="mi-label">Region</div>
+        <div class="mi-val">EU (Netherlands)</div>
+      </div>
+      <div class="meta-item">
+        <div class="mi-label">Warehouse</div>
+        <div class="mi-val">Google BigQuery</div>
+      </div>
+      <div class="meta-item">
+        <div class="mi-label">Orchestration</div>
+        <div class="mi-val">Dagster on GKE</div>
+      </div>
+      <div class="meta-item">
+        <div class="mi-label">Transformation</div>
+        <div class="mi-val">dbt</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE -->
+<section class="alt">
+  <div class="container">
+    <span class="eyebrow">The challenge</span>
+    <h2>Five systems. Zero shared truth.</h2>
+    <p class="section-sub">Voltera's data lived in the systems that ran the business — sales, operations, marketing, finance, and recruiting — but none of it was connected, and none of it could be trusted across teams.</p>
+
+    <div class="challenge-grid">
+      <div class="challenge-card">
+        <div class="ch-num">01</div>
+        <div class="ch-title">Operational databases, used for reporting</div>
+        <p class="ch-desc">Sales ran straight off the Postgres CRM and operations off the MSSQL ERP. Every analytical query competed with the live application and every report meant another fragile export.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-num">02</div>
+        <div class="ch-title">Spend and sales never met</div>
+        <p class="ch-desc">Facebook Ads spend lived in one platform, revenue in the CRM, and costs in Moneybird. Connecting marketing investment to actual customers was a manual, error-prone spreadsheet exercise.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-num">03</div>
+        <div class="ch-title">Schemas that drifted silently</div>
+        <p class="ch-desc">New columns appeared in source systems and broke downstream reports without warning. There was no contract, no monitoring, and no alert when a number went stale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA SOURCES -->
+<section>
+  <div class="container">
+    <span class="eyebrow">Data sources connected</span>
+    <h2>5 systems. One warehouse.</h2>
+    <p class="section-sub">Every system Voltera runs the business on — sales, operations, marketing, finance, and recruiting — connected, normalized, and loaded on a schedule into BigQuery.</p>
+
+    <table class="sources-table">
+      <thead>
+        <tr>
+          <th>Domain</th>
+          <th>Source</th>
+          <th>What we pull</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="src-domain crm">Sales / CRM</span></td>
+          <td><span class="src-name">Postgres CRM</span></td>
+          <td><span class="src-desc">Clients, deals, contacts, activity — incremental on updated_at</span></td>
+        </tr>
+        <tr>
+          <td><span class="src-domain erp">Operations / ERP</span></td>
+          <td><span class="src-name">MSSQL ERP</span></td>
+          <td><span class="src-desc">Orders, invoices, inventory, fulfilment records</span></td>
+        </tr>
+        <tr>
+          <td><span class="src-domain mkt">Marketing</span></td>
+          <td><span class="src-name">Facebook Ads</span></td>
+          <td><span class="src-desc">Campaigns, ad spend, impressions, conversions</span></td>
+        </tr>
+        <tr>
+          <td><span class="src-domain fin">Finance</span></td>
+          <td><span class="src-name">Moneybird</span></td>
+          <td><span class="src-desc">Invoices, payments, ledger entries, contacts</span></td>
+        </tr>
+        <tr>
+          <td><span class="src-domain hr">Recruiting</span></td>
+          <td><span class="src-name">Manatal</span></td>
+          <td><span class="src-desc">Candidates, pipelines, hiring stage activity</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- WHAT WE BUILT -->
+<section class="alt">
+  <div class="container">
+    <span class="eyebrow">What we built</span>
+    <h2>A complete, automated analytics platform.</h2>
+    <p class="section-sub">The same repeatable Vero playbook, adapted to Voltera's sources and KPIs — running on their own infrastructure, fully owned by their team.</p>
+
+    <div class="built-flow">
+      <div class="built-step">
+        <div class="bs-num">01</div>
+        <div>
+          <div class="bs-title">Connected all 5 sources into a central warehouse</div>
+          <p class="bs-desc">Every system Voltera relies on now feeds automatically into BigQuery. dlt handles schema evolution, so new columns in the CRM or ERP are picked up without breaking downstream reports. The Postgres CRM refreshes every 15 minutes — close to real time for the sales team.</p>
+          <div class="bs-tags">
+            <span class="bs-tag">dlt</span>
+            <span class="bs-tag purple">Dagster on GKE</span>
+            <span class="bs-tag">BigQuery</span>
+          </div>
+        </div>
+      </div>
+      <div class="built-step">
+        <div class="bs-num">02</div>
+        <div>
+          <div class="bs-title">Built a single, agreed-on set of KPIs</div>
+          <p class="bs-desc">All business logic lives in one dbt project, layered staging → intermediate → mart. CRM revenue, ERP fulfilment, ad ROAS, and finance figures all share one definition the whole company trusts — no more reconciling exports before a meeting.</p>
+          <div class="bs-tags">
+            <span class="bs-tag amber">dbt</span>
+          </div>
+        </div>
+      </div>
+      <div class="built-step">
+        <div class="bs-num">03</div>
+        <div>
+          <div class="bs-title">Wired ingestion to transformation, automatically</div>
+          <p class="bs-desc">Sensor-driven orchestration means a successful CRM load triggers the CRM dbt models, and an ERP load triggers the ERP models — independently, so a heavy ERP refresh never drags the whole DAG along. Every failure posts straight to Slack.</p>
+          <div class="bs-tags">
+            <span class="bs-tag purple">Dagster sensors</span>
+            <span class="bs-tag green">Slack alerts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARDS -->
+<section>
+  <div class="container">
+    <span class="eyebrow">What it powers</span>
+    <h2>Every metric the team needs. Always up to date.</h2>
+    <p class="section-sub">Clean, modeled data in BigQuery — ready for the BI tool of Voltera's choice, refreshed on schedule and split cleanly by domain.</p>
+
+    <div class="dash-grid">
+      <div class="dash-card ops">
+        <div class="dash-label">Operations &amp; Sales</div>
+        <div class="dash-title">CRM &amp; ERP Performance</div>
+        <p class="dash-desc">A single view linking the sales pipeline in the CRM to fulfilment and invoicing in the ERP — no more cross-referencing two systems by hand.</p>
+        <div class="dash-kpis">
+          <div class="dash-kpi">Pipeline value and deal velocity</div>
+          <div class="dash-kpi">Orders, invoices, and fulfilment status</div>
+          <div class="dash-kpi">Inventory and operational throughput</div>
+          <div class="dash-kpi">CRM-to-ERP order matching</div>
+          <div class="dash-kpi">Near-real-time, 15-minute CRM grain</div>
+        </div>
+      </div>
+      <div class="dash-card sales">
+        <div class="dash-label">Marketing &amp; Finance</div>
+        <div class="dash-title">Spend, ROAS &amp; Cash</div>
+        <p class="dash-desc">Marketing investment connected to real revenue and real costs. Know what each campaign returns and where the money actually lands.</p>
+        <div class="dash-kpis">
+          <div class="dash-kpi">Facebook Ads spend and conversions</div>
+          <div class="dash-kpi">Return on ad spend tied to CRM revenue</div>
+          <div class="dash-kpi">Moneybird invoices and payments</div>
+          <div class="dash-kpi">Cost of acquisition by channel</div>
+          <div class="dash-kpi">Recruiting pipeline and hiring throughput</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="alt">
+  <div class="container">
+    <span class="eyebrow">The outcome</span>
+    <h2>What changed for Voltera.</h2>
+    <p class="section-sub">From manual exports off production databases to automated, trusted reporting across every team.</p>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-icon green">✓</div>
+        <div>
+          <div class="result-title">Zero manual exports</div>
+          <p class="result-desc">All 5 sources run on schedule, automatically. Reporting moved off the live CRM and ERP, so analytics no longer competes with the applications.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon blue">📊</div>
+        <div>
+          <div class="result-title">One number everyone agrees on</div>
+          <p class="result-desc">Shared dbt-defined KPIs across Sales, Operations, Marketing, and Finance. Meetings start with the decision, not the reconciliation.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon amber">⚡</div>
+        <div>
+          <div class="result-title">Reporting that doesn't break</div>
+          <p class="result-desc">Schema evolution handles new source columns automatically, and BigQuery retries ride out transient failures. The team gets a Slack alert the moment anything's off.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon purple">🔧</div>
+        <div>
+          <div class="result-title">Fully owned, on their own infra</div>
+          <p class="result-desc">The whole platform runs on Voltera's GKE cluster — warehouse, pipelines, and code. No vendor lock-in, no black boxes, complete ownership.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text">"For the first time, our sales pipeline, our orders, and our ad spend all line up in one place. We stopped arguing about whose number was right and started actually using the data."</p>
+      <div class="quote-attr"><strong>Voltera team</strong> · Vero client</div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">The stack</span>
+    <h2 class="light">The same battle-tested Vero stack, every time.</h2>
+    <p class="section-sub" style="color:#94a3b8;">Every layer chosen for reliability, speed, and client ownership. You keep the warehouse, the pipelines, and the code.</p>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Tool</th>
+          <th>What it does for you</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="stack-layer">Ingestion</span></td>
+          <td><span class="stack-tool blue">dlt</span></td>
+          <td><span class="stack-resp">Connects your sources and loads data into the warehouse, with schema evolution built in</span></td>
+        </tr>
+        <tr>
+          <td><span class="stack-layer">Storage</span></td>
+          <td><span class="stack-tool cyan">Google BigQuery</span></td>
+          <td><span class="stack-resp">Your central warehouse. All data lands here, queryable by any tool.</span></td>
+        </tr>
+        <tr>
+          <td><span class="stack-layer">Transformation</span></td>
+          <td><span class="stack-tool amber">dbt</span></td>
+          <td><span class="stack-resp">Turns raw CRM, ERP, ads, and finance data into clean, agreed-on KPIs</span></td>
+        </tr>
+        <tr>
+          <td><span class="stack-layer">Orchestration</span></td>
+          <td><span class="stack-tool purple">Dagster on GKE</span></td>
+          <td><span class="stack-resp">Runs everything on schedule on your own cluster, with sensors, monitoring, and Slack alerts</span></td>
+        </tr>
+        <tr>
+          <td><span class="stack-layer">Deployment</span></td>
+          <td><span class="stack-tool green">Docker + Helm</span></td>
+          <td><span class="stack-resp">Packaged and deployed to your infrastructure — fully owned, no vendor lock-in</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="eyebrow light">Work with us</span>
+      <h2>Want the same for your team?</h2>
+      <p class="cta-sub">Free 30-minute scoping call. We'll map your sources, define your KPIs, and tell you exactly what it takes.</p>
+      <a class="btn-primary" href="mailto:vero@datumlabs.io">Book a free call</a>
+      <span class="cta-email">vero@datumlabs.io · datumlabs.io/vero</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Datumlabs · Vero</span>
+  <span>vero@datumlabs.io · datumlabs.io/vero</span>
+</footer>
+
+</body>
+</html>

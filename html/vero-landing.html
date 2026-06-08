@@ -420,6 +420,109 @@
   .df-icard.k8s     .df-iname { color: #60a5fa; }
   .df-idesc { font-size: 0.63rem; color: #64748b; line-height: 1.4; }
 
+  /* ── CASE STUDIES ── */
+  .nav-links { display: flex; gap: 1.75rem; }
+  .nav-link { font-size: 0.875rem; color: #64748b; font-weight: 500; transition: color 0.15s; }
+  .nav-link:hover { color: #94a3b8; }
+
+  .cs-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.25rem; }
+  .cs-tab {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 999px; padding: 0.55rem 1.35rem;
+    font-size: 0.875rem; font-weight: 600; color: #64748b;
+    cursor: pointer; transition: all 0.15s; outline: none;
+  }
+  .cs-tab:hover { border-color: rgba(74,158,237,0.5); color: #94a3b8; }
+  .cs-tab.active { border-color: var(--blue); color: #f1f5f9; background: rgba(74,158,237,0.1); }
+  .cs-tab-dot {
+    width: 1.65rem; height: 1.65rem; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    font-size: 0.58rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .cs-tab:not(.active) .cs-tab-dot { background: #334155; }
+
+  .cs-panel { display: none; }
+  .cs-panel.active { display: grid; grid-template-columns: 1fr 270px; gap: 3rem; align-items: start; }
+
+  .cs-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 999px; padding: 0.3rem 1rem 0.3rem 0.4rem;
+    font-size: 0.72rem; color: #64748b; margin-bottom: 1.25rem;
+  }
+  .cs-badge-dot {
+    width: 1.4rem; height: 1.4rem; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    font-size: 0.55rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cs-headline { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; color: #f1f5f9; line-height: 1.2; margin: 0 0 0.85rem; }
+  .cs-desc { font-size: 0.9rem; color: #94a3b8; line-height: 1.65; margin-bottom: 1.5rem; }
+
+  .cs-meta {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    border-bottom: 1px solid var(--dark-border); padding-bottom: 1.25rem; margin-bottom: 1.5rem;
+  }
+  .cs-meta-item .cmi-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #475569; margin-bottom: 0.2rem; }
+  .cs-meta-item .cmi-val { font-size: 0.82rem; color: #94a3b8; font-weight: 500; }
+
+  .cs-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .cs-stag { font-size: 0.65rem; font-weight: 700; border-radius: 4px; padding: 0.2rem 0.55rem; border: 1px solid; }
+  .cs-stag.blue   { background: rgba(74,158,237,0.1);  border-color: rgba(74,158,237,0.3);  color: #4a9eed; }
+  .cs-stag.amber  { background: rgba(245,158,11,0.1);  border-color: rgba(245,158,11,0.3);  color: #f59e0b; }
+  .cs-stag.purple { background: rgba(139,92,246,0.1);  border-color: rgba(139,92,246,0.3);  color: #8b5cf6; }
+  .cs-stag.cyan   { background: rgba(6,182,212,0.1);   border-color: rgba(6,182,212,0.3);   color: #06b6d4; }
+  .cs-stag.green  { background: rgba(34,197,94,0.1);   border-color: rgba(34,197,94,0.3);   color: #22c55e; }
+
+  .cs-quote { border-left: 3px solid var(--blue); padding-left: 1rem; margin-bottom: 1.75rem; }
+  .cs-quote p { font-size: 0.9rem; color: #cbd5e1; font-style: italic; line-height: 1.65; margin: 0 0 0.4rem; }
+  .cs-quote cite { font-size: 0.72rem; color: #475569; font-style: normal; }
+
+  .cs-cta {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: var(--blue); font-size: 0.875rem; font-weight: 600;
+    border: 1px solid rgba(74,158,237,0.35); border-radius: 999px;
+    padding: 0.6rem 1.25rem; transition: all 0.15s;
+  }
+  .cs-cta:hover { background: rgba(74,158,237,0.1); border-color: var(--blue); }
+
+  .cs-right { display: flex; flex-direction: column; gap: 0.75rem; }
+  .cs-stat {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+  }
+  .cs-stat-val { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.3rem; }
+  .cs-stat-val.green { color: var(--green); }
+  .cs-stat-val.blue  { color: var(--blue); }
+  .cs-stat-val.amber { color: var(--amber); }
+  .cs-stat-label { font-size: 0.72rem; color: #475569; letter-spacing: 0.04em; }
+
+  .cs-results { display: flex; flex-direction: column; gap: 0.5rem; }
+  .cs-result {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    background: rgba(30,41,59,0.7); border: 1px solid var(--dark-border);
+    border-radius: 10px; padding: 0.75rem 1rem;
+  }
+  .cs-result-icon {
+    width: 1.5rem; height: 1.5rem; border-radius: 5px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 0.65rem;
+  }
+  .cs-result-icon.green  { background: rgba(34,197,94,0.15); }
+  .cs-result-icon.blue   { background: rgba(74,158,237,0.15); }
+  .cs-result-icon.amber  { background: rgba(245,158,11,0.15); }
+  .cs-result-icon.purple { background: rgba(139,92,246,0.15); }
+  .cs-result-text { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+  .cs-result-text strong { color: #94a3b8; display: block; font-size: 0.8rem; margin-bottom: 0.1rem; }
+
+  .proof-link {
+    display: inline-flex; align-items: center;
+    font-size: 0.8rem; color: var(--blue); font-weight: 600;
+    margin-top: 0.75rem; transition: opacity 0.15s;
+  }
+  .proof-link:hover { opacity: 0.8; }
+
   /* ── FINAL CTA ── */
   .cta-inner {
     background: var(--dark-card); border: 1px solid var(--dark-border);
@@ -449,6 +552,9 @@
     .hero h1 { font-size: 2.3rem; }
     h2 { font-size: 1.65rem; }
     .pain-grid, .outcomes-grid, .stack-grid, .proof-grid, .fit-grid { grid-template-columns: 1fr; }
+    .cs-panel.active { grid-template-columns: 1fr; }
+    .cs-right { flex-direction: row; flex-wrap: wrap; }
+    .cs-stat { flex: 1; min-width: 120px; }
     .hero-stats { flex-direction: column; }
     .speed-banner { flex-direction: column; text-align: center; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -460,6 +566,10 @@
 <!-- ── NAV ── -->
 <nav>
   <span class="nav-logo">VERO <span>·</span> Datumlabs</span>
+  <div class="nav-links">
+    <a class="nav-link" href="#case-studies">Case Studies</a>
+    <a class="nav-link" href="#how-it-works">How it works</a>
+  </div>
   <a class="nav-cta" href="mailto:vero@datumlabs.io">Book a free call</a>
 </nav>
 
@@ -726,8 +836,156 @@
           <div class="proof-after">After: Clean data layer in place. First AI feature shipped two weeks later.</div>
         </div>
         <p class="proof-quote">"Vero built the foundation. Everything we wanted to build on top became possible."</p>
+        <a class="proof-link" href="casestudy-govplus.html">Read full case study →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── 07.5 CASE STUDIES ── -->
+<section class="dark-sec" id="case-studies">
+  <div class="container">
+    <span class="eyebrow light">Case studies</span>
+    <h2 class="light">Real teams. Real results.</h2>
+    <p class="section-sub light">Two clients, same problem — data scattered, numbers untrustworthy. Here's exactly what we built and what changed.</p>
+
+    <div class="cs-tabs">
+      <button class="cs-tab active" onclick="showCase('govplus', this)">
+        <span class="cs-tab-dot">G+</span>
+        GovPlus
+      </button>
+      <button class="cs-tab" onclick="showCase('voltera', this)">
+        <span class="cs-tab-dot">V</span>
+        Voltera
+      </button>
+    </div>
+
+    <!-- GovPlus Panel -->
+    <div class="cs-panel active" id="cs-govplus">
+      <div class="cs-left">
+        <div class="cs-badge">
+          <div class="cs-badge-dot">G+</div>
+          Case Study · GovPlus · SaaS
+        </div>
+        <div class="cs-headline">From scattered spreadsheets to a single source of truth. In weeks.</div>
+        <p class="cs-desc">GovPlus needed full visibility across customer support, sales, and online reputation. Their data was split across 9 systems — Intercom, CloudTalk, Chargebee, Trustpilot, and more — with no warehouse, no shared KPIs, and no way to trust any number.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Google BigQuery</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster Cloud</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">BI Tool</div><div class="cmi-val">Hex</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">SaaS</div></div>
+        </div>
+
+        <div class="cs-stack">
+          <span class="cs-stag blue">dlt</span>
+          <span class="cs-stag purple">Dagster Cloud</span>
+          <span class="cs-stag cyan">BigQuery</span>
+          <span class="cs-stag amber">dbt</span>
+          <span class="cs-stag green">Hex</span>
+        </div>
+
+        <div class="cs-quote">
+          <p>"We wanted to build AI features on top of our data but nothing was clean enough. Vero built the foundation — everything we wanted to build on top became possible."</p>
+          <cite>GovPlus team · Vero client since 2024</cite>
+        </div>
+
+        <a class="cs-cta" href="casestudy-govplus.html">Read full case study →</a>
+      </div>
+
+      <div class="cs-right">
+        <div class="cs-stat">
+          <div class="cs-stat-val green">9+</div>
+          <div class="cs-stat-label">data sources connected</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val blue">2</div>
+          <div class="cs-stat-label">live dashboards shipped</div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result">
+            <div class="cs-result-icon green">✓</div>
+            <div class="cs-result-text"><strong>Zero manual exports</strong>All 9 sources run on schedule, automatically.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon blue">📊</div>
+            <div class="cs-result-text"><strong>One number everyone agrees on</strong>Shared KPIs across ops, sales, and finance.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon amber">⚡</div>
+            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Automated pipelines with monitoring and alerting built in.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon purple">🤖</div>
+            <div class="cs-result-text"><strong>Foundation for AI</strong>Clean data now powers GovPlus's AI workflows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voltera Panel -->
+    <div class="cs-panel" id="cs-voltera">
+      <div class="cs-left">
+        <div class="cs-badge">
+          <div class="cs-badge-dot">V</div>
+          Case Study · Voltera · EU (Netherlands)
+        </div>
+        <div class="cs-headline">CRM, ERP, ads, and finance — finally in one warehouse.</div>
+        <p class="cs-desc">Voltera ran sales on a Postgres CRM, operations on an MSSQL ERP, and spend across Facebook Ads and Moneybird. Nothing talked to each other. Every report was a manual export. No metric carried across systems.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Google BigQuery</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster on GKE</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Transformation</div><div class="cmi-val">dbt</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Region</div><div class="cmi-val">EU (Netherlands)</div></div>
+        </div>
+
+        <div class="cs-stack">
+          <span class="cs-stag blue">dlt</span>
+          <span class="cs-stag purple">Dagster on GKE</span>
+          <span class="cs-stag cyan">BigQuery</span>
+          <span class="cs-stag amber">dbt</span>
+          <span class="cs-stag green">Docker + Helm</span>
+        </div>
+
+        <div class="cs-quote">
+          <p>"For the first time, our sales pipeline, our orders, and our ad spend all line up in one place. We stopped arguing about whose number was right and started actually using the data."</p>
+          <cite>Voltera team · Vero client</cite>
+        </div>
+
+        <a class="cs-cta" href="casestudy-voltera.html">Read full case study →</a>
+      </div>
+
+      <div class="cs-right">
+        <div class="cs-stat">
+          <div class="cs-stat-val green">5</div>
+          <div class="cs-stat-label">data sources connected</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val blue">15 min</div>
+          <div class="cs-stat-label">CRM refresh cadence</div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result">
+            <div class="cs-result-icon green">✓</div>
+            <div class="cs-result-text"><strong>Zero manual exports</strong>All 5 sources run on schedule, automatically.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon blue">📊</div>
+            <div class="cs-result-text"><strong>One number everyone agrees on</strong>Shared dbt KPIs across sales, ops, marketing, and finance.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon amber">⚡</div>
+            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Schema evolution handles new source columns automatically.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon purple">🔧</div>
+            <div class="cs-result-text"><strong>Fully owned on their own infra</strong>Whole platform on Voltera's GKE cluster. No vendor lock-in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -977,5 +1235,13 @@
   <span>vero@datumlabs.io · datumlabs.io/vero</span>
 </footer>
 
+<script>
+function showCase(id, btn) {
+  document.querySelectorAll('.cs-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.cs-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('cs-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 </body>
 </html>

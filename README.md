@@ -15,6 +15,7 @@ Design deliverables for the Vero project — landing pages, wireframes, and case
 | `html/vero-dataflow.html` | Data flow diagram page |
 | `html/casestudy-govplus.html` | GovPlus case study |
 | `html/casestudy-voltera.html` | Voltera case study |
+| `html/casestudy-filed.html` | Filed case study |
 | `html/core_offering.html` | Core offering pitch deck |
 | `html/hadiqa-upwork-profile.html` | Hadiqa Upwork profile |
 | `html/nidal-upwork-profile.html` | Nidal Upwork profile |

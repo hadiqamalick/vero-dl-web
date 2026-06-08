@@ -858,6 +858,10 @@
         <span class="cs-tab-dot">V</span>
         Voltera
       </button>
+      <button class="cs-tab" onclick="showCase('filed', this)">
+        <span class="cs-tab-dot">F</span>
+        Filed
+      </button>
     </div>
 
     <!-- GovPlus Panel -->
@@ -981,6 +985,71 @@
           <div class="cs-result">
             <div class="cs-result-icon purple">🔧</div>
             <div class="cs-result-text"><strong>Fully owned on their own infra</strong>Whole platform on Voltera's GKE cluster. No vendor lock-in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filed Panel -->
+    <div class="cs-panel" id="cs-filed">
+      <div class="cs-left">
+        <div class="cs-badge">
+          <div class="cs-badge-dot">F</div>
+          Case Study · Filed · SaaS / Tax Tech
+        </div>
+        <div class="cs-headline">12 systems. One warehouse. Every pipeline automated.</div>
+        <p class="cs-desc">Filed runs a product-led AI tax platform with data spread across 7 marketing channels, two product databases, CRM, event analytics, and billing. Every report was a manual export. Every product release broke something downstream.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Snowflake</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster on Azure AKS</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">BI Tools</div><div class="cmi-val">Metabase + Hex</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">SaaS / Tax Tech</div></div>
+        </div>
+
+        <div class="cs-stack">
+          <span class="cs-stag blue">Fivetran</span>
+          <span class="cs-stag blue">dlt</span>
+          <span class="cs-stag purple">Dagster on AKS</span>
+          <span class="cs-stag cyan">Snowflake</span>
+          <span class="cs-stag amber">dbt Cloud</span>
+          <span class="cs-stag green">Metabase</span>
+          <span class="cs-stag green">Hex</span>
+        </div>
+
+        <div class="cs-quote">
+          <p>"The pipelines just run. We don't even think about it anymore."</p>
+          <cite>Filed team · Vero client</cite>
+        </div>
+
+        <a class="cs-cta" href="casestudy-filed.html">Read full case study →</a>
+      </div>
+
+      <div class="cs-right">
+        <div class="cs-stat">
+          <div class="cs-stat-val green">12</div>
+          <div class="cs-stat-label">data sources connected</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val blue">5</div>
+          <div class="cs-stat-label">live dashboards shipped</div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result">
+            <div class="cs-result-icon green">✓</div>
+            <div class="cs-result-text"><strong>Zero manual exports</strong>All 12 sources run on schedule, automatically.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon blue">📊</div>
+            <div class="cs-result-text"><strong>Full funnel visible</strong>Ad spend → MQL → trial → workspace → billing, end to end.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon amber">⚡</div>
+            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Schema evolution + Slack alerts on every failure.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon purple">☁️</div>
+            <div class="cs-result-text"><strong>Fully owned on Azure</strong>Entire platform on Filed's own AKS cluster.</div>
           </div>
         </div>
       </div>

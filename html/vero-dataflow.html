@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vero — Data Flow</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface2: #263548;
+    --border: #334155;
+    --ink: #f1f5f9;
+    --muted: #64748b;
+    --blue: #4a9eed;
+    --cyan: #06b6d4;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --purple: #8b5cf6;
+    --pink: #ec4899;
+    --orange: #f97316;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2.5rem 2rem 3rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    text-align: center; margin-bottom: 2.5rem;
+  }
+  .page-header .badge {
+    display: inline-block; font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue);
+    border: 1px solid rgba(74,158,237,0.4); border-radius: 999px;
+    padding: 0.28rem 0.9rem; margin-bottom: 0.75rem;
+  }
+  .page-header h1 {
+    font-size: 1.7rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink);
+  }
+  .page-header p { font-size: 0.875rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ══════════════════════════════════════
+     MAIN DIAGRAM WRAPPER
+  ══════════════════════════════════════ */
+  .diagram {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+
+  /* ── Column labels row ── */
+  .labels-row {
+    display: grid;
+    grid-template-columns: 230px 60px 160px 60px 160px 60px 60px 280px;
+    margin-bottom: 0.6rem;
+    padding: 0 2px;
+  }
+  .col-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted);
+    text-align: center;
+  }
+  .col-label.left { text-align: left; }
+
+  /* ── Main flow row ── */
+  .flow-row {
+    display: grid;
+    grid-template-columns: 230px 60px 160px 60px 160px 60px 60px 280px;
+    align-items: start;
+    gap: 0;
+  }
+
+  /* ── Arrow connector ── */
+  .connector {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding-top: 4rem;
+  }
+  .connector svg { width: 60px; height: 12px; overflow: visible; display: block; }
+  .connector .arrow-label {
+    font-size: 0.55rem; color: var(--border); letter-spacing: 0.1em;
+    text-transform: uppercase; margin: 3px 0;
+  }
+  @keyframes dash { to { stroke-dashoffset: -20; } }
+  .anim { stroke-dasharray: 6 4; animation: dash 1.2s linear infinite; }
+
+  /* ── Vertical arrow (warehouse → dbt) ── */
+  .v-connector {
+    display: flex; flex-direction: column; align-items: center;
+    margin: 4px 0;
+  }
+  .v-connector svg { display: block; }
+
+  /* ══════════════════════════════════════
+     SOURCES
+  ══════════════════════════════════════ */
+  .sources-panel { display: flex; flex-direction: column; gap: 0.5rem; }
+  .domain-group {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid; border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+  }
+  .domain-group.marketing  { border-left-color: var(--blue); }
+  .domain-group.revenue    { border-left-color: var(--green); }
+  .domain-group.crm        { border-left-color: var(--orange); }
+  .domain-group.product    { border-left-color: var(--purple); }
+  .domain-group.cx         { border-left-color: var(--pink); }
+
+  .domain-label {
+    font-size: 0.58rem; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .domain-group.marketing  .domain-label { color: var(--blue); }
+  .domain-group.revenue    .domain-label { color: var(--green); }
+  .domain-group.crm        .domain-label { color: var(--orange); }
+  .domain-group.product    .domain-label { color: var(--purple); }
+  .domain-group.cx         .domain-label { color: var(--pink); }
+
+  .source-logos { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .logo-pill {
+    font-size: 0.67rem; font-weight: 700;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 0.2rem 0.5rem;
+    color: var(--ink); white-space: nowrap;
+  }
+  .lc-google    { color: #4285f4; }
+  .lc-meta      { color: #1877f2; }
+  .lc-tiktok    { color: #69c9d0; }
+  .lc-linkedin  { color: #0a66c2; }
+  .lc-stripe    { color: #635bff; }
+  .lc-chargebee { color: #f46f25; }
+  .lc-qb        { color: #2ca01c; }
+  .lc-hubspot   { color: #ff7a59; }
+  .lc-sf        { color: #00a1e0; }
+  .lc-mixpanel  { color: #7856ff; }
+  .lc-segment   { color: #52bd94; }
+  .lc-amplitude { color: #f46f25; }
+  .lc-intercom  { color: #1f8ded; }
+  .lc-zendesk   { color: #8cb3ae; }
+  .lc-trust     { color: #00b67a; }
+
+  /* ══════════════════════════════════════
+     STACK CARDS
+  ══════════════════════════════════════ */
+  .stack-col { display: flex; flex-direction: column; gap: 0.5rem; }
+  .stack-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.85rem 0.9rem; text-align: center;
+  }
+  .sc-role {
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  .sc-name { font-size: 1rem; font-weight: 800; line-height: 1; }
+  .sc-sub  { font-size: 0.62rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.4; }
+
+  .card-dlt {
+    border-color: var(--blue); background: rgba(74,158,237,0.07);
+  }
+  .card-dlt .sc-name { color: var(--blue); }
+
+  .card-warehouse {
+    border-color: var(--cyan); background: rgba(6,182,212,0.07);
+    padding: 1.1rem 0.9rem;
+  }
+  .card-warehouse .sc-name { color: var(--cyan); font-size: 1.1rem; }
+
+  .card-dbt {
+    border-color: var(--amber); background: rgba(245,158,11,0.07);
+    padding: 1rem 0.9rem;
+  }
+  .card-dbt .sc-name { color: var(--amber); }
+
+  /* warehouse + dbt stacked together */
+  .wh-dbt-col {
+    display: flex; flex-direction: column; gap: 0;
+  }
+
+  /* ── double arrow between warehouse and reporting ── */
+  .double-arrow-col {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start;
+    padding-top: 4rem;
+    gap: 4px;
+  }
+
+  /* ══════════════════════════════════════
+     REPORTING
+  ══════════════════════════════════════ */
+  .reporting-panel { display: flex; flex-direction: column; gap: 0.5rem; }
+  .report-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid; border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+  }
+  .report-card.rev  { border-left-color: var(--green); }
+  .report-card.mkt  { border-left-color: var(--blue); }
+  .report-card.prod { border-left-color: var(--purple); }
+  .report-card.cx   { border-left-color: var(--pink); }
+
+  .report-title {
+    font-size: 0.58rem; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .report-card.rev  .report-title { color: var(--green); }
+  .report-card.mkt  .report-title { color: var(--blue); }
+  .report-card.prod .report-title { color: var(--purple); }
+  .report-card.cx   .report-title { color: var(--pink); }
+
+  /* metrics */
+  .metric-row { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .metric-chip {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 0.25rem 0.5rem; font-size: 0.62rem; line-height: 1.35;
+  }
+  .metric-chip .mv { font-weight: 800; font-size: 0.75rem; color: var(--ink); display: block; }
+  .metric-chip .ml { color: var(--muted); }
+  .metric-chip.up   .mv { color: var(--green); }
+  .metric-chip.warn .mv { color: var(--amber); }
+  .metric-chip.red  .mv { color: #f87171; }
+
+  /* mini bar chart */
+  .chart-bar { display: flex; align-items: flex-end; gap: 2px; height: 28px; }
+  .bar { width: 7px; border-radius: 2px 2px 0 0; }
+
+  /* mini donut */
+  .mini-charts { display: flex; gap: 0.5rem; align-items: center; }
+  .chart-donut { position: relative; width: 34px; height: 34px; flex-shrink: 0; }
+  .chart-donut svg { position: absolute; top: 0; left: 0; }
+  .donut-val {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    justify-content: center; font-size: 0.52rem; font-weight: 800; color: var(--ink);
+  }
+
+  /* BI tool tags */
+  .bi-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.3rem; }
+  .bi-tag {
+    font-size: 0.62rem; font-weight: 700;
+    border: 1px solid var(--border); border-radius: 5px;
+    padding: 0.22rem 0.5rem; color: var(--muted); background: var(--surface2);
+  }
+  .bi-tag.hex { color: var(--amber); border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.07); }
+
+  /* ══════════════════════════════════════
+     BOTTOM INFRA BAND
+  ══════════════════════════════════════ */
+  .infra-band {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .infra-card {
+    border-radius: 10px; padding: 0.9rem 1.25rem;
+    display: flex; align-items: center; gap: 1rem;
+    border: 1px dashed;
+  }
+  .infra-card.dagster {
+    border-color: rgba(139,92,246,0.5);
+    background: rgba(139,92,246,0.07);
+  }
+  .infra-card.k8s {
+    border-color: rgba(96,165,250,0.4);
+    background: rgba(96,165,250,0.06);
+  }
+  .infra-icon {
+    width: 2.25rem; height: 2.25rem; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .infra-card.dagster .infra-icon { background: rgba(139,92,246,0.15); }
+  .infra-card.k8s     .infra-icon { background: rgba(96,165,250,0.12); }
+  .infra-body .infra-name {
+    font-size: 0.95rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem;
+  }
+  .infra-card.dagster .infra-name { color: var(--purple); }
+  .infra-card.k8s     .infra-name { color: #60a5fa; }
+  .infra-body .infra-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+  .infra-band-label {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem;
+    margin-top: 1.25rem;
+  }
+
+  /* legend */
+  .legend {
+    max-width: 1220px; margin: 1.75rem auto 0;
+    display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; color: var(--muted); }
+  .legend-dot  { width: 7px; height: 7px; border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="badge">Vero · Datumlabs</div>
+  <h1>Your data — connected, clean, and ready.</h1>
+  <p>From scattered sources to trusted dashboards, in days.</p>
+</div>
+
+<div class="diagram">
+
+  <!-- Column labels -->
+  <div class="labels-row">
+    <div class="col-label left">Data Sources</div>
+    <div class="col-label"></div>
+    <div class="col-label">Ingestion</div>
+    <div class="col-label"></div>
+    <div class="col-label">Warehouse + Transform</div>
+    <div class="col-label"></div>
+    <div class="col-label"></div>
+    <div class="col-label left">Reporting &amp; Insights</div>
+  </div>
+
+  <!-- Main flow -->
+  <div class="flow-row">
+
+    <!-- 1. SOURCES -->
+    <div class="sources-panel">
+      <div class="domain-group marketing">
+        <div class="domain-label">Marketing</div>
+        <div class="source-logos">
+          <span class="logo-pill lc-google">Google Ads</span>
+          <span class="logo-pill lc-meta">Meta</span>
+          <span class="logo-pill lc-tiktok">TikTok</span>
+          <span class="logo-pill lc-linkedin">LinkedIn</span>
+        </div>
+      </div>
+      <div class="domain-group revenue">
+        <div class="domain-label">Finance / Revenue</div>
+        <div class="source-logos">
+          <span class="logo-pill lc-stripe">Stripe</span>
+          <span class="logo-pill lc-chargebee">Chargebee</span>
+          <span class="logo-pill lc-qb">QuickBooks</span>
+        </div>
+      </div>
+      <div class="domain-group crm">
+        <div class="domain-label">CRM / Sales</div>
+        <div class="source-logos">
+          <span class="logo-pill lc-hubspot">HubSpot</span>
+          <span class="logo-pill lc-sf">Salesforce</span>
+        </div>
+      </div>
+      <div class="domain-group product">
+        <div class="domain-label">Product / Analytics</div>
+        <div class="source-logos">
+          <span class="logo-pill lc-mixpanel">Mixpanel</span>
+          <span class="logo-pill lc-segment">Segment</span>
+          <span class="logo-pill lc-amplitude">Amplitude</span>
+        </div>
+      </div>
+      <div class="domain-group cx">
+        <div class="domain-label">Customer Service</div>
+        <div class="source-logos">
+          <span class="logo-pill lc-intercom">Intercom</span>
+          <span class="logo-pill lc-zendesk">Zendesk</span>
+          <span class="logo-pill lc-trust">Trustpilot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 1 -->
+    <div class="connector">
+      <svg viewBox="0 0 60 12"><line class="anim" x1="0" y1="6" x2="50" y2="6" stroke="#4a9eed" stroke-width="1.5"/><polygon points="50,2 60,6 50,10" fill="#4a9eed"/></svg>
+      <span class="arrow-label">extract</span>
+      <svg viewBox="0 0 60 12"><line class="anim" x1="0" y1="6" x2="50" y2="6" stroke="#4a9eed" stroke-width="1.5"/><polygon points="50,2 60,6 50,10" fill="#4a9eed"/></svg>
+    </div>
+
+    <!-- 2. INGESTION — dlt only -->
+    <div class="stack-col" style="justify-content:center; padding-top:2.5rem;">
+      <div class="stack-card card-dlt">
+        <div class="sc-role">Ingestion layer</div>
+        <div class="sc-name">dlt</div>
+        <div class="sc-sub">25+ native connectors<br>custom API support</div>
+      </div>
+    </div>
+
+    <!-- ARROW 2 -->
+    <div class="connector">
+      <svg viewBox="0 0 60 12"><line class="anim" x1="0" y1="6" x2="50" y2="6" stroke="#06b6d4" stroke-width="1.5"/><polygon points="50,2 60,6 50,10" fill="#06b6d4"/></svg>
+      <span class="arrow-label">load</span>
+      <svg viewBox="0 0 60 12"><line class="anim" x1="0" y1="6" x2="50" y2="6" stroke="#06b6d4" stroke-width="1.5"/><polygon points="50,2 60,6 50,10" fill="#06b6d4"/></svg>
+    </div>
+
+    <!-- 3. WAREHOUSE → dbt stacked -->
+    <div class="wh-dbt-col" style="padding-top:1.25rem;">
+      <div class="stack-card card-warehouse">
+        <div class="sc-role">Data Warehouse</div>
+        <div class="sc-name">BigQuery</div>
+        <div class="sc-sub">or ClickHouse · Snowflake</div>
+      </div>
+
+      <!-- vertical arrow warehouse → dbt -->
+      <div class="v-connector" style="padding: 4px 0;">
+        <svg width="12" height="28" viewBox="0 0 12 28">
+          <line class="anim" x1="6" y1="0" x2="6" y2="18" stroke="#f59e0b" stroke-width="1.5"/>
+          <polygon points="2,18 10,18 6,28" fill="#f59e0b"/>
+        </svg>
+      </div>
+
+      <div class="stack-card card-dbt">
+        <div class="sc-role">Transformation</div>
+        <div class="sc-name">dbt</div>
+        <div class="sc-sub">Staging · Marts · Tests<br>Auto-generated models</div>
+      </div>
+    </div>
+
+    <!-- ARROW 3 — spans both warehouse + dbt rows -->
+    <div class="double-arrow-col">
+      <svg viewBox="0 0 60 12"><line class="anim" x1="0" y1="6" x2="50" y2="6" stroke="#22c55e" stroke-width="1.5"/><polygon points="50,2 60,6 50,10" fill="#22c55e"/></svg>
+      <span class="arrow-label" style="font-size:0.55rem; color:var(--border); letter-spacing:0.08em; text-transform:uppercase;">serve</span>
+      <svg viewBox="0 0 60 12"><line class="anim" x1="0" y1="6" x2="50" y2="6" stroke="#22c55e" stroke-width="1.5"/><polygon points="50,2 60,6 50,10" fill="#22c55e"/></svg>
+    </div>
+
+    <!-- 4. REPORTING -->
+    <div class="reporting-panel">
+
+      <div class="report-card rev">
+        <div class="report-title">Revenue</div>
+        <div class="metric-row">
+          <div class="metric-chip up"><span class="mv">$84k</span><span class="ml">MRR ↑12%</span></div>
+          <div class="metric-chip up"><span class="mv">94%</span><span class="ml">Retention</span></div>
+          <div class="metric-chip warn"><span class="mv">3.2%</span><span class="ml">Churn</span></div>
+        </div>
+        <div class="chart-bar">
+          <div class="bar" style="height:14px; background:var(--green);"></div>
+          <div class="bar" style="height:18px; background:var(--green);"></div>
+          <div class="bar" style="height:16px; background:var(--green);"></div>
+          <div class="bar" style="height:21px; background:var(--green);"></div>
+          <div class="bar" style="height:19px; background:var(--green);"></div>
+          <div class="bar" style="height:24px; background:var(--green);"></div>
+          <div class="bar" style="height:22px; background:var(--green);"></div>
+          <div class="bar" style="height:28px; background:var(--green);"></div>
+        </div>
+      </div>
+
+      <div class="report-card mkt">
+        <div class="report-title">Marketing</div>
+        <div class="metric-row">
+          <div class="metric-chip up"><span class="mv">$1.8</span><span class="ml">CAC Google</span></div>
+          <div class="metric-chip warn"><span class="mv">$4.2</span><span class="ml">CAC Meta</span></div>
+        </div>
+        <svg width="100%" height="28" viewBox="0 0 200 28" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4a9eed" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#4a9eed" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <polygon points="0,24 0,22 30,17 60,20 90,10 120,14 150,5 180,9 200,2 200,24" fill="url(#bg)"/>
+          <polyline points="0,22 30,17 60,20 90,10 120,14 150,5 180,9 200,2"
+            fill="none" stroke="#4a9eed" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="report-card prod">
+        <div class="report-title">Product</div>
+        <div class="mini-charts">
+          <div class="chart-donut">
+            <svg width="34" height="34" viewBox="0 0 34 34">
+              <circle cx="17" cy="17" r="12" fill="none" stroke="#263548" stroke-width="6"/>
+              <circle cx="17" cy="17" r="12" fill="none" stroke="#8b5cf6" stroke-width="6"
+                stroke-dasharray="51 24" stroke-dashoffset="19" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-val">68%</div>
+          </div>
+          <div>
+            <div class="metric-row" style="margin-bottom:0.3rem;">
+              <div class="metric-chip up"><span class="mv">2.4k</span><span class="ml">DAU</span></div>
+              <div class="metric-chip"><span class="mv">68%</span><span class="ml">D30</span></div>
+            </div>
+            <div class="chart-bar">
+              <div class="bar" style="height:16px; background:var(--purple);"></div>
+              <div class="bar" style="height:22px; background:var(--purple);"></div>
+              <div class="bar" style="height:18px; background:var(--purple);"></div>
+              <div class="bar" style="height:26px; background:var(--purple);"></div>
+              <div class="bar" style="height:28px; background:var(--purple);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-card cx">
+        <div class="report-title">Customer Service</div>
+        <div class="metric-row">
+          <div class="metric-chip up"><span class="mv">4.8★</span><span class="ml">CSAT</span></div>
+          <div class="metric-chip up"><span class="mv">3.2h</span><span class="ml">Resp. time</span></div>
+          <div class="metric-chip"><span class="mv">142</span><span class="ml">Open</span></div>
+        </div>
+      </div>
+
+      <div class="bi-tags">
+        <span class="bi-tag hex">Hex</span>
+        <span class="bi-tag">Metabase</span>
+        <span class="bi-tag">Looker</span>
+        <span class="bi-tag">Power BI</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ INFRA BAND — Dagster + Kubernetes ══ -->
+  <div class="infra-band-label">Infrastructure &amp; Orchestration — runs across the entire stack</div>
+  <div class="infra-band">
+
+    <div class="infra-card dagster">
+      <div class="infra-icon">⬡</div>
+      <div class="infra-body">
+        <div class="infra-name">Dagster</div>
+        <div class="infra-desc">Orchestrates every pipeline end-to-end. Schedules, sensors, retries, lineage — one control plane for all your data jobs.</div>
+      </div>
+    </div>
+
+    <div class="infra-card k8s">
+      <div class="infra-icon">☸</div>
+      <div class="infra-body">
+        <div class="infra-name">Kubernetes</div>
+        <div class="infra-desc">Runs on your cloud — GCP, AWS, or Azure. Scalable compute, isolated workloads, zero vendor lock-in. You own the infrastructure.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--blue);"></div>Marketing</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div>Finance / Revenue</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--orange);"></div>CRM / Sales</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--purple);"></div>Product</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--pink);"></div>Customer Service</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--cyan);"></div>Warehouse</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--amber);"></div>dbt Transform</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--purple);"></div>Dagster</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#60a5fa;"></div>Kubernetes</div>
+</div>
+
+</body>
+</html>

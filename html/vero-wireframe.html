@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vero — Landing Page Structure</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f0f2f5;
+    padding: 3rem 2rem;
+    color: #111;
+  }
+
+  h1 {
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #6b7280; margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* every section block */
+  .sec {
+    background: #fff;
+    border-radius: 10px;
+    border: 1.5px solid #d1d5db;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+  }
+
+  /* section label */
+  .sec-num {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #9ca3af;
+    margin-bottom: 0.4rem;
+  }
+  .sec-title {
+    font-size: 1rem; font-weight: 700; color: #111;
+    margin-bottom: 0.3rem;
+  }
+  .sec-goal {
+    font-size: 0.8rem; color: #6b7280; line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  /* content sketch inside each section */
+  .sketch {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .box {
+    background: #f3f4f6; border: 1.5px dashed #d1d5db;
+    border-radius: 6px; padding: 0.5rem 0.75rem;
+    font-size: 0.75rem; color: #6b7280;
+    flex: 1; min-width: 100px; text-align: center;
+    line-height: 1.4;
+  }
+  .box.tall { padding: 1.25rem 0.75rem; }
+  .box.dark { background: #1e293b; border-color: #1e293b; color: #94a3b8; }
+  .box.accent { background: #eaf3fd; border-color: #4a9eed; color: #1d4ed8; }
+  .box.warn { background: #fff4e0; border-color: #f59e0b; color: #92400e; }
+  .box.red { background: #fde8e8; border-color: #ef4444; color: #991b1b; }
+  .box.green { background: #e6f7ec; border-color: #22c55e; color: #166534; }
+  .box.full { flex: 0 0 100%; text-align: left; }
+
+  /* arrows between sections */
+  .arrow {
+    text-align: center; font-size: 1.1rem; color: #d1d5db;
+    line-height: 1; padding: 0;
+  }
+
+  /* note tag */
+  .note {
+    display: inline-block; margin-top: 0.6rem;
+    font-size: 0.7rem; color: #4a9eed;
+    background: #eaf3fd; border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  /* nav mock */
+  .nav-mock {
+    background: #fff; border-radius: 10px;
+    border: 1.5px solid #d1d5db;
+    padding: 0.65rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px;
+  }
+  .nav-mock .nl { font-size: 0.85rem; font-weight: 800; color: #111; }
+  .nav-mock .nb {
+    font-size: 0.75rem; font-weight: 600;
+    background: #111; color: #fff;
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+  }
+
+  .label-row {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #9ca3af;
+    margin-bottom: 0.4rem;
+  }
+
+  .divider {
+    border: none; border-top: 1.5px dashed #e5e7eb;
+    margin: 0.75rem 0;
+  }
+
+  .row { display: flex; gap: 6px; }
+  .row .box { flex: 1; }
+</style>
+</head>
+<body>
+
+<h1>Vero — Landing Page · Section Blueprint</h1>
+
+<div class="page">
+
+  <!-- NAV -->
+  <div class="nav-mock">
+    <span class="nl">VERO · Datumlabs</span>
+    <span class="nb">Book a free call</span>
+  </div>
+
+  <!-- 01 HERO -->
+  <div class="sec">
+    <div class="sec-num">Section 01</div>
+    <div class="sec-title">Hero</div>
+    <div class="sec-goal">One job: make the right person feel seen in 5 seconds. Pain first. Speed second. CTA third.</div>
+    <div class="sketch" style="flex-direction:column; gap:6px;">
+      <div class="box dark full" style="text-align:center; padding: 1.5rem;">
+        <div style="font-size:0.7rem; color:#64748b; margin-bottom:0.4rem;">HEADLINE</div>
+        <div style="font-size:1rem; font-weight:700; color:#f1f5f9; line-height:1.4;">"[Pain statement in the founder's own words]"</div>
+        <div style="font-size:0.75rem; color:#64748b; margin-top:0.5rem;">Subhead: what they get + without what</div>
+        <div style="margin-top:1rem; display:flex; gap:8px; justify-content:center;">
+          <span style="background:#4a9eed; color:#fff; border-radius:999px; padding:0.3rem 0.9rem; font-size:0.75rem; font-weight:600;">Book a free call →</span>
+          <span style="background:transparent; color:#94a3b8; border:1px solid #334155; border-radius:999px; padding:0.3rem 0.9rem; font-size:0.75rem;">See how it works</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="box accent">Stat 1<br><strong>X clients</strong></div>
+        <div class="box accent">Stat 2<br><strong>Avg setup: 5 days</strong></div>
+        <div class="box accent">Stat 3<br><strong>X sources connected</strong></div>
+      </div>
+      <div class="box full" style="text-align:center;">
+        Client logos · grayscale · "Trusted by" label
+      </div>
+    </div>
+    <span class="note">Content needed: real headline · real stats · real logos</span>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 02 PROBLEM -->
+  <div class="sec">
+    <div class="sec-num">Section 02</div>
+    <div class="sec-title">The Problem</div>
+    <div class="sec-goal">Name the 5 pains in the client's language. They should read this and think "that's us."</div>
+    <div class="sketch">
+      <div class="box red tall">Pain 01<br>Data scattered</div>
+      <div class="box red tall">Pain 02<br>Numbers don't match</div>
+      <div class="box red tall">Pain 03<br>No source of truth</div>
+      <div class="box red tall">Pain 04<br>Reports break</div>
+      <div class="box red tall">Pain 05<br>Dashboards blocked</div>
+    </div>
+    <span class="note">Use exact words clients say on calls — not our words</span>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 03 WHAT YOU GET -->
+  <div class="sec">
+    <div class="sec-num">Section 03</div>
+    <div class="sec-title">What You Get</div>
+    <div class="sec-goal">Outcomes only. No feature names. Each card answers "what do I have after Vero that I don't have now?"</div>
+    <div class="sketch">
+      <div class="box accent tall">01<br>One place for all your numbers</div>
+      <div class="box accent tall">02<br>Dashboards your team trusts</div>
+      <div class="box accent tall">03<br>Data that stays clean</div>
+      <div class="box accent tall">04<br>Your cloud, your ownership</div>
+      <div class="box accent tall">05<br>No headcount needed</div>
+      <div class="box accent tall">06<br>Ready to build AI on top</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 04 HOW IT WORKS -->
+  <div class="sec">
+    <div class="sec-num">Section 04</div>
+    <div class="sec-title">How It Works</div>
+    <div class="sec-goal">5 steps. Client-language titles only. Step 3 is where the magic happens — make it feel effortless, not technical.</div>
+    <div class="sketch" style="flex-direction:column; gap:4px;">
+      <div class="box full green">01 — Free 30-min scoping call · we map your stack</div>
+      <div class="box full green">02 — We identify every source your numbers live in</div>
+      <div class="box full green">03 — We build the whole thing · you watch it come together</div>
+      <div class="box full green">04 — First dashboards go live · real numbers, no spreadsheets</div>
+      <div class="box full green">05 — We stay on · new metrics, new sources, as you grow</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 05 TIMELINE -->
+  <div class="sec">
+    <div class="sec-num">Section 05</div>
+    <div class="sec-title">Timeline</div>
+    <div class="sec-goal">Make the speed claim concrete. Day-by-day so it feels real, not a marketing claim.</div>
+    <div class="sketch" style="flex-direction:column; gap:4px;">
+      <div class="box warn full">Before Vero: 4–6 weeks → With Vero: 3–5 days</div>
+      <div class="box full">Day 0 · Day 1 · Day 2 · Day 3 · Week 1 breakdown</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 06 GOOD FIT -->
+  <div class="sec">
+    <div class="sec-num">Section 06</div>
+    <div class="sec-title">Good Fit / Not a Fit</div>
+    <div class="sec-goal">Qualifies the buyer. Builds trust by being honest. Makes the right person lean in and the wrong person self-select out.</div>
+    <div class="sketch">
+      <div class="box green tall" style="flex:1;">
+        <strong>✓ Good fit</strong><br><br>
+        Just raised · no data team · data in 3+ tools · board prep is a fire drill · want dashboards fast
+      </div>
+      <div class="box red tall" style="flex:1;">
+        <strong>✗ Not a fit</strong><br><br>
+        Already have a data engineer · single data source · need a BI tool only · enterprise procurement
+      </div>
+    </div>
+    <span class="note">Content needed: real criteria from your actual client calls</span>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 07 PROOF -->
+  <div class="sec">
+    <div class="sec-num">Section 07</div>
+    <div class="sec-title">Client Results</div>
+    <div class="sec-goal">Before → After for 2–3 real clients. Specific numbers. Real quotes if possible. Logos for recognition.</div>
+    <div class="sketch">
+      <div class="box full" style="flex-direction:column; display:flex; gap:6px;">
+        <div class="row">
+          <div class="box">Client name + logo</div>
+          <div class="box">Before: the specific problem</div>
+          <div class="box">After: the specific outcome + time</div>
+        </div>
+        <div class="row">
+          <div class="box">Client name + logo</div>
+          <div class="box">Before: the specific problem</div>
+          <div class="box">After: the specific outcome + time</div>
+        </div>
+      </div>
+    </div>
+    <span class="note">Placeholder until real quotes + permission from clients</span>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 08 STACK -->
+  <div class="sec">
+    <div class="sec-num">Section 08</div>
+    <div class="sec-title">The Stack <span style="font-weight:400; color:#9ca3af;">· below the fold · for the technical buyer</span></div>
+    <div class="sec-goal">Reassurance for the CTO who scrolls down. Not the pitch — the proof.</div>
+    <div class="sketch">
+      <div class="box">Ingestion<br>dlt</div>
+      <div class="box">Transform<br>dbt</div>
+      <div class="box">Orchestrate<br>Dagster</div>
+      <div class="box">Compute<br>K8s</div>
+      <div class="box">Warehouse<br>BQ / CH / SF</div>
+      <div class="box">Cloud<br>GCP / AWS / Azure</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- 09 CTA -->
+  <div class="sec" style="text-align:center; padding: 2rem;">
+    <div class="sec-num">Section 09</div>
+    <div class="sec-title">Final CTA</div>
+    <div class="sec-goal" style="margin: 0 auto 1rem; max-width:400px;">One clear action. Repeat the value prop in a single line. Remove all friction.</div>
+    <div class="sketch" style="flex-direction:column; align-items:center; gap:6px;">
+      <div class="box dark" style="max-width:400px; width:100%; padding:1.5rem;">
+        <div style="color:#f1f5f9; font-size:0.95rem; font-weight:700; margin-bottom:0.5rem;">"Let's sort your data — in a week."</div>
+        <div style="color:#64748b; font-size:0.75rem; margin-bottom:1rem;">Free 30-min call · no jargon · no commitment</div>
+        <span style="background:#4a9eed; color:#fff; border-radius:999px; padding:0.4rem 1.25rem; font-size:0.8rem; font-weight:600;">Book a free call →</span>
+        <div style="color:#475569; font-size:0.75rem; margin-top:0.75rem;">vero@datumlabs.io</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

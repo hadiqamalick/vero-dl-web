@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hadiqa M. — Upwork Profile</title>
+<style>
+  :root {
+    --bg: #f4f4f4;
+    --card: #ffffff;
+    --ink: #1f1f1f;
+    --muted: #5e6d55;
+    --border: #e0e0e0;
+    --green: #14a800;
+    --green-light: #e6f4e0;
+    --upwork-green: #14a800;
+    --badge-bg: #f2faf0;
+    --link: #1f57c3;
+    --tag-bg: #f1f1f1;
+    --tag-border: #d5d5d5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: "NunitoSans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--upwork-green);
+    letter-spacing: -0.03em;
+  }
+  .topbar-actions {
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .topbar-btn {
+    background: var(--upwork-green); color: #fff;
+    border: none; border-radius: 999px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem; font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1080px; margin: 0 auto; padding: 1.75rem 1.5rem; }
+  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 1.5rem; align-items: start; }
+
+  /* ── LEFT SIDEBAR ── */
+  .sidebar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Avatar band */
+  .avatar-band {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .avatar-wrap { position: relative; width: 80px; height: 80px; }
+  .avatar-wrap img {
+    width: 80px; height: 80px;
+    border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--border);
+  }
+  .avatar-dot {
+    position: absolute; bottom: 3px; right: 3px;
+    width: 14px; height: 14px;
+    background: var(--upwork-green);
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .sidebar-name {
+    font-size: 1.05rem; font-weight: 700; color: var(--ink);
+    display: flex; align-items: center; gap: 0.35rem;
+  }
+  .verified-icon {
+    width: 16px; height: 16px;
+    background: var(--link);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 0.6rem; font-weight: 900;
+  }
+  .sidebar-location {
+    font-size: 0.78rem; color: #6b6b6b;
+  }
+  .badges {
+    display: flex; flex-direction: column; gap: 0.4rem; width: 100%; margin-top: 0.25rem;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--badge-bg);
+    border: 1px solid #c7e9be;
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem; font-weight: 700;
+    color: #3c8224;
+  }
+  .badge-icon { font-size: 0.9rem; }
+  .share-btn {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.8rem; color: var(--upwork-green);
+    font-weight: 700; cursor: pointer;
+    background: none; border: none;
+    margin-top: 0.1rem;
+  }
+
+  /* Sidebar stats sections */
+  .sidebar-section {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-section:last-child { border-bottom: none; }
+  .ss-label {
+    font-size: 0.78rem; font-weight: 700; color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .ss-value {
+    font-size: 0.82rem; color: #444;
+  }
+  .ss-tag {
+    display: inline-block;
+    background: var(--tag-bg); border: 1px solid var(--tag-border);
+    border-radius: 4px; padding: 0.15rem 0.5rem;
+    font-size: 0.72rem; font-weight: 700; color: #3c8224;
+    margin-left: 0.35rem;
+  }
+
+  /* Associated with */
+  .assoc {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    margin-top: 0.35rem;
+  }
+  .assoc-logo {
+    width: 36px; height: 36px; border-radius: 6px;
+    background: #0f172a;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.55rem; font-weight: 800; color: #fff;
+    letter-spacing: 0.04em;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .assoc-name { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.1rem; }
+  .assoc-hours { font-size: 0.75rem; color: #6b6b6b; }
+  .assoc-badges { display: flex; flex-direction: column; gap: 0.22rem; margin-top: 0.2rem; }
+  .assoc-badge {
+    display: flex; align-items: center; gap: 0.3rem;
+    font-size: 0.72rem; font-weight: 700; color: #3c8224;
+  }
+
+  /* ── RIGHT MAIN ── */
+  .main {
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+
+  /* ── PROFILE HEADER CARD ── */
+  .profile-header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+  .ph-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 1.1rem;
+  }
+  .ph-title {
+    font-size: 1.35rem; font-weight: 700; color: var(--ink);
+    line-height: 1.3; max-width: 540px;
+  }
+  .ph-rate {
+    font-size: 1.2rem; font-weight: 700; color: var(--ink);
+    white-space: nowrap; margin-left: 1rem;
+  }
+  .ph-overview {
+    font-size: 0.9rem; color: #444;
+    line-height: 1.7;
+  }
+  .ph-overview strong { color: var(--ink); }
+  .ph-overview p { margin-bottom: 0.85rem; }
+  .ph-overview p:last-child { margin-bottom: 0; }
+
+  /* Skills tags */
+  .skills-row {
+    display: flex; flex-wrap: wrap; gap: 0.45rem;
+    margin-top: 1.25rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .skill-tag {
+    background: var(--tag-bg); border: 1px solid var(--tag-border);
+    border-radius: 999px; padding: 0.3rem 0.8rem;
+    font-size: 0.775rem; font-weight: 600; color: #333;
+  }
+
+  /* ── PORTFOLIO CARD ── */
+  .section-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+  .section-title {
+    font-size: 1.05rem; font-weight: 700; color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+  .portfolio-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+  }
+  .portfolio-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+  .portfolio-thumb {
+    width: 100%; aspect-ratio: 4/3;
+    display: flex; flex-direction: column;
+    align-items: flex-start; justify-content: flex-end;
+    padding: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-thumb.p1 { background: linear-gradient(135deg, #1a3a5c 0%, #2563eb 100%); }
+  .portfolio-thumb.p2 { background: linear-gradient(135deg, #0f2027 0%, #1e3a4a 50%, #2980b9 100%); }
+  .portfolio-thumb.p3 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+
+  /* Mini chart decorations */
+  .thumb-chart {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.18;
+  }
+  .thumb-bars {
+    display: flex; align-items: flex-end; gap: 4px; height: 60px;
+  }
+  .thumb-bar { width: 8px; border-radius: 2px 2px 0 0; background: #fff; }
+
+  .thumb-badge {
+    position: absolute; top: 0.6rem; left: 0.6rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    padding: 0.18rem 0.5rem;
+    font-size: 0.6rem; font-weight: 700; color: #fff;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  .thumb-label {
+    position: relative; z-index: 1;
+    font-size: 0.72rem; font-weight: 800; color: #fff;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .thumb-title {
+    position: relative; z-index: 1;
+    font-size: 0.85rem; font-weight: 800; color: #fff;
+    line-height: 1.25; margin-top: 0.25rem;
+  }
+
+  .portfolio-desc {
+    padding: 0.85rem;
+  }
+  .portfolio-name {
+    font-size: 0.83rem; font-weight: 700; color: var(--ink);
+    line-height: 1.35; margin-bottom: 0.35rem;
+  }
+  .portfolio-tags {
+    display: flex; flex-wrap: wrap; gap: 0.28rem;
+  }
+  .portfolio-tag {
+    background: var(--tag-bg); border: 1px solid var(--tag-border);
+    border-radius: 4px; padding: 0.15rem 0.45rem;
+    font-size: 0.65rem; font-weight: 600; color: #555;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .ph-top { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-logo">upwork</div>
+  <div class="topbar-actions">
+    <div class="topbar-btn">Hire Hadiqa</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+
+      <div class="avatar-band">
+        <div class="avatar-wrap">
+          <!-- Placeholder avatar with initials -->
+          <svg width="80" height="80" viewBox="0 0 80 80" style="border-radius:50%; display:block;">
+            <circle cx="40" cy="40" r="40" fill="#c7d7e8"/>
+            <text x="40" y="46" text-anchor="middle" font-size="26" font-weight="800" fill="#2c4a6e" font-family="sans-serif">HM</text>
+          </svg>
+          <div class="avatar-dot"></div>
+        </div>
+        <div class="sidebar-name">
+          Hadiqa M.
+          <span class="verified-icon">✓</span>
+        </div>
+        <div class="sidebar-location">📍 Karachi, Pakistan · 12:32 am local time</div>
+        <div style="display:flex; gap:0.6rem; margin-top:0.4rem; flex-wrap:wrap; justify-content:center;">
+          <span style="font-size:0.72rem; font-weight:700; color:#3c8224;">👑 100% Job Success</span>
+          <span style="font-size:0.72rem; font-weight:700; color:#3c8224;">⭐ Top Rated Plus</span>
+        </div>
+        <button class="share-btn">Share ↗</button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="ss-label">Hours per week</div>
+        <div class="ss-value">More than 30 hrs/week</div>
+        <div class="ss-value" style="margin-top:0.2rem;">Open to contract to hire <span class="ss-tag">New</span></div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="ss-label">Avg. response</div>
+        <div class="ss-value">4–8 hours</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="ss-label">Languages</div>
+        <div class="ss-value"><strong>English:</strong> Fluent</div>
+        <div class="ss-value" style="margin-top:0.25rem;"><strong>Urdu:</strong> Native or Bilingual</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="ss-label">Verifications</div>
+        <div class="ss-value">ID: Verified ✅</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="ss-label">Education</div>
+        <div class="ss-value" style="font-weight:700;">Sindh Madressatul Islam University</div>
+        <div class="ss-value">Bachelor of Business Administration (BBA)</div>
+        <div class="ss-value" style="color:#6b6b6b;">2017–2021</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="ss-label">Associated with</div>
+        <div class="assoc">
+          <div class="assoc-logo">DATUM<br>LABS</div>
+          <div>
+            <div class="assoc-name">Datum Labs</div>
+            <div class="assoc-hours">11,014 hours</div>
+            <div class="assoc-badges">
+              <div class="assoc-badge">👑 100% Job Success</div>
+              <div class="assoc-badge">⭐ Top Rated Plus</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <div class="main">
+
+      <!-- Profile header -->
+      <div class="profile-header">
+        <div class="ph-top">
+          <div class="ph-title">Data Analyst &amp; BI Consultant — Dashboards, Analytics &amp; Reporting that drive decisions</div>
+          <div class="ph-rate"></div>
+        </div>
+
+        <div class="ph-overview">
+          <p><strong>Your data is full of answers. Most teams just can't get to them fast enough.</strong> I fix that.</p>
+          <p>I'm Hadiqa, a data analyst and BI consultant. I take startups from scattered spreadsheets and broken reports to a single source of truth, with dashboards their whole team can use, in days not months. I've done this across SaaS, fintech, and marketplace companies. The setup that usually takes an agency two months, I get done in a week.</p>
+          <p>What that looks like: I connect your tools (CRM, payments, ad platforms, product database), build a clean layer on top, and set up the dashboards that answer the questions your business actually runs on. MRR, channel ROI, retention, pipeline. When it's live, your team stops waiting on reports and starts making decisions.</p>
+          <p>I don't hand over a chart and disappear. I stay on as your analyst. New metrics, new sources, prep for the next board meeting. You get the output of a data team without the headcount.</p>
+        </div>
+
+        <div class="skills-row">
+          <span class="skill-tag">Data Analytics</span>
+          <span class="skill-tag">Business Intelligence</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Looker / Metabase</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">dbt</span>
+          <span class="skill-tag">KPI Reporting</span>
+          <span class="skill-tag">Marketing Analytics</span>
+          <span class="skill-tag">Revenue / Cohort Analysis</span>
+          <span class="skill-tag">Reporting Automation</span>
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+
+      <!-- Portfolio -->
+      <div class="section-card">
+        <div class="section-title">Portfolio</div>
+
+        <div class="portfolio-grid">
+
+          <!-- Item 1: Marketing analytics -->
+          <div class="portfolio-item">
+            <div class="portfolio-thumb p1">
+              <div class="thumb-chart">
+                <div class="thumb-bars">
+                  <div class="thumb-bar" style="height:25px;"></div>
+                  <div class="thumb-bar" style="height:38px;"></div>
+                  <div class="thumb-bar" style="height:30px;"></div>
+                  <div class="thumb-bar" style="height:50px;"></div>
+                  <div class="thumb-bar" style="height:42px;"></div>
+                  <div class="thumb-bar" style="height:58px;"></div>
+                  <div class="thumb-bar" style="height:52px;"></div>
+                </div>
+              </div>
+              <div class="thumb-badge">dlt · dbt · Metabase</div>
+              <div class="thumb-label">Marketing Analytics</div>
+              <div class="thumb-title">Paid Channel ROI<br>Google · Meta · TikTok</div>
+            </div>
+            <div class="portfolio-desc">
+              <div class="portfolio-name">Marketing Analytics Dashboard: Cross-Channel Spend vs. Revenue Attribution</div>
+              <div style="font-size:0.78rem; color:#555; line-height:1.5; margin:0.4rem 0 0.5rem;">Client had no way to compare ad performance across channels. Built a unified view of CAC, ROAS, and pipeline by source. They reallocated budget in week one.</div>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">dlt</span>
+                <span class="portfolio-tag">dbt</span>
+                <span class="portfolio-tag">BigQuery</span>
+                <span class="portfolio-tag">Metabase</span>
+                <span class="portfolio-tag">Google Ads</span>
+                <span class="portfolio-tag">Meta</span>
+                <span class="portfolio-tag">TikTok</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Revenue analytics -->
+          <div class="portfolio-item">
+            <div class="portfolio-thumb p2">
+              <div class="thumb-chart" style="opacity:0.2;">
+                <svg width="100" height="60" viewBox="0 0 100 60">
+                  <polyline points="0,50 20,35 40,40 60,20 80,25 100,5" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                  <polygon points="0,50 20,35 40,40 60,20 80,25 100,5 100,60 0,60" fill="rgba(255,255,255,0.15)"/>
+                </svg>
+              </div>
+              <div class="thumb-badge">dbt · BigQuery · Hex</div>
+              <div class="thumb-label">Revenue Analytics</div>
+              <div class="thumb-title">MRR · Churn · Cohort<br>Single Source of Truth</div>
+            </div>
+            <div class="portfolio-desc">
+              <div class="portfolio-name">Revenue Intelligence: MRR, Retention &amp; Cohort Analysis for a SaaS Startup</div>
+              <div style="font-size:0.78rem; color:#555; line-height:1.5; margin:0.4rem 0 0.5rem;">Finance and marketing reported different MRR numbers every board cycle. Unified Stripe and HubSpot into one clean model. One number, everyone agrees.</div>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">dbt</span>
+                <span class="portfolio-tag">BigQuery</span>
+                <span class="portfolio-tag">Hex</span>
+                <span class="portfolio-tag">Stripe</span>
+                <span class="portfolio-tag">HubSpot</span>
+                <span class="portfolio-tag">MRR · Churn</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Product analytics -->
+          <div class="portfolio-item">
+            <div class="portfolio-thumb p3">
+              <div class="thumb-chart" style="opacity:0.2;">
+                <div class="thumb-bars">
+                  <div class="thumb-bar" style="height:30px; background:#60a5fa;"></div>
+                  <div class="thumb-bar" style="height:20px; background:#8b5cf6;"></div>
+                  <div class="thumb-bar" style="height:45px; background:#60a5fa;"></div>
+                  <div class="thumb-bar" style="height:32px; background:#8b5cf6;"></div>
+                  <div class="thumb-bar" style="height:55px; background:#60a5fa;"></div>
+                  <div class="thumb-bar" style="height:40px; background:#8b5cf6;"></div>
+                </div>
+              </div>
+              <div class="thumb-badge">dbt · Dagster · Looker</div>
+              <div class="thumb-label">Product Analytics</div>
+              <div class="thumb-title">DAU · Retention · Funnel<br>Self-Serve Dashboard</div>
+            </div>
+            <div class="portfolio-desc">
+              <div class="portfolio-name">Product Analytics Stack: Activation Funnel, DAU &amp; D30 Retention Dashboards</div>
+              <div style="font-size:0.78rem; color:#555; line-height:1.5; margin:0.4rem 0 0.5rem;">Product team was flying blind post-launch. Piped Mixpanel and Segment events into a warehouse, modelled activation and retention, shipped self-serve dashboards in 4 days.</div>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">dbt</span>
+                <span class="portfolio-tag">Dagster</span>
+                <span class="portfolio-tag">BigQuery</span>
+                <span class="portfolio-tag">Looker</span>
+                <span class="portfolio-tag">Mixpanel</span>
+                <span class="portfolio-tag">Segment</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /main -->
+  </div><!-- /layout -->
+</div><!-- /page -->
+
+</body>
+</html>

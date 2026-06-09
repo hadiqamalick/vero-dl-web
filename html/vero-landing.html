@@ -836,7 +836,7 @@
           <div class="proof-after">After: Clean data layer in place. First AI feature shipped two weeks later.</div>
         </div>
         <p class="proof-quote">"Vero built the foundation. Everything we wanted to build on top became possible."</p>
-        <a class="proof-link" href="casestudy-govplus.html">Read full case study →</a>
+        <a class="proof-link" href="case-studies/casestudy-govplus.html">Read full case study →</a>
       </div>
     </div>
   </div>
@@ -847,7 +847,7 @@
   <div class="container">
     <span class="eyebrow light">Case studies</span>
     <h2 class="light">Real teams. Real results.</h2>
-    <p class="section-sub light">Two clients, same problem — data scattered, numbers untrustworthy. Here's exactly what we built and what changed.</p>
+    <p class="section-sub light">Real teams, same problem — data scattered, numbers untrustworthy. Here's exactly what we built and what changed.</p>
 
     <div class="cs-tabs">
       <button class="cs-tab active" onclick="showCase('govplus', this)">
@@ -861,6 +861,14 @@
       <button class="cs-tab" onclick="showCase('filed', this)">
         <span class="cs-tab-dot">F</span>
         Filed
+      </button>
+      <button class="cs-tab" onclick="showCase('synthflow', this)">
+        <span class="cs-tab-dot">S</span>
+        Synthflow
+      </button>
+      <button class="cs-tab" onclick="showCase('wispr', this)">
+        <span class="cs-tab-dot">AI</span>
+        AI Voice SaaS
       </button>
     </div>
 
@@ -894,7 +902,7 @@
           <cite>GovPlus team · Vero client since 2024</cite>
         </div>
 
-        <a class="cs-cta" href="casestudy-govplus.html">Read full case study →</a>
+        <a class="cs-cta" href="case-studies/casestudy-govplus.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -957,7 +965,7 @@
           <cite>Voltera team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="casestudy-voltera.html">Read full case study →</a>
+        <a class="cs-cta" href="case-studies/casestudy-voltera.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -1022,7 +1030,7 @@
           <cite>Filed team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="casestudy-filed.html">Read full case study →</a>
+        <a class="cs-cta" href="case-studies/casestudy-filed.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -1050,6 +1058,135 @@
           <div class="cs-result">
             <div class="cs-result-icon purple">☁️</div>
             <div class="cs-result-text"><strong>Fully owned on Azure</strong>Entire platform on Filed's own AKS cluster.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Synthflow Panel -->
+    <div class="cs-panel" id="cs-synthflow">
+      <div class="cs-left">
+        <div class="cs-badge">
+          <div class="cs-badge-dot">S</div>
+          Case Study · Synthflow · AI Voice Agents
+        </div>
+        <div class="cs-headline">Two regions, one source of truth — without moving a single raw record.</div>
+        <p class="cs-desc">Synthflow runs AI voice agents from separate US and EU regions, each with its own MongoDB, chat, and agent databases. Sensitive data is tokenized in-region before it ever leaves, then unified in a central cluster — where 20+ usage, cost, and GTM sources are modeled in dbt and served in Hex.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Google BigQuery</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster · US / EU / Legacy</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">BI Tool</div><div class="cmi-val">Hex</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">AI Voice Agents</div></div>
+        </div>
+
+        <div class="cs-stack">
+          <span class="cs-stag blue">dlt</span>
+          <span class="cs-stag purple">Dagster · 3 clusters</span>
+          <span class="cs-stag cyan">BigQuery</span>
+          <span class="cs-stag amber">dbt</span>
+          <span class="cs-stag green">Hex</span>
+          <span class="cs-stag green">Reverse ETL</span>
+        </div>
+
+        <div class="cs-quote">
+          <p>"We sell minutes, and for the first time we actually know what a minute costs us — across every vendor, in both regions. The whole company finally works off the same numbers."</p>
+          <cite>Synthflow team · Vero client</cite>
+        </div>
+
+        <a class="cs-cta" href="case-studies/casestudy-synthflow.html">Read full case study →</a>
+      </div>
+
+      <div class="cs-right">
+        <div class="cs-stat">
+          <div class="cs-stat-val green">20+</div>
+          <div class="cs-stat-label">data sources unified</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val blue">3</div>
+          <div class="cs-stat-label">Dagster clusters · US, EU, Legacy</div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result">
+            <div class="cs-result-icon green">✓</div>
+            <div class="cs-result-text"><strong>A real cost per minute</strong>Every AI vendor and cloud bill rolls up into true COGS and gross margin.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon blue">🌍</div>
+            <div class="cs-result-text"><strong>One number, without breaking residency</strong>Sensitive data tokenized in-region — raw records never leave their region.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon amber">⚡</div>
+            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Schema evolution, asset checks, and Slack alerts on every failure.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon purple">🔧</div>
+            <div class="cs-result-text"><strong>Fully owned on their own infra</strong>Whole platform on Synthflow's Kubernetes cluster. No vendor lock-in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Voice SaaS Panel -->
+    <div class="cs-panel" id="cs-wispr">
+      <div class="cs-left">
+        <div class="cs-badge">
+          <div class="cs-badge-dot">AI</div>
+          Case Study · AI Voice SaaS
+        </div>
+        <div class="cs-headline">Product analytics, revenue metrics, and growth insights — automated end to end.</div>
+        <p class="cs-desc">A fast-growing AI voice dictation platform had product events, ad spend, CRM data, and lifecycle activity in completely separate systems. We unified everything into ClickHouse, modeled it with dbt, and delivered executive dashboards in Hex covering MRR, ARR, activation, adoption, and retention — with segments pushed back into Customer.io via reverse ETL.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">ClickHouse</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster Cloud</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">BI Tool</div><div class="cmi-val">Hex</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">AI Voice SaaS</div></div>
+        </div>
+
+        <div class="cs-stack">
+          <span class="cs-stag blue">dlt</span>
+          <span class="cs-stag blue">Fivetran</span>
+          <span class="cs-stag purple">Dagster Cloud</span>
+          <span class="cs-stag cyan">ClickHouse</span>
+          <span class="cs-stag amber">dbt</span>
+          <span class="cs-stag green">Hex</span>
+          <span class="cs-stag green">Reverse ETL</span>
+        </div>
+
+        <div class="cs-quote">
+          <p>"For the first time, product, growth, and leadership are all working off the same numbers. Activation, retention, MRR — it's all in one place, and it updates itself."</p>
+          <cite>Client team · Vero client</cite>
+        </div>
+
+        <a class="cs-cta" href="case-studies/casestudy-wispr.html">Read full case study →</a>
+      </div>
+
+      <div class="cs-right">
+        <div class="cs-stat">
+          <div class="cs-stat-val green">5+</div>
+          <div class="cs-stat-label">sources connected</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val blue">MRR &amp; ARR</div>
+          <div class="cs-stat-label">live in Hex — no spreadsheets</div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result">
+            <div class="cs-result-icon green">✓</div>
+            <div class="cs-result-text"><strong>MRR and ARR, live</strong>Revenue computed from dbt marts and served in Hex — no manual reconciliation.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon blue">📊</div>
+            <div class="cs-result-text"><strong>Full funnel, end to end</strong>Ad click → activation → feature adoption → retention, all in one dashboard.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon amber">⚡</div>
+            <div class="cs-result-text"><strong>Lifecycle campaigns on real data</strong>Warehouse segments pushed into Customer.io via reverse ETL — campaigns fire on actual behavior.</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-icon purple">🔧</div>
+            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Dagster Cloud handles scheduling, retries, and Slack alerts on every failure.</div>
           </div>
         </div>
       </div>

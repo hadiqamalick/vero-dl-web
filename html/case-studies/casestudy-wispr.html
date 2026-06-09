@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Voltera · Vero Case Study by Datumlabs</title>
+<title>AI Voice SaaS · Vero Case Study by Datumlabs</title>
 <style>
   :root {
     --bg: #f8fafc;
@@ -190,18 +190,21 @@
   }
   .dash-card.ops  { border-left-color: var(--blue); }
   .dash-card.sales{ border-left-color: var(--green); }
+  .dash-card.exec { border-left-color: var(--amber); }
   .dash-label {
     font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
     text-transform: uppercase; margin-bottom: 0.6rem;
   }
   .dash-card.ops  .dash-label { color: var(--blue); }
   .dash-card.sales .dash-label { color: var(--green); }
+  .dash-card.exec .dash-label { color: var(--amber); }
   .dash-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
   .dash-desc  { font-size: 0.825rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.75rem; }
   .dash-kpis  { display: flex; flex-direction: column; gap: 0.25rem; }
   .dash-kpi   { font-size: 0.75rem; color: var(--muted); padding-left: 0.75rem; position: relative; }
   .dash-kpi::before { content: "·"; position: absolute; left: 0; color: var(--blue); font-weight: 800; }
   .dash-card.sales .dash-kpi::before { color: var(--green); }
+  .dash-card.exec .dash-kpi::before { color: var(--amber); }
 
   /* RESULTS */
   .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
@@ -294,7 +297,7 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">VERO <span>·</span> Datumlabs</span>
-  <a class="nav-back" href="vero-landing.html">← Back to Vero</a>
+  <a class="nav-back" href="../vero-landing.html">← Back to Vero</a>
   <a class="nav-cta" href="mailto:vero@datumlabs.io">Book a free call</a>
 </nav>
 
@@ -304,44 +307,52 @@
     <div class="hero-top">
       <div class="hero-left">
         <div class="client-badge">
-          <div class="client-dot">V</div>
-          Case Study · Voltera
+          <div class="client-dot">AI</div>
+          Case Study · AI Voice SaaS
         </div>
-        <h1>CRM, ERP, ads, and finance — finally in one warehouse.</h1>
-        <p class="hero-desc">Voltera ran sales on a Postgres CRM, operations on an MSSQL ERP, and spend across ad and accounting platforms. Nothing talked to each other, every report was a manual export, and no metric carried across systems.</p>
+        <h1>Product analytics, revenue metrics, and growth insights — automated end to end.</h1>
+        <p class="hero-desc">A fast-growing AI voice dictation platform had product events in PostHog, ad spend in a separate platform, CRM data in Pylon, and lifecycle activity in Customer.io — with no way to connect them. We unified everything into ClickHouse, modeled it with dbt, and delivered executive dashboards in Hex covering MRR, ARR, activation, adoption, and retention.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
-          <div class="os-val green">5</div>
-          <div class="os-label">data sources connected</div>
+          <div class="os-val green">5+</div>
+          <div class="os-label">sources connected</div>
         </div>
         <div class="outcome-stat">
-          <div class="os-val blue">15 min</div>
-          <div class="os-label">CRM refresh cadence</div>
+          <div class="os-val blue">MRR &amp; ARR</div>
+          <div class="os-label">live in Hex — no spreadsheets</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="os-val amber">Full funnel</div>
+          <div class="os-label">ad click → activation → retention</div>
         </div>
       </div>
     </div>
 
     <div class="hero-meta">
       <div class="meta-item">
-        <div class="mi-label">Client</div>
-        <div class="mi-val">Voltera</div>
-      </div>
-      <div class="meta-item">
-        <div class="mi-label">Region</div>
-        <div class="mi-val">EU (Netherlands)</div>
+        <div class="mi-label">Industry</div>
+        <div class="mi-val">AI Voice SaaS</div>
       </div>
       <div class="meta-item">
         <div class="mi-label">Warehouse</div>
-        <div class="mi-val">Google BigQuery</div>
+        <div class="mi-val">ClickHouse</div>
       </div>
       <div class="meta-item">
         <div class="mi-label">Orchestration</div>
-        <div class="mi-val">Dagster on GKE</div>
+        <div class="mi-val">Dagster Cloud</div>
       </div>
       <div class="meta-item">
         <div class="mi-label">Transformation</div>
         <div class="mi-val">dbt</div>
+      </div>
+      <div class="meta-item">
+        <div class="mi-label">Reporting</div>
+        <div class="mi-val">Hex</div>
+      </div>
+      <div class="meta-item">
+        <div class="mi-label">Activation</div>
+        <div class="mi-val">Reverse ETL → Customer.io</div>
       </div>
     </div>
   </div>
@@ -351,24 +362,24 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The challenge</span>
-    <h2>Five systems. Zero shared truth.</h2>
-    <p class="section-sub">Voltera's data lived in the systems that ran the business — sales, operations, marketing, finance, and recruiting — but none of it was connected, and none of it could be trusted across teams.</p>
+    <h2>Product data everywhere. Business insight nowhere.</h2>
+    <p class="section-sub">The team had product events, ad spend, CRM data, and lifecycle activity living in completely separate systems. None of it connected, and none of it could answer the question leadership actually needed to ask: are users activating, staying, and growing?</p>
 
     <div class="challenge-grid">
       <div class="challenge-card">
         <div class="ch-num">01</div>
-        <div class="ch-title">Operational databases, used for reporting</div>
-        <p class="ch-desc">Sales ran straight off the Postgres CRM and operations off the MSSQL ERP. Every analytical query competed with the live application and every report meant another fragile export.</p>
+        <div class="ch-title">No unified view of the customer journey</div>
+        <p class="ch-desc">Product events in PostHog, ad conversions in a separate ad platform, support activity in Pylon, and lifecycle campaigns in Customer.io — each team had their own slice of the customer, and no one had the full picture from acquisition through retention.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">02</div>
-        <div class="ch-title">Spend and sales never met</div>
-        <p class="ch-desc">Facebook Ads spend lived in one platform, revenue in the CRM, and costs in Moneybird. Connecting marketing investment to actual customers was a manual, error-prone spreadsheet exercise.</p>
+        <div class="ch-title">Revenue metrics built in spreadsheets</div>
+        <p class="ch-desc">MRR, ARR, and activation rates had no automated source. Someone had to pull exports, reconcile numbers, and paste them into a spreadsheet before every board or leadership meeting — a process that was slow, error-prone, and always slightly out of date.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">03</div>
-        <div class="ch-title">Schemas that drifted silently</div>
-        <p class="ch-desc">New columns appeared in source systems and broke downstream reports without warning. There was no contract, no monitoring, and no alert when a number went stale.</p>
+        <div class="ch-title">Growth and retention flying blind</div>
+        <p class="ch-desc">Without a single warehouse, there was no reliable way to compute activation cohorts, feature adoption curves, or retention by segment. The team couldn't tie ad spend to activated users or understand which features kept users coming back.</p>
       </div>
     </div>
   </div>
@@ -378,42 +389,42 @@
 <section>
   <div class="container">
     <span class="eyebrow">Data sources connected</span>
-    <h2>5 systems. One warehouse.</h2>
-    <p class="section-sub">Every system Voltera runs the business on — sales, operations, marketing, finance, and recruiting — connected, normalized, and loaded on a schedule into BigQuery.</p>
+    <h2>5+ systems. One warehouse.</h2>
+    <p class="section-sub">Every system the business runs on — product events, ad platforms, link analytics, CRM, and lifecycle — connected, normalized, and loaded into ClickHouse via dlt, Fivetran, and ClickPipes on automated schedules.</p>
 
     <table class="sources-table">
       <thead>
         <tr>
           <th>Domain</th>
-          <th>Source</th>
+          <th>Sources</th>
           <th>What we pull</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="src-domain crm">Sales / CRM</span></td>
-          <td><span class="src-name">Postgres CRM</span></td>
-          <td><span class="src-desc">Clients, deals, contacts, activity — incremental on updated_at</span></td>
+          <td><span class="src-domain erp">Product Analytics</span></td>
+          <td><span class="src-name">PostHog</span></td>
+          <td><span class="src-desc">Product events, feature usage, session data, activation and retention signals — ingested from AWS S3 on an hourly schedule</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain erp">Operations / ERP</span></td>
-          <td><span class="src-name">MSSQL ERP</span></td>
-          <td><span class="src-desc">Orders, invoices, inventory, fulfilment records</span></td>
+          <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
+          <td><span class="src-name">Vibe Ad Platform</span></td>
+          <td><span class="src-desc">Ad spend, impressions, conversions, and campaign performance — daily ingestion via dlt</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain mkt">Marketing</span></td>
-          <td><span class="src-name">Facebook Ads</span></td>
-          <td><span class="src-desc">Campaigns, ad spend, impressions, conversions</span></td>
+          <td><span class="src-domain mkt">Link Analytics</span></td>
+          <td><span class="src-name">Dub</span></td>
+          <td><span class="src-desc">Link clicks, referral sources, and traffic attribution — incremental sync every 15 minutes via dlt</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain fin">Finance</span></td>
-          <td><span class="src-name">Moneybird</span></td>
-          <td><span class="src-desc">Invoices, payments, ledger entries, contacts</span></td>
+          <td><span class="src-domain crm">CRM &amp; Support</span></td>
+          <td><span class="src-name">Pylon</span></td>
+          <td><span class="src-desc">Customer records, support tickets, conversation activity, and CRM signals — incremental sync every 5 minutes via dlt</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain hr">Recruiting</span></td>
-          <td><span class="src-name">Manatal</span></td>
-          <td><span class="src-desc">Candidates, pipelines, hiring stage activity</span></td>
+          <td><span class="src-domain fin">Lifecycle</span></td>
+          <td><span class="src-name">Customer.io</span></td>
+          <td><span class="src-desc">Email and lifecycle campaign engagement — and the reverse-ETL destination where modeled user segments are pushed back to power automated campaigns</span></td>
         </tr>
       </tbody>
     </table>
@@ -425,39 +436,45 @@
   <div class="container">
     <span class="eyebrow">What we built</span>
     <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The same repeatable Vero playbook, adapted to Voltera's sources and KPIs — running on their own infrastructure, fully owned by their team.</p>
+    <p class="section-sub">The full Vero playbook — ingestion, transformation, reporting, and activation — adapted to a product-led SaaS with a ClickHouse warehouse at its core.</p>
 
     <div class="built-flow">
       <div class="built-step">
         <div class="bs-num">01</div>
         <div>
-          <div class="bs-title">Connected all 5 sources into a central warehouse</div>
-          <p class="bs-desc">Every system Voltera relies on now feeds automatically into BigQuery. dlt handles schema evolution, so new columns in the CRM or ERP are picked up without breaking downstream reports. The Postgres CRM refreshes every 15 minutes — close to real time for the sales team.</p>
+          <div class="bs-title">Unified all sources into ClickHouse via dlt</div>
+          <p class="bs-desc">Every data source feeds ClickHouse automatically. dlt handles PostHog, Vibe, Dub, and Pylon with schema flattening, incremental cursors, and state management — all orchestrated by Dagster Cloud. Fivetran and ClickPipes cover the remaining managed connectors. Every failure posts straight to Slack.</p>
           <div class="bs-tags">
             <span class="bs-tag">dlt</span>
-            <span class="bs-tag purple">Dagster on GKE</span>
-            <span class="bs-tag">BigQuery</span>
+            <span class="bs-tag">Fivetran</span>
+            <span class="bs-tag">ClickPipes</span>
+            <span class="bs-tag purple">Dagster Cloud</span>
+            <span class="bs-tag green">Slack alerts</span>
           </div>
         </div>
       </div>
       <div class="built-step">
         <div class="bs-num">02</div>
         <div>
-          <div class="bs-title">Built a single, agreed-on set of KPIs</div>
-          <p class="bs-desc">All business logic lives in one dbt project, layered staging → intermediate → mart. CRM revenue, ERP fulfilment, ad ROAS, and finance figures all share one definition the whole company trusts — no more reconciling exports before a meeting.</p>
+          <div class="bs-title">Modeled product, growth, and revenue in dbt</div>
+          <p class="bs-desc">A single dbt project — staging → marts — turns raw events and CRM data into trusted definitions the whole company shares. Activation is one definition. Retention cohorts are one definition. MRR and ARR roll up from the same mart that powers every dashboard. No more reconciling numbers before a meeting.</p>
           <div class="bs-tags">
             <span class="bs-tag amber">dbt</span>
+            <span class="bs-tag">activation model</span>
+            <span class="bs-tag">retention cohorts</span>
+            <span class="bs-tag green">MRR / ARR mart</span>
           </div>
         </div>
       </div>
       <div class="built-step">
         <div class="bs-num">03</div>
         <div>
-          <div class="bs-title">Wired ingestion to transformation, automatically</div>
-          <p class="bs-desc">Sensor-driven orchestration means a successful CRM load triggers the CRM dbt models, and an ERP load triggers the ERP models — independently, so a heavy ERP refresh never drags the whole DAG along. Every failure posts straight to Slack.</p>
+          <div class="bs-title">Delivered dashboards in Hex and pushed segments back to Customer.io</div>
+          <p class="bs-desc">Modeled data is served in Hex across three dashboard surfaces: an executive dashboard (MRR, ARR, revenue growth), a product analytics dashboard (activation, feature adoption, retention), and a growth dashboard (ad spend, CAC, funnel). Warehouse-modeled user segments are pushed back into Customer.io via reverse ETL — so lifecycle campaigns fire on real behavior, not guesswork.</p>
           <div class="bs-tags">
-            <span class="bs-tag purple">Dagster sensors</span>
-            <span class="bs-tag green">Slack alerts</span>
+            <span class="bs-tag">Hex</span>
+            <span class="bs-tag purple">reverse ETL</span>
+            <span class="bs-tag green">Customer.io</span>
           </div>
         </div>
       </div>
@@ -470,31 +487,52 @@
   <div class="container">
     <span class="eyebrow">What it powers</span>
     <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Clean, modeled data in BigQuery — ready for the BI tool of Voltera's choice, refreshed on schedule and split cleanly by domain.</p>
+    <p class="section-sub">Three dashboard surfaces in Hex, each built on dbt mart models in ClickHouse — refreshed automatically and ready for every team from product to leadership.</p>
 
     <div class="dash-grid">
-      <div class="dash-card ops">
-        <div class="dash-label">Operations &amp; Sales</div>
-        <div class="dash-title">CRM &amp; ERP Performance</div>
-        <p class="dash-desc">A single view linking the sales pipeline in the CRM to fulfilment and invoicing in the ERP — no more cross-referencing two systems by hand.</p>
+      <div class="dash-card exec">
+        <div class="dash-label">Executive</div>
+        <div class="dash-title">Revenue &amp; Business Health</div>
+        <p class="dash-desc">The board-level view — live revenue metrics and growth trends with no manual exports required before a leadership meeting.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Pipeline value and deal velocity</div>
-          <div class="dash-kpi">Orders, invoices, and fulfilment status</div>
-          <div class="dash-kpi">Inventory and operational throughput</div>
-          <div class="dash-kpi">CRM-to-ERP order matching</div>
-          <div class="dash-kpi">Near-real-time, 15-minute CRM grain</div>
+          <div class="dash-kpi">MRR and ARR, live and trended</div>
+          <div class="dash-kpi">Revenue growth month-over-month</div>
+          <div class="dash-kpi">New vs. expansion vs. churned revenue</div>
+          <div class="dash-kpi">Customer count and average contract value</div>
+        </div>
+      </div>
+      <div class="dash-card ops">
+        <div class="dash-label">Product Analytics</div>
+        <div class="dash-title">Activation, Adoption &amp; Retention</div>
+        <p class="dash-desc">Built on PostHog events modeled in dbt — the product team finally has cohort-level retention and feature adoption without writing custom SQL every time.</p>
+        <div class="dash-kpis">
+          <div class="dash-kpi">Activation rate and time-to-activate</div>
+          <div class="dash-kpi">Feature adoption curves by cohort</div>
+          <div class="dash-kpi">Retention cohorts by signup month</div>
+          <div class="dash-kpi">Drop-off points in the activation funnel</div>
+          <div class="dash-kpi">Power user vs. casual usage segmentation</div>
         </div>
       </div>
       <div class="dash-card sales">
-        <div class="dash-label">Marketing &amp; Finance</div>
-        <div class="dash-title">Spend, ROAS &amp; Cash</div>
-        <p class="dash-desc">Marketing investment connected to real revenue and real costs. Know what each campaign returns and where the money actually lands.</p>
+        <div class="dash-label">Growth</div>
+        <div class="dash-title">Acquisition &amp; Funnel</div>
+        <p class="dash-desc">Ad spend tied to real activations and retained users — so the growth team knows what's working, not just what's clicking.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Facebook Ads spend and conversions</div>
-          <div class="dash-kpi">Return on ad spend tied to CRM revenue</div>
-          <div class="dash-kpi">Moneybird invoices and payments</div>
+          <div class="dash-kpi">Ad spend and conversions from Vibe</div>
           <div class="dash-kpi">Cost of acquisition by channel</div>
-          <div class="dash-kpi">Recruiting pipeline and hiring throughput</div>
+          <div class="dash-kpi">Link click attribution from Dub</div>
+          <div class="dash-kpi">Funnel: ad click → signup → activation → retained</div>
+        </div>
+      </div>
+      <div class="dash-card ops">
+        <div class="dash-label">CRM &amp; Support</div>
+        <div class="dash-title">Customer Health</div>
+        <p class="dash-desc">Pylon CRM data joined to product usage — the team can see which customers are at risk before they churn.</p>
+        <div class="dash-kpis">
+          <div class="dash-kpi">Support ticket volume and response time</div>
+          <div class="dash-kpi">CRM activity by account</div>
+          <div class="dash-kpi">Usage vs. support correlation</div>
+          <div class="dash-kpi">At-risk accounts by low activity signal</div>
         </div>
       </div>
     </div>
@@ -505,43 +543,43 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The outcome</span>
-    <h2>What changed for Voltera.</h2>
-    <p class="section-sub">From manual exports off production databases to automated, trusted reporting across every team.</p>
+    <h2>What changed.</h2>
+    <p class="section-sub">From scattered exports and manual spreadsheets to a fully automated analytics platform — product, growth, and revenue visible in one place.</p>
 
     <div class="results-grid">
       <div class="result-card">
         <div class="result-icon green">✓</div>
         <div>
-          <div class="result-title">Zero manual exports</div>
-          <p class="result-desc">All 5 sources run on schedule, automatically. Reporting moved off the live CRM and ERP, so analytics no longer competes with the applications.</p>
+          <div class="result-title">MRR and ARR, live</div>
+          <p class="result-desc">Revenue metrics are now computed from a dbt mart and served live in Hex. Leadership has one number — no spreadsheet reconciliation before meetings.</p>
         </div>
       </div>
       <div class="result-card">
         <div class="result-icon blue">📊</div>
         <div>
-          <div class="result-title">One number everyone agrees on</div>
-          <p class="result-desc">Shared dbt-defined KPIs across Sales, Operations, Marketing, and Finance. Meetings start with the decision, not the reconciliation.</p>
+          <div class="result-title">Full funnel, end to end</div>
+          <p class="result-desc">Ad spend connects to real activations and retained users. The team can trace a user from first ad click through activation, adoption, and retention — in one dashboard.</p>
         </div>
       </div>
       <div class="result-card">
         <div class="result-icon amber">⚡</div>
         <div>
-          <div class="result-title">Reporting that doesn't break</div>
-          <p class="result-desc">Schema evolution handles new source columns automatically, and BigQuery retries ride out transient failures. The team gets a Slack alert the moment anything's off.</p>
+          <div class="result-title">Lifecycle campaigns on real data</div>
+          <p class="result-desc">Modeled user segments from the warehouse are pushed directly into Customer.io via reverse ETL — so onboarding, re-engagement, and upsell campaigns fire on actual product behavior.</p>
         </div>
       </div>
       <div class="result-card">
         <div class="result-icon purple">🔧</div>
         <div>
-          <div class="result-title">Fully owned, on their own infra</div>
-          <p class="result-desc">The whole platform runs on Voltera's GKE cluster — warehouse, pipelines, and code. No vendor lock-in, no black boxes, complete ownership.</p>
+          <div class="result-title">Reporting that doesn't break</div>
+          <p class="result-desc">Dagster Cloud handles scheduling, retries, and asset lineage. Every pipeline failure posts to Slack. The team gets reliable data without babysitting pipelines.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"For the first time, our sales pipeline, our orders, and our ad spend all line up in one place. We stopped arguing about whose number was right and started actually using the data."</p>
-      <div class="quote-attr"><strong>Voltera team</strong> · Vero client</div>
+      <p class="quote-text">"For the first time, product, growth, and leadership are all working off the same numbers. Activation, retention, MRR — it's all in one place, and it updates itself."</p>
+      <div class="quote-attr"><strong>Client team</strong> · Vero client</div>
     </div>
   </div>
 </section>
@@ -564,28 +602,33 @@
       <tbody>
         <tr>
           <td><span class="stack-layer">Ingestion</span></td>
-          <td><span class="stack-tool blue">dlt</span></td>
-          <td><span class="stack-resp">Connects your sources and loads data into the warehouse, with schema evolution built in</span></td>
+          <td><span class="stack-tool blue">dlt · Fivetran · ClickPipes</span></td>
+          <td><span class="stack-resp">Connects all sources into ClickHouse — dlt for custom pipelines, Fivetran and ClickPipes for managed connectors</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Storage</span></td>
-          <td><span class="stack-tool cyan">Google BigQuery</span></td>
-          <td><span class="stack-resp">Your central warehouse. All data lands here, queryable by any tool.</span></td>
+          <td><span class="stack-tool cyan">ClickHouse</span></td>
+          <td><span class="stack-resp">Central analytics warehouse. Columnar storage optimized for the large-scale event queries that product analytics demands.</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Transformation</span></td>
           <td><span class="stack-tool amber">dbt</span></td>
-          <td><span class="stack-resp">Turns raw CRM, ERP, ads, and finance data into clean, agreed-on KPIs</span></td>
+          <td><span class="stack-resp">Turns raw events, CRM, and ad data into shared definitions — activation, retention cohorts, MRR, ARR, and CAC all in one project</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Orchestration</span></td>
-          <td><span class="stack-tool purple">Dagster on GKE</span></td>
-          <td><span class="stack-resp">Runs everything on schedule on your own cluster, with sensors, monitoring, and Slack alerts</span></td>
+          <td><span class="stack-tool purple">Dagster Cloud</span></td>
+          <td><span class="stack-resp">Schedules every pipeline, tracks asset lineage, handles retries, and posts failures to Slack — managed, so no cluster to maintain</span></td>
         </tr>
         <tr>
-          <td><span class="stack-layer">Deployment</span></td>
-          <td><span class="stack-tool green">Docker + Helm</span></td>
-          <td><span class="stack-resp">Packaged and deployed to your infrastructure — fully owned, no vendor lock-in</span></td>
+          <td><span class="stack-layer">Reporting</span></td>
+          <td><span class="stack-tool cyan">Hex</span></td>
+          <td><span class="stack-resp">Executive, product, and growth dashboards — live, role-secured, and built on dbt mart models</span></td>
+        </tr>
+        <tr>
+          <td><span class="stack-layer">Activation</span></td>
+          <td><span class="stack-tool green">Reverse ETL → Customer.io</span></td>
+          <td><span class="stack-resp">Pushes warehouse-modeled user segments back into Customer.io so lifecycle campaigns run on real product behavior</span></td>
         </tr>
       </tbody>
     </table>

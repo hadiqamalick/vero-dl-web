@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GovPlus · Vero Case Study by Datumlabs</title>
+<title>Voltera · Vero Case Study by Datumlabs</title>
 <style>
   :root {
     --bg: #f8fafc;
@@ -173,9 +173,11 @@
     display: inline-block; font-size: 0.62rem; font-weight: 700; border-radius: 4px;
     padding: 0.18rem 0.5rem; letter-spacing: 0.08em; text-transform: uppercase;
   }
-  .src-domain.cx   { background: var(--purple-bg); color: var(--purple); }
-  .src-domain.rev  { background: var(--green-bg);  color: var(--green); }
-  .src-domain.rep  { background: var(--amber-bg);  color: var(--amber); }
+  .src-domain.crm { background: var(--blue-bg);   color: var(--blue); }
+  .src-domain.erp { background: var(--purple-bg); color: var(--purple); }
+  .src-domain.mkt { background: var(--amber-bg);  color: var(--amber); }
+  .src-domain.fin { background: var(--green-bg);  color: var(--green); }
+  .src-domain.hr  { background: var(--red-bg);    color: var(--red); }
   .src-name { font-weight: 700; color: var(--ink); }
   .src-desc { color: var(--muted); font-size: 0.8rem; }
 
@@ -292,7 +294,7 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">VERO <span>·</span> Datumlabs</span>
-  <a class="nav-back" href="vero-landing.html">← Back to Vero</a>
+  <a class="nav-back" href="../vero-landing.html">← Back to Vero</a>
   <a class="nav-cta" href="mailto:vero@datumlabs.io">Book a free call</a>
 </nav>
 
@@ -302,20 +304,20 @@
     <div class="hero-top">
       <div class="hero-left">
         <div class="client-badge">
-          <div class="client-dot">G+</div>
-          Case Study · GovPlus
+          <div class="client-dot">V</div>
+          Case Study · Voltera
         </div>
-        <h1>From scattered spreadsheets to a single source of truth. In weeks.</h1>
-        <p class="hero-desc">GovPlus needed full visibility across customer support, sales, and online reputation. Their data was split across 9 systems with no warehouse, no shared KPIs, and no way to trust the numbers.</p>
+        <h1>CRM, ERP, ads, and finance — finally in one warehouse.</h1>
+        <p class="hero-desc">Voltera ran sales on a Postgres CRM, operations on an MSSQL ERP, and spend across ad and accounting platforms. Nothing talked to each other, every report was a manual export, and no metric carried across systems.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
-          <div class="os-val green">9+</div>
+          <div class="os-val green">5</div>
           <div class="os-label">data sources connected</div>
         </div>
         <div class="outcome-stat">
-          <div class="os-val blue">2</div>
-          <div class="os-label">live dashboards shipped</div>
+          <div class="os-val blue">15 min</div>
+          <div class="os-label">CRM refresh cadence</div>
         </div>
       </div>
     </div>
@@ -323,23 +325,23 @@
     <div class="hero-meta">
       <div class="meta-item">
         <div class="mi-label">Client</div>
-        <div class="mi-val">GovPlus</div>
+        <div class="mi-val">Voltera</div>
       </div>
       <div class="meta-item">
-        <div class="mi-label">Industry</div>
-        <div class="mi-val">SaaS</div>
+        <div class="mi-label">Region</div>
+        <div class="mi-val">EU (Netherlands)</div>
       </div>
       <div class="meta-item">
         <div class="mi-label">Warehouse</div>
         <div class="mi-val">Google BigQuery</div>
       </div>
       <div class="meta-item">
-        <div class="mi-label">BI Tool</div>
-        <div class="mi-val">Hex</div>
+        <div class="mi-label">Orchestration</div>
+        <div class="mi-val">Dagster on GKE</div>
       </div>
       <div class="meta-item">
-        <div class="mi-label">Orchestration</div>
-        <div class="mi-val">Dagster Cloud</div>
+        <div class="mi-label">Transformation</div>
+        <div class="mi-val">dbt</div>
       </div>
     </div>
   </div>
@@ -349,24 +351,24 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The challenge</span>
-    <h2>The data was there. The trust wasn't.</h2>
-    <p class="section-sub">GovPlus had data across customer support, payments, and reviews. But every team ran off their own export, every number needed manual verification, and nobody could agree on a single metric.</p>
+    <h2>Five systems. Zero shared truth.</h2>
+    <p class="section-sub">Voltera's data lived in the systems that ran the business — sales, operations, marketing, finance, and recruiting — but none of it was connected, and none of it could be trusted across teams.</p>
 
     <div class="challenge-grid">
       <div class="challenge-card">
         <div class="ch-num">01</div>
-        <div class="ch-title">9 systems, no warehouse</div>
-        <p class="ch-desc">Support in Intercom and CloudTalk. Payments in Chargebee and Paycom. Reviews on Google, Trustpilot, and BBB. No single place to bring it all together.</p>
+        <div class="ch-title">Operational databases, used for reporting</div>
+        <p class="ch-desc">Sales ran straight off the Postgres CRM and operations off the MSSQL ERP. Every analytical query competed with the live application and every report meant another fragile export.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">02</div>
-        <div class="ch-title">KPIs meant different things to different teams</div>
-        <p class="ch-desc">Operations, Sales, and Finance each tracked their own version of the same metrics. Leadership syncs started with 20 minutes of reconciliation before any real conversation could happen.</p>
+        <div class="ch-title">Spend and sales never met</div>
+        <p class="ch-desc">Facebook Ads spend lived in one platform, revenue in the CRM, and costs in Moneybird. Connecting marketing investment to actual customers was a manual, error-prone spreadsheet exercise.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">03</div>
-        <div class="ch-title">Reputation data was invisible</div>
-        <p class="ch-desc">Review volume, complaint trends, and 1-star spikes couldn't be connected to sales or support data. The team had no way to see the full picture.</p>
+        <div class="ch-title">Schemas that drifted silently</div>
+        <p class="ch-desc">New columns appeared in source systems and broke downstream reports without warning. There was no contract, no monitoring, and no alert when a number went stale.</p>
       </div>
     </div>
   </div>
@@ -376,8 +378,8 @@
 <section>
   <div class="container">
     <span class="eyebrow">Data sources connected</span>
-    <h2>9 systems. One warehouse.</h2>
-    <p class="section-sub">Every operational system GovPlus relied on, connected, normalized, and running on a schedule into BigQuery.</p>
+    <h2>5 systems. One warehouse.</h2>
+    <p class="section-sub">Every system Voltera runs the business on — sales, operations, marketing, finance, and recruiting — connected, normalized, and loaded on a schedule into BigQuery.</p>
 
     <table class="sources-table">
       <thead>
@@ -389,49 +391,29 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="src-domain cx">Customer Support</span></td>
-          <td><span class="src-name">CloudTalk</span></td>
-          <td><span class="src-desc">Calls, call details, sentiment scores</span></td>
+          <td><span class="src-domain crm">Sales / CRM</span></td>
+          <td><span class="src-name">Postgres CRM</span></td>
+          <td><span class="src-desc">Clients, deals, contacts, activity — incremental on updated_at</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain cx">Customer Support</span></td>
-          <td><span class="src-name">Intercom</span></td>
-          <td><span class="src-desc">Conversations, emails, CSAT ratings</span></td>
+          <td><span class="src-domain erp">Operations / ERP</span></td>
+          <td><span class="src-name">MSSQL ERP</span></td>
+          <td><span class="src-desc">Orders, invoices, inventory, fulfilment records</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain cx">Customer Support</span></td>
-          <td><span class="src-name">Quickchat</span></td>
-          <td><span class="src-desc">AI chat conversations, resolution tags</span></td>
+          <td><span class="src-domain mkt">Marketing</span></td>
+          <td><span class="src-name">Facebook Ads</span></td>
+          <td><span class="src-desc">Campaigns, ad spend, impressions, conversions</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain rev">Revenue</span></td>
-          <td><span class="src-name">Chargebee</span></td>
-          <td><span class="src-desc">Subscriptions, invoices, refunds, transactions</span></td>
+          <td><span class="src-domain fin">Finance</span></td>
+          <td><span class="src-name">Moneybird</span></td>
+          <td><span class="src-desc">Invoices, payments, ledger entries, contacts</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain rev">Revenue</span></td>
-          <td><span class="src-name">Paycom</span></td>
-          <td><span class="src-desc">Charges, disputes, refunds, settlements</span></td>
-        </tr>
-        <tr>
-          <td><span class="src-domain rev">Revenue</span></td>
-          <td><span class="src-name">Chargeback911</span></td>
-          <td><span class="src-desc">Chargeback alerts and dispute signals</span></td>
-        </tr>
-        <tr>
-          <td><span class="src-domain rep">Reputation</span></td>
-          <td><span class="src-name">Google Reviews</span></td>
-          <td><span class="src-desc">Star ratings, review volume, trends</span></td>
-        </tr>
-        <tr>
-          <td><span class="src-domain rep">Reputation</span></td>
-          <td><span class="src-name">Trustpilot</span></td>
-          <td><span class="src-desc">Reviews, ratings, response time</span></td>
-        </tr>
-        <tr>
-          <td><span class="src-domain rep">Reputation</span></td>
-          <td><span class="src-name">BBB</span></td>
-          <td><span class="src-desc">Complaints, reviews, resolution status</span></td>
+          <td><span class="src-domain hr">Recruiting</span></td>
+          <td><span class="src-name">Manatal</span></td>
+          <td><span class="src-desc">Candidates, pipelines, hiring stage activity</span></td>
         </tr>
       </tbody>
     </table>
@@ -443,17 +425,17 @@
   <div class="container">
     <span class="eyebrow">What we built</span>
     <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The same repeatable Vero playbook, adapted to GovPlus's sources and KPIs. Running in weeks, not months.</p>
+    <p class="section-sub">The same repeatable Vero playbook, adapted to Voltera's sources and KPIs — running on their own infrastructure, fully owned by their team.</p>
 
     <div class="built-flow">
       <div class="built-step">
         <div class="bs-num">01</div>
         <div>
-          <div class="bs-title">Connected all 9 sources into a central warehouse</div>
-          <p class="bs-desc">Every system GovPlus relied on now feeds automatically into BigQuery. Because we ship Dagster as a managed part of our service, new pipelines go from scoped to live in hours — not weeks of setup. GovPlus had all 9 sources running before most teams finish their vendor evaluations.</p>
+          <div class="bs-title">Connected all 5 sources into a central warehouse</div>
+          <p class="bs-desc">Every system Voltera relies on now feeds automatically into BigQuery. dlt handles schema evolution, so new columns in the CRM or ERP are picked up without breaking downstream reports. The Postgres CRM refreshes every 15 minutes — close to real time for the sales team.</p>
           <div class="bs-tags">
             <span class="bs-tag">dlt</span>
-            <span class="bs-tag purple">Dagster Cloud</span>
+            <span class="bs-tag purple">Dagster on GKE</span>
             <span class="bs-tag">BigQuery</span>
           </div>
         </div>
@@ -462,7 +444,7 @@
         <div class="bs-num">02</div>
         <div>
           <div class="bs-title">Built a single, agreed-on set of KPIs</div>
-          <p class="bs-desc">All business logic lives in one place. CSAT, chargeback rate, complaint-to-sales ratio: every metric has one definition the whole company trusts. No more pre-meeting reconciliation.</p>
+          <p class="bs-desc">All business logic lives in one dbt project, layered staging → intermediate → mart. CRM revenue, ERP fulfilment, ad ROAS, and finance figures all share one definition the whole company trusts — no more reconciling exports before a meeting.</p>
           <div class="bs-tags">
             <span class="bs-tag amber">dbt</span>
           </div>
@@ -471,12 +453,11 @@
       <div class="built-step">
         <div class="bs-num">03</div>
         <div>
-          <div class="bs-title">Shipped live dashboards the team actually uses</div>
-          <p class="bs-desc">Two production dashboards covering Operations (support performance, channel breakdown, reputation) and Sales (revenue, refunds, chargebacks). Weekly grain, refreshed automatically, queryable in plain English via Hex AI.</p>
+          <div class="bs-title">Wired ingestion to transformation, automatically</div>
+          <p class="bs-desc">Sensor-driven orchestration means a successful CRM load triggers the CRM dbt models, and an ERP load triggers the ERP models — independently, so a heavy ERP refresh never drags the whole DAG along. Every failure posts straight to Slack.</p>
           <div class="bs-tags">
-            <span class="bs-tag green">Hex</span>
-            <span class="bs-tag green">Operations dashboard</span>
-            <span class="bs-tag green">Sales dashboard</span>
+            <span class="bs-tag purple">Dagster sensors</span>
+            <span class="bs-tag green">Slack alerts</span>
           </div>
         </div>
       </div>
@@ -487,33 +468,33 @@
 <!-- DASHBOARDS -->
 <section>
   <div class="container">
-    <span class="eyebrow">Dashboards shipped</span>
+    <span class="eyebrow">What it powers</span>
     <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Refreshed every 5 hours. Weekly grain for consistent trend analysis. Ask questions in plain English via Hex AI.</p>
+    <p class="section-sub">Clean, modeled data in BigQuery — ready for the BI tool of Voltera's choice, refreshed on schedule and split cleanly by domain.</p>
 
     <div class="dash-grid">
       <div class="dash-card ops">
-        <div class="dash-label">Operations</div>
-        <div class="dash-title">Customer Support Performance</div>
-        <p class="dash-desc">Full visibility across every support channel — calls, chat, email, and AI. Track performance week-over-week without pulling a single export.</p>
+        <div class="dash-label">Operations &amp; Sales</div>
+        <div class="dash-title">CRM &amp; ERP Performance</div>
+        <p class="dash-desc">A single view linking the sales pipeline in the CRM to fulfilment and invoicing in the ERP — no more cross-referencing two systems by hand.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Contact volume and attendance rates</div>
-          <div class="dash-kpi">Average handle time by channel</div>
-          <div class="dash-kpi">CSAT scores across chat and email</div>
-          <div class="dash-kpi">Govie AI resolution rate</div>
-          <div class="dash-kpi">Review scores and complaint-to-sales ratio</div>
+          <div class="dash-kpi">Pipeline value and deal velocity</div>
+          <div class="dash-kpi">Orders, invoices, and fulfilment status</div>
+          <div class="dash-kpi">Inventory and operational throughput</div>
+          <div class="dash-kpi">CRM-to-ERP order matching</div>
+          <div class="dash-kpi">Near-real-time, 15-minute CRM grain</div>
         </div>
       </div>
       <div class="dash-card sales">
-        <div class="dash-label">Sales</div>
-        <div class="dash-title">Revenue, Refunds & Chargebacks</div>
-        <p class="dash-desc">A single view of revenue health across every product line and payment processor. Know your numbers before anyone asks.</p>
+        <div class="dash-label">Marketing &amp; Finance</div>
+        <div class="dash-title">Spend, ROAS &amp; Cash</div>
+        <p class="dash-desc">Marketing investment connected to real revenue and real costs. Know what each campaign returns and where the money actually lands.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Revenue, orders, and new customers</div>
-          <div class="dash-kpi">Refund rate by product line</div>
-          <div class="dash-kpi">One-time vs subscription breakdown</div>
-          <div class="dash-kpi">Chargeback alerts by source</div>
-          <div class="dash-kpi">Month-to-date by card network</div>
+          <div class="dash-kpi">Facebook Ads spend and conversions</div>
+          <div class="dash-kpi">Return on ad spend tied to CRM revenue</div>
+          <div class="dash-kpi">Moneybird invoices and payments</div>
+          <div class="dash-kpi">Cost of acquisition by channel</div>
+          <div class="dash-kpi">Recruiting pipeline and hiring throughput</div>
         </div>
       </div>
     </div>
@@ -524,43 +505,43 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The outcome</span>
-    <h2>What changed for GovPlus.</h2>
-    <p class="section-sub">From manual reconciliation to automated, trusted reporting across every team, every week.</p>
+    <h2>What changed for Voltera.</h2>
+    <p class="section-sub">From manual exports off production databases to automated, trusted reporting across every team.</p>
 
     <div class="results-grid">
       <div class="result-card">
         <div class="result-icon green">✓</div>
         <div>
           <div class="result-title">Zero manual exports</div>
-          <p class="result-desc">All 9 sources run on schedule, automatically. The team stopped pulling CSVs and started asking questions against live data.</p>
+          <p class="result-desc">All 5 sources run on schedule, automatically. Reporting moved off the live CRM and ERP, so analytics no longer competes with the applications.</p>
         </div>
       </div>
       <div class="result-card">
         <div class="result-icon blue">📊</div>
         <div>
           <div class="result-title">One number everyone agrees on</div>
-          <p class="result-desc">Shared KPI definitions across Operations, Sales, and Finance. Leadership syncs now start with the actual conversation, not the reconciliation.</p>
+          <p class="result-desc">Shared dbt-defined KPIs across Sales, Operations, Marketing, and Finance. Meetings start with the decision, not the reconciliation.</p>
         </div>
       </div>
       <div class="result-card">
         <div class="result-icon amber">⚡</div>
         <div>
           <div class="result-title">Reporting that doesn't break</div>
-          <p class="result-desc">Automated pipelines with monitoring and alerting built in. The team gets notified the moment something's off — before anyone notices a stale number.</p>
+          <p class="result-desc">Schema evolution handles new source columns automatically, and BigQuery retries ride out transient failures. The team gets a Slack alert the moment anything's off.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon purple">🤖</div>
+        <div class="result-icon purple">🔧</div>
         <div>
-          <div class="result-title">A foundation for Govie AI</div>
-          <p class="result-desc">Clean, structured data now powers GovPlus's AI workflows. The layer that had to exist before anything could be built on top — now exists.</p>
+          <div class="result-title">Fully owned, on their own infra</div>
+          <p class="result-desc">The whole platform runs on Voltera's GKE cluster — warehouse, pipelines, and code. No vendor lock-in, no black boxes, complete ownership.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"We wanted to build AI features on top of our data but nothing was clean enough. Vero built the foundation — everything we wanted to build on top became possible."</p>
-      <div class="quote-attr"><strong>GovPlus team</strong> · Vero client since 2024</div>
+      <p class="quote-text">"For the first time, our sales pipeline, our orders, and our ad spend all line up in one place. We stopped arguing about whose number was right and started actually using the data."</p>
+      <div class="quote-attr"><strong>Voltera team</strong> · Vero client</div>
     </div>
   </div>
 </section>
@@ -570,7 +551,7 @@
   <div class="container">
     <span class="eyebrow light">The stack</span>
     <h2 class="light">The same battle-tested Vero stack, every time.</h2>
-    <p class="section-sub" style="color:#94a3b8;">Every layer chosen for reliability, speed, and client ownership. You keep the warehouse, the dashboards, and the code.</p>
+    <p class="section-sub" style="color:#94a3b8;">Every layer chosen for reliability, speed, and client ownership. You keep the warehouse, the pipelines, and the code.</p>
 
     <table class="stack-table">
       <thead>
@@ -584,7 +565,7 @@
         <tr>
           <td><span class="stack-layer">Ingestion</span></td>
           <td><span class="stack-tool blue">dlt</span></td>
-          <td><span class="stack-resp">Connects your sources and loads data into the warehouse automatically</span></td>
+          <td><span class="stack-resp">Connects your sources and loads data into the warehouse, with schema evolution built in</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Storage</span></td>
@@ -594,17 +575,17 @@
         <tr>
           <td><span class="stack-layer">Transformation</span></td>
           <td><span class="stack-tool amber">dbt</span></td>
-          <td><span class="stack-resp">Turns raw data into clean, agreed-on KPIs your whole team can trust</span></td>
+          <td><span class="stack-resp">Turns raw CRM, ERP, ads, and finance data into clean, agreed-on KPIs</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Orchestration</span></td>
-          <td><span class="stack-tool purple">Dagster Cloud</span></td>
-          <td><span class="stack-resp">Keeps everything running on schedule with monitoring and alerts built in</span></td>
+          <td><span class="stack-tool purple">Dagster on GKE</span></td>
+          <td><span class="stack-resp">Runs everything on schedule on your own cluster, with sensors, monitoring, and Slack alerts</span></td>
         </tr>
         <tr>
-          <td><span class="stack-layer">Analytics</span></td>
-          <td><span class="stack-tool green">Hex</span></td>
-          <td><span class="stack-resp">Live dashboards your team actually uses, with natural language querying</span></td>
+          <td><span class="stack-layer">Deployment</span></td>
+          <td><span class="stack-tool green">Docker + Helm</span></td>
+          <td><span class="stack-resp">Packaged and deployed to your infrastructure — fully owned, no vendor lock-in</span></td>
         </tr>
       </tbody>
     </table>

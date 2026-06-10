@@ -277,6 +277,57 @@
     font-size: 0.8rem; color: #475569;
   }
 
+  /* STORY ARC */
+  .story-arc {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--dark-border); border-radius: 16px; overflow: hidden;
+  }
+  .story-chapter {
+    background: var(--dark-card); padding: 2rem 1.75rem;
+    border-right: 1px solid var(--dark-border);
+  }
+  .story-chapter:last-child { border-right: none; }
+  .sc-step {
+    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .sc-step.s1 { color: var(--blue); }
+  .sc-step.s2 { color: var(--amber); }
+  .sc-step.s3 { color: var(--green); }
+  .sc-stat {
+    font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .sc-stat.blue  { color: var(--blue); }
+  .sc-stat.amber { color: var(--amber); }
+  .sc-stat.green { color: var(--green); }
+  .sc-headline { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.6rem; line-height: 1.35; }
+  .sc-desc { font-size: 0.8rem; color: #64748b; line-height: 1.65; margin: 0; }
+
+  /* IMPACT */
+  .impact-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; }
+  .impact-stat {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 12px; padding: 1.5rem 1.25rem; text-align: center;
+  }
+  .impact-val {
+    font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 0.35rem;
+  }
+  .impact-val.green  { color: var(--green); }
+  .impact-val.blue   { color: var(--blue); }
+  .impact-val.amber  { color: var(--amber); }
+  .impact-val.purple { color: var(--purple); }
+  .impact-label { font-size: 0.78rem; color: #64748b; line-height: 1.45; }
+
+  /* result-num */
+  .result-num { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.2rem; }
+  .result-num.green  { color: var(--green); }
+  .result-num.amber  { color: var(--amber); }
+  .result-num.blue   { color: var(--blue); }
+  .result-num.purple { color: var(--purple); }
+  .result-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--ink); }
+
   @media (max-width: 820px) {
     nav { padding: 0 1.5rem; }
     section { padding: 3.5rem 1.5rem; }
@@ -286,6 +337,10 @@
     .hero-top { flex-direction: column; }
     .challenge-grid, .dash-grid, .results-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .story-arc { grid-template-columns: 1fr; }
+    .story-chapter { border-right: none; border-bottom: 1px solid var(--dark-border); }
+    .story-chapter:last-child { border-bottom: none; }
+    .impact-row { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -307,17 +362,21 @@
           <div class="client-dot">V</div>
           Case Study · Voltera
         </div>
-        <h1>CRM, ERP, ads, and finance — finally in one warehouse.</h1>
-        <p class="hero-desc">Voltera ran sales on a Postgres CRM, operations on an MSSQL ERP, and spend across ad and accounting platforms. Nothing talked to each other, every report was a manual export, and no metric carried across systems.</p>
+        <h1>Leads were coming in. Nobody knew which deals were profitable — or what the funnel was actually costing.</h1>
+        <p class="hero-desc">Voltera runs a full sales operation across Meta Ads, a Postgres CRM, and physical installations. Quotes were being signed, but the real cost per deal — installation, procurement, planner and closer commission, back office — was spread across five disconnected systems.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
-          <div class="os-val green">5</div>
-          <div class="os-label">data sources connected</div>
+          <div class="os-val green">Full funnel</div>
+          <div class="os-label">Meta ad spend to closed installation — one connected journey</div>
         </div>
         <div class="outcome-stat">
-          <div class="os-val blue">15 min</div>
-          <div class="os-label">CRM refresh cadence</div>
+          <div class="os-val blue">True margin</div>
+          <div class="os-label">quote value + all cost components per deal, in one view</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="os-val amber">Top closers</div>
+          <div class="os-label">revenue concentration by agent — visible, actionable</div>
         </div>
       </div>
     </div>
@@ -343,6 +402,10 @@
         <div class="mi-label">Transformation</div>
         <div class="mi-val">dbt</div>
       </div>
+      <div class="meta-item">
+        <div class="mi-label">Reporting</div>
+        <div class="mi-val">Hex</div>
+      </div>
     </div>
   </div>
 </section>
@@ -351,24 +414,24 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The challenge</span>
-    <h2>Five systems. Zero shared truth.</h2>
-    <p class="section-sub">Voltera's data lived in the systems that ran the business — sales, operations, marketing, finance, and recruiting — but none of it was connected, and none of it could be trusted across teams.</p>
+    <h2>Ads, deals, installations — all separate. No view of what a deal actually earned.</h2>
+    <p class="section-sub">Voltera's business runs on a full chain: Meta ad → lead → quote → close → install. Each step lived in a different system. The team could see leads or quotes, but never the whole picture — and never the true margin.</p>
 
     <div class="challenge-grid">
       <div class="challenge-card">
         <div class="ch-num">01</div>
-        <div class="ch-title">Operational databases, used for reporting</div>
-        <p class="ch-desc">Sales ran straight off the Postgres CRM and operations off the MSSQL ERP. Every analytical query competed with the live application and every report meant another fragile export.</p>
+        <div class="ch-title">Ad spend never connected to closed deals</div>
+        <p class="ch-desc">Meta Ads showed leads. The CRM showed closes. But there was no way to trace which campaigns produced deals that actually made it to installation — let alone which channels had the lowest cost per closed deal.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">02</div>
-        <div class="ch-title">Spend and sales never met</div>
-        <p class="ch-desc">Facebook Ads spend lived in one platform, revenue in the CRM, and costs in Moneybird. Connecting marketing investment to actual customers was a manual, error-prone spreadsheet exercise.</p>
+        <div class="ch-title">Quote value isn't margin</div>
+        <p class="ch-desc">Every signed deal had a gross quote value. But the real cost — planner commission, closer commission, installation, procurement, back office before and after install — was spread across the CRM, ERP, and finance system. True margin per deal was unknown.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">03</div>
-        <div class="ch-title">Schemas that drifted silently</div>
-        <p class="ch-desc">New columns appeared in source systems and broke downstream reports without warning. There was no contract, no monitoring, and no alert when a number went stale.</p>
+        <div class="ch-title">Top and bottom performers invisible</div>
+        <p class="ch-desc">Sales results lived in the CRM but cost and commission data was in other systems. There was no cross-system view of which closers were driving revenue, which agents had high cancellation rates, or where management should focus.</p>
       </div>
     </div>
   </div>
@@ -379,7 +442,7 @@
   <div class="container">
     <span class="eyebrow">Data sources connected</span>
     <h2>5 systems. One warehouse.</h2>
-    <p class="section-sub">Every system Voltera runs the business on — sales, operations, marketing, finance, and recruiting — connected, normalized, and loaded on a schedule into BigQuery.</p>
+    <p class="section-sub">Every system Voltera runs the deal journey on — CRM, ERP, Meta Ads, finance, and recruiting — connected, normalized, and loaded on schedule into BigQuery.</p>
 
     <table class="sources-table">
       <thead>
@@ -393,27 +456,27 @@
         <tr>
           <td><span class="src-domain crm">Sales / CRM</span></td>
           <td><span class="src-name">Postgres CRM</span></td>
-          <td><span class="src-desc">Clients, deals, contacts, activity — incremental on updated_at</span></td>
+          <td><span class="src-desc">Leads, quotes, closes, agent assignments, planner and closer commission — incremental on updated_at, 15-minute cadence</span></td>
         </tr>
         <tr>
           <td><span class="src-domain erp">Operations / ERP</span></td>
           <td><span class="src-name">MSSQL ERP</span></td>
-          <td><span class="src-desc">Orders, invoices, inventory, fulfilment records</span></td>
+          <td><span class="src-desc">Installation records, procurement (inkoop), work preparation, back office costs before and after installation</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Marketing</span></td>
-          <td><span class="src-name">Facebook Ads</span></td>
-          <td><span class="src-desc">Campaigns, ad spend, impressions, conversions</span></td>
+          <td><span class="src-name">Meta Ads (Facebook)</span></td>
+          <td><span class="src-desc">Campaigns, ad spend, cost per lead, cost per click, generated leads — joined to CRM closes to compute true cost per closed deal</span></td>
         </tr>
         <tr>
           <td><span class="src-domain fin">Finance</span></td>
           <td><span class="src-name">Moneybird</span></td>
-          <td><span class="src-desc">Invoices, payments, ledger entries, contacts</span></td>
+          <td><span class="src-desc">Invoices, payments, ledger entries — backoffice cost reconciliation per deal</span></td>
         </tr>
         <tr>
           <td><span class="src-domain hr">Recruiting</span></td>
           <td><span class="src-name">Manatal</span></td>
-          <td><span class="src-desc">Candidates, pipelines, hiring stage activity</span></td>
+          <td><span class="src-desc">Candidates, hiring pipelines, stage activity — to track agent team growth alongside deal volume</span></td>
         </tr>
       </tbody>
     </table>
@@ -424,8 +487,8 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">What we built</span>
-    <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The same repeatable Vero playbook, adapted to Voltera's sources and KPIs — running on their own infrastructure, fully owned by their team.</p>
+    <h2>A full-funnel model and two dashboards — KPIs and per-agent performance.</h2>
+    <p class="section-sub">The same repeatable Vero playbook, adapted to Voltera's lead-to-install funnel — running on their own infrastructure, fully owned by their team.</p>
 
     <div class="built-flow">
       <div class="built-step">
@@ -443,19 +506,22 @@
       <div class="built-step">
         <div class="bs-num">02</div>
         <div>
-          <div class="bs-title">Built a single, agreed-on set of KPIs</div>
-          <p class="bs-desc">All business logic lives in one dbt project, layered staging → intermediate → mart. CRM revenue, ERP fulfilment, ad ROAS, and finance figures all share one definition the whole company trusts — no more reconciling exports before a meeting.</p>
+          <div class="bs-title">Modeled the full funnel and true cost per deal</div>
+          <p class="bs-desc">One dbt project — staging → intermediate → mart — joins CRM quote and close data with ERP installation, procurement, and back office costs, plus Meta Ads spend. The result: a single model with true margin per deal (planner commission + closer commission + installation + procurement + pre/post back office), funnel conversion rates, and cost per closed deal from ad spend.</p>
           <div class="bs-tags">
             <span class="bs-tag amber">dbt</span>
+            <span class="bs-tag green">true margin per deal</span>
+            <span class="bs-tag">funnel model</span>
           </div>
         </div>
       </div>
       <div class="built-step">
         <div class="bs-num">03</div>
         <div>
-          <div class="bs-title">Wired ingestion to transformation, automatically</div>
-          <p class="bs-desc">Sensor-driven orchestration means a successful CRM load triggers the CRM dbt models, and an ERP load triggers the ERP models — independently, so a heavy ERP refresh never drags the whole DAG along. Every failure posts straight to Slack.</p>
+          <div class="bs-title">Built KPIs Dashboard and per-agent Sales Dashboard in Hex</div>
+          <p class="bs-desc">Two Hex dashboards on top of the unified model. The KPIs Dashboard shows the full funnel (leads → quotes → closes), Meta Ads performance connected to real deal outcomes, revenue trend, and top closers by revenue. The Agent Sales Dashboard lets each agent filter by date range and see per-deal breakdowns — quote value, cancellation rate, commission split, installation cost, procurement, and back office attributions. Sensor-driven orchestration fires Slack on any pipeline failure.</p>
           <div class="bs-tags">
+            <span class="bs-tag">Hex</span>
             <span class="bs-tag purple">Dagster sensors</span>
             <span class="bs-tag green">Slack alerts</span>
           </div>
@@ -465,37 +531,93 @@
   </div>
 </section>
 
+<!-- STORY ARC -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">How it unfolded</span>
+    <h2 class="light">The funnel existed. The margin didn't — until the data connected it.</h2>
+
+    <div class="story-arc">
+      <div class="story-chapter">
+        <div class="sc-step s1">Chapter 01 · Signal</div>
+        <div class="sc-stat blue">Ads → leads</div>
+        <div class="sc-headline">Meta spend was generating leads. Nobody knew which became profitable deals.</div>
+        <p class="sc-desc">Meta Ads was running, leads were coming in, and the sales team was closing. But the path from ad click to signed installation was invisible. Nobody could trace which campaigns generated deals that actually closed — let alone which ones made money after installation and back office costs.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="sc-step s2">Chapter 02 · Root Cause</div>
+        <div class="sc-stat amber">No true margin</div>
+        <div class="sc-headline">Quote value was known. Real cost per deal was in five different systems.</div>
+        <p class="sc-desc">The CRM held quotes and closes. The ERP held installation and procurement costs. Moneybird held back office costs. Commission splits (planner vs. closer) were separate. Getting the real margin on any deal meant pulling data from every system by hand — so it almost never happened.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="sc-step s3">Chapter 03 · Outcome</div>
+        <div class="sc-stat green">Full funnel</div>
+        <div class="sc-headline">From Meta ad to closed installation, one model. True margin per deal, per agent.</div>
+        <p class="sc-desc">One dbt model joins all five systems into a per-deal record: quote value, all cost components, commission split, and the Meta campaign that sourced the lead. Management can now see which closers are driving revenue, which agents have high cancellation rates, and which ad spend actually converts to installed deals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DASHBOARDS -->
 <section>
   <div class="container">
     <span class="eyebrow">What it powers</span>
-    <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Clean, modeled data in BigQuery — ready for the BI tool of Voltera's choice, refreshed on schedule and split cleanly by domain.</p>
+    <h2>Two dashboards. Business KPIs and per-agent performance.</h2>
+    <p class="section-sub">Modeled data served in Hex — the KPIs Dashboard for management to see the full funnel and ad performance, and the Agent Sales Dashboard so each rep can see their own deal breakdown, commission, and cancellation rate.</p>
 
     <div class="dash-grid">
       <div class="dash-card ops">
-        <div class="dash-label">Operations &amp; Sales</div>
-        <div class="dash-title">CRM &amp; ERP Performance</div>
-        <p class="dash-desc">A single view linking the sales pipeline in the CRM to fulfilment and invoicing in the ERP — no more cross-referencing two systems by hand.</p>
+        <div class="dash-label">Business Overview</div>
+        <div class="dash-title">Voltera — KPIs Dashboard</div>
+        <p class="dash-desc">The full lead-to-close funnel connected to Meta Ads spend — so the team can see what's being invested, what's converting, and which agents are driving the most revenue.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Pipeline value and deal velocity</div>
-          <div class="dash-kpi">Orders, invoices, and fulfilment status</div>
-          <div class="dash-kpi">Inventory and operational throughput</div>
-          <div class="dash-kpi">CRM-to-ERP order matching</div>
-          <div class="dash-kpi">Near-real-time, 15-minute CRM grain</div>
+          <div class="dash-kpi">Funnel: Total Leads → Quotes Sent → Closes (Deals) → Funnel Completion Rate</div>
+          <div class="dash-kpi">Meta Ads: ad spend, cost per lead, cost per click, cost per closed deal</div>
+          <div class="dash-kpi">ROAS and POAS — ad spend connected to real deal revenue</div>
+          <div class="dash-kpi">Revenue trend by month (revenue vs. profit)</div>
+          <div class="dash-kpi">Top closers by revenue — concentration visible by agent</div>
         </div>
       </div>
       <div class="dash-card sales">
-        <div class="dash-label">Marketing &amp; Finance</div>
-        <div class="dash-title">Spend, ROAS &amp; Cash</div>
-        <p class="dash-desc">Marketing investment connected to real revenue and real costs. Know what each campaign returns and where the money actually lands.</p>
+        <div class="dash-label">Per-Agent Performance</div>
+        <div class="dash-title">Agent Sales Dashboard</div>
+        <p class="dash-desc">Each agent can filter by date range and see exactly how their deals break down — quote value, commission split, cost components, and cancellation rate. No spreadsheet reconciliation.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Facebook Ads spend and conversions</div>
-          <div class="dash-kpi">Return on ad spend tied to CRM revenue</div>
-          <div class="dash-kpi">Moneybird invoices and payments</div>
-          <div class="dash-kpi">Cost of acquisition by channel</div>
-          <div class="dash-kpi">Recruiting pipeline and hiring throughput</div>
+          <div class="dash-kpi">Gross quote value (incl. and excl. cancellations)</div>
+          <div class="dash-kpi">Planner commission and closer commission split per deal</div>
+          <div class="dash-kpi">Cost components: installation, procurement, back office pre/post install</div>
+          <div class="dash-kpi">% cancelled — tracked per agent, not discovered at month end</div>
+          <div class="dash-kpi">Quote-level table: offertenummer, potential deviation, full detail</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">The impact</span>
+    <h2 class="light">What the data made possible.</h2>
+
+    <div class="impact-row">
+      <div class="impact-stat">
+        <div class="impact-val green">Full funnel</div>
+        <div class="impact-label">Meta ad to closed installation — one connected journey for the first time</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val blue">True margin</div>
+        <div class="impact-label">all deal cost components joined — commission, install, procurement, back office per deal</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val amber">Top closers</div>
+        <div class="impact-label">revenue concentration visible by agent — management knows who's driving performance</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val purple">Cancellation rate</div>
+        <div class="impact-label">tracked per agent, not discovered at month end when it's already a pattern</div>
       </div>
     </div>
   </div>
@@ -506,41 +628,41 @@
   <div class="container">
     <span class="eyebrow">The outcome</span>
     <h2>What changed for Voltera.</h2>
-    <p class="section-sub">From manual exports off production databases to automated, trusted reporting across every team.</p>
+    <p class="section-sub">From disconnected systems and manual exports to a full-funnel model where the team can see true margin per deal, per agent, every day.</p>
 
     <div class="results-grid">
       <div class="result-card">
-        <div class="result-icon green">✓</div>
         <div>
-          <div class="result-title">Zero manual exports</div>
-          <p class="result-desc">All 5 sources run on schedule, automatically. Reporting moved off the live CRM and ERP, so analytics no longer competes with the applications.</p>
+          <div class="result-num green">Full funnel</div>
+          <div class="result-title">From Meta ad to closed installation, one journey</div>
+          <p class="result-desc">Meta spend, CRM conversions, and ERP installation records in one model. The team can trace which campaigns produce deals that actually close — and which ones only generate leads.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon blue">📊</div>
         <div>
-          <div class="result-title">One number everyone agrees on</div>
-          <p class="result-desc">Shared dbt-defined KPIs across Sales, Operations, Marketing, and Finance. Meetings start with the decision, not the reconciliation.</p>
+          <div class="result-num blue">True margin</div>
+          <div class="result-title">What a deal actually earns — not just what it quotes</div>
+          <p class="result-desc">Planner commission, closer commission, installation, procurement, and back office costs all attributed per deal. Margin visible before the month-end reconciliation — not after.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon amber">⚡</div>
         <div>
-          <div class="result-title">Reporting that doesn't break</div>
-          <p class="result-desc">Schema evolution handles new source columns automatically, and BigQuery retries ride out transient failures. The team gets a Slack alert the moment anything's off.</p>
+          <div class="result-num amber">Top closers</div>
+          <div class="result-title">Performance ranked, not guessed</div>
+          <p class="result-desc">Revenue concentration by agent visible in the KPIs Dashboard. Management knows which closers are driving results and which need support — without pulling a spreadsheet.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon purple">🔧</div>
         <div>
-          <div class="result-title">Fully owned, on their own infra</div>
-          <p class="result-desc">The whole platform runs on Voltera's GKE cluster — warehouse, pipelines, and code. No vendor lock-in, no black boxes, complete ownership.</p>
+          <div class="result-num purple">Cancellation rate</div>
+          <div class="result-title">Lost deals tracked before they become a pattern</div>
+          <p class="result-desc">% cancelled tracked per agent and overall in the Agent Sales Dashboard. High cancellation rates are visible while there's still time to address them — not at quarter end.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"For the first time, our sales pipeline, our orders, and our ad spend all line up in one place. We stopped arguing about whose number was right and started actually using the data."</p>
+      <p class="quote-text">"For the first time, we could see what a deal actually earned us — not just what it quoted. And we finally knew which closers were making the business work."</p>
       <div class="quote-attr"><strong>Voltera team</strong> · Vero client</div>
     </div>
   </div>
@@ -575,7 +697,12 @@
         <tr>
           <td><span class="stack-layer">Transformation</span></td>
           <td><span class="stack-tool amber">dbt</span></td>
-          <td><span class="stack-resp">Turns raw CRM, ERP, ads, and finance data into clean, agreed-on KPIs</span></td>
+          <td><span class="stack-resp">Turns raw CRM, ERP, ads, and finance data into the full-funnel model and true cost-per-deal KPIs</span></td>
+        </tr>
+        <tr>
+          <td><span class="stack-layer">Reporting</span></td>
+          <td><span class="stack-tool cyan">Hex</span></td>
+          <td><span class="stack-resp">Serves the KPIs Dashboard and Agent Sales Dashboard on top of the modeled data — live, filterable, no exports needed</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Orchestration</span></td>

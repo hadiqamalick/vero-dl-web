@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Synthflow · Vero Case Study by Datumlabs</title>
+<title>AI Voice Agent SaaS · Vero Case Study by Datumlabs</title>
 <style>
   :root {
     --bg: #f8fafc;
@@ -277,6 +277,57 @@
     font-size: 0.8rem; color: #475569;
   }
 
+  /* STORY ARC */
+  .story-arc {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--dark-border); border-radius: 16px; overflow: hidden;
+  }
+  .story-chapter {
+    background: var(--dark-card); padding: 2rem 1.75rem;
+    border-right: 1px solid var(--dark-border);
+  }
+  .story-chapter:last-child { border-right: none; }
+  .sc-step {
+    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .sc-step.s1 { color: var(--blue); }
+  .sc-step.s2 { color: var(--amber); }
+  .sc-step.s3 { color: var(--green); }
+  .sc-stat {
+    font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .sc-stat.blue  { color: var(--blue); }
+  .sc-stat.amber { color: var(--amber); }
+  .sc-stat.green { color: var(--green); }
+  .sc-headline { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.6rem; line-height: 1.35; }
+  .sc-desc { font-size: 0.8rem; color: #64748b; line-height: 1.65; margin: 0; }
+
+  /* IMPACT */
+  .impact-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; }
+  .impact-stat {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 12px; padding: 1.5rem 1.25rem; text-align: center;
+  }
+  .impact-val {
+    font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 0.35rem;
+  }
+  .impact-val.green  { color: var(--green); }
+  .impact-val.blue   { color: var(--blue); }
+  .impact-val.amber  { color: var(--amber); }
+  .impact-val.purple { color: var(--purple); }
+  .impact-label { font-size: 0.78rem; color: #64748b; line-height: 1.45; }
+
+  /* result-num */
+  .result-num { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.2rem; }
+  .result-num.green  { color: var(--green); }
+  .result-num.amber  { color: var(--amber); }
+  .result-num.blue   { color: var(--blue); }
+  .result-num.purple { color: var(--purple); }
+  .result-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--ink); }
+
   @media (max-width: 820px) {
     nav { padding: 0 1.5rem; }
     section { padding: 3.5rem 1.5rem; }
@@ -286,6 +337,10 @@
     .hero-top { flex-direction: column; }
     .challenge-grid, .dash-grid, .results-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .story-arc { grid-template-columns: 1fr; }
+    .story-chapter { border-right: none; border-bottom: 1px solid var(--dark-border); }
+    .story-chapter:last-child { border-bottom: none; }
+    .impact-row { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -305,23 +360,23 @@
       <div class="hero-left">
         <div class="client-badge">
           <div class="client-dot">S</div>
-          Case Study · Synthflow
+          Case Study · AI Voice Agent SaaS
         </div>
-        <h1>Two regions, one source of truth — without moving a single raw record.</h1>
-        <p class="hero-desc">Synthflow runs AI voice agents from separate US and EU regions, each with its own MongoDB, chat, and agent databases. Sensitive data is tokenized in-region before it ever leaves, then unified in a central legacy cluster — where 20+ usage, cost, and GTM sources are modeled in dbt and served in Hex.</p>
+        <h1>Twelve vendors. Eighty-five accounts. Nobody knew what a call cost — or which customers were about to leave.</h1>
+        <p class="hero-desc">AI Voice Agent SaaS runs on twelve billed AI and cloud vendors, across two regions, with 85 active accounts — none of it connected. Vero unified the COGS stack and built a CSM health dashboard that surfaces silent and frustrated accounts before CSMs even think to look.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
-          <div class="os-val green">20+</div>
-          <div class="os-label">data sources unified</div>
+          <div class="os-val green">Cost per minute</div>
+          <div class="os-label">visible across 12 vendors and 5 cost categories — for the first time</div>
         </div>
         <div class="outcome-stat">
-          <div class="os-val blue">3</div>
-          <div class="os-label">Dagster clusters · US, EU, Legacy</div>
+          <div class="os-val blue">Silent accounts</div>
+          <div class="os-label">flagged automatically — customers with no activity in 14+ days surfaced before CSMs notice</div>
         </div>
         <div class="outcome-stat">
-          <div class="os-val amber">In-region</div>
-          <div class="os-label">tokenization before any transit</div>
+          <div class="os-val amber">Sentiment tracked</div>
+          <div class="os-label">AI-derived tone from Pylon support conversations — no surveys required</div>
         </div>
       </div>
     </div>
@@ -329,7 +384,7 @@
     <div class="hero-meta">
       <div class="meta-item">
         <div class="mi-label">Client</div>
-        <div class="mi-val">Synthflow</div>
+        <div class="mi-val">AI Voice Agent SaaS</div>
       </div>
       <div class="meta-item">
         <div class="mi-label">Industry</div>
@@ -359,24 +414,24 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The challenge</span>
-    <h2>Usage-based costs. No idea what a call actually costs.</h2>
-    <p class="section-sub">Synthflow's business runs on per-minute AI infrastructure billed by a dozen vendors, plus product, support, and GTM tools — none of it connected, and split across two regions that couldn't be compared.</p>
+    <h2>Twelve vendor bills. No idea what a minute cost — or which accounts were at risk.</h2>
+    <p class="section-sub">AI Voice Agent SaaS sells call minutes, billed against AI and cloud infrastructure from a dozen separate vendors. Meanwhile, 85 customer accounts had no unified health view — CSMs were flying blind on utilization, engagement, and sentiment.</p>
 
     <div class="challenge-grid">
       <div class="challenge-card">
         <div class="ch-num">01</div>
-        <div class="ch-title">A dozen usage-billed vendors, zero unit economics</div>
-        <p class="ch-desc">Speech-to-text, text-to-speech, LLM tokens, telephony, and real-time media were each billed in their own portal. Computing the true cost — and margin — of a single voice minute meant stitching together CSVs by hand.</p>
+        <div class="ch-title">Twelve vendor bills, zero unit economics</div>
+        <p class="ch-desc">GCP, Twilio, Azure, OpenAI, ElevenLabs, Deepgram — each billed in its own portal. Computing the true cost of a single call across Cloud Infra, LLM/AI, Speech, and Telephony categories meant manual CSV work. Cost per minute by customer segment was unknown.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">02</div>
-        <div class="ch-title">Two regions that legally couldn't be combined</div>
-        <p class="ch-desc">US and EU each ran their own MongoDB, chat, and agent databases, and data-residency rules meant raw records couldn't simply be shipped to one place. Any company-wide number meant reconciling two isolated regions by hand.</p>
+        <div class="ch-title">Accounts going silent with no early warning</div>
+        <p class="ch-desc">CSMs managed 85 accounts with no view of which ones were actively using their committed call minutes. Silent accounts — customers with zero product activity for 14 days or more — only surfaced when it was too late to intervene.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">03</div>
-        <div class="ch-title">Product, support, and sales in silos</div>
-        <p class="ch-desc">Amplitude, Pylon, Linear, HubSpot, and Gong each held a piece of the customer story. Connecting product usage to a support ticket to a deal was impossible without a person in the middle.</p>
+        <div class="ch-title">Frustration hidden inside support threads</div>
+        <p class="ch-desc">Customer sentiment lived in Pylon Slack conversations — unread, unscored, and invisible in any dashboard. By the time a CSM knew an account was unhappy, the account was already a churn risk. No one had a way to see the frustrated accounts before they escalated.</p>
       </div>
     </div>
   </div>
@@ -387,7 +442,7 @@
   <div class="container">
     <span class="eyebrow">Data sources connected</span>
     <h2>20+ systems. One warehouse.</h2>
-    <p class="section-sub">Every system Synthflow runs on — the AI/voice infrastructure, the cloud bill, the application databases, and the product, support, and GTM tools — connected, normalized, and loaded on schedule into BigQuery.</p>
+    <p class="section-sub">Every system AI Voice Agent SaaS runs on — twelve AI and cloud vendor bills, per-region application databases, product engagement events, support conversations, and CRM — connected, normalized, and loaded on schedule into BigQuery.</p>
 
     <table class="sources-table">
       <thead>
@@ -400,38 +455,38 @@
       <tbody>
         <tr>
           <td><span class="src-domain fin">AI &amp; Voice Usage</span></td>
-          <td><span class="src-name">OpenAI · Deepgram · ElevenLabs · LiveKit · Twilio</span></td>
-          <td><span class="src-desc">LLM tokens, transcription minutes, TTS characters, real-time media, and telephony usage — dev and prod</span></td>
+          <td><span class="src-name">OpenAI · ElevenLabs · Deepgram · Soniox · Gemini · LiveKit · Twilio</span></td>
+          <td><span class="src-desc">LLM tokens, TTS characters, STT transcription minutes, real-time media minutes, and telephony usage — dev and prod environments</span></td>
         </tr>
         <tr>
           <td><span class="src-domain fin">Cloud Cost</span></td>
-          <td><span class="src-name">AWS · Azure · GCP Billing</span></td>
-          <td><span class="src-desc">Infrastructure spend broken down by service, region, and environment</span></td>
+          <td><span class="src-name">GCP · Azure · AWS Billing</span></td>
+          <td><span class="src-desc">Infrastructure spend broken down by service, region, and environment — to compute true Cloud Infra cost per minute</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Regional App DBs</span></td>
           <td><span class="src-name">MongoDB · Chat DB · Agent DB</span></td>
-          <td><span class="src-desc">Per-region application, conversation, and agent data — extracted and tokenized in-region in both US and EU before any transit</span></td>
+          <td><span class="src-desc">Per-region application, conversation, and agent data — extracted and tokenized in-region in US and EU before any transit</span></td>
+        </tr>
+        <tr>
+          <td><span class="src-domain erp">Product Engagement</span></td>
+          <td><span class="src-name">PostHog</span></td>
+          <td><span class="src-desc">Active days per account, product events, feature usage — the engagement signal that shows whether a customer is actually using their minutes</span></td>
+        </tr>
+        <tr>
+          <td><span class="src-domain erp">Customer Support</span></td>
+          <td><span class="src-name">Pylon</span></td>
+          <td><span class="src-desc">Support tickets and Slack conversation threads — source data for AI-derived sentiment scoring and tone classification</span></td>
         </tr>
         <tr>
           <td><span class="src-domain crm">Sales &amp; Revenue</span></td>
           <td><span class="src-name">HubSpot · Gong</span></td>
-          <td><span class="src-desc">Deals, contacts, pipeline activity, call recordings, and conversation signals</span></td>
+          <td><span class="src-desc">Deals, contacts, contract terms, renewal dates, payment status, and call recordings</span></td>
         </tr>
         <tr>
-          <td><span class="src-domain erp">Product</span></td>
-          <td><span class="src-name">Amplitude</span></td>
-          <td><span class="src-desc">Product events, feature adoption, activation, and retention</span></td>
-        </tr>
-        <tr>
-          <td><span class="src-domain erp">Support &amp; Delivery</span></td>
-          <td><span class="src-name">Pylon · Linear · Rocketlane</span></td>
-          <td><span class="src-desc">Support tickets and messages, engineering issues, and customer onboarding projects</span></td>
-        </tr>
-        <tr>
-          <td><span class="src-domain hr">Ops &amp; Docs</span></td>
-          <td><span class="src-name">Notion</span></td>
-          <td><span class="src-desc">Internal docs, trackers, and operational reference data</span></td>
+          <td><span class="src-domain hr">Ops &amp; Delivery</span></td>
+          <td><span class="src-name">Linear · Rocketlane · Notion</span></td>
+          <td><span class="src-desc">Engineering issues, customer onboarding projects, and internal operational reference data</span></td>
         </tr>
       </tbody>
     </table>
@@ -442,8 +497,8 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">What we built</span>
-    <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The same repeatable Vero playbook, adapted to Synthflow's usage-based economics and dual-region setup — running on their own infrastructure, fully owned by their team.</p>
+    <h2>COGS visibility and a CSM health view. Both automated.</h2>
+    <p class="section-sub">Two parallel problems — cost transparency and customer health — solved with the same pipeline. Running on their own infrastructure, fully owned by their team.</p>
 
     <div class="built-flow">
       <div class="built-step">
@@ -461,27 +516,56 @@
       <div class="built-step">
         <div class="bs-num">02</div>
         <div>
-          <div class="bs-title">Unified 20+ sources and modeled true COGS</div>
-          <p class="bs-desc">The central legacy cluster pulls the tokenized regional data alongside 20+ usage, cost, and GTM sources via dlt, with schema evolution and row-count asset checks on every load. One dbt project — staging → intermediate → mart — turns it all into real cost-per-minute, gross margin, and a single global model the whole company trusts.</p>
+          <div class="bs-title">COGS model — 12 vendors into one number</div>
+          <p class="bs-desc">All twelve vendor bills and cloud costs loaded via dlt with schema evolution and row-count checks on every run. One dbt project — staging → intermediate → mart — joins them into true cost per minute by vendor, by cost category (Cloud Infra, LLM/AI, Speech, Telephony), by environment, and by customer segment. Pricing decisions now start from a real number.</p>
           <div class="bs-tags">
             <span class="bs-tag">dlt</span>
             <span class="bs-tag amber">dbt</span>
-            <span class="bs-tag green">global model</span>
+            <span class="bs-tag green">COGS by segment</span>
           </div>
         </div>
       </div>
       <div class="built-step">
         <div class="bs-num">03</div>
         <div>
-          <div class="bs-title">Automated end to end — into Hex and back out</div>
-          <p class="bs-desc">Sensor-driven orchestration ties it together: a successful load triggers the matching dbt models, and a migration sensor kicks off the global model once both regions land. Modeled data is served in Hex and pushed back into Pylon, Linear, and Rocketlane via reverse ETL — and every failure posts straight to Slack.</p>
+          <div class="bs-title">CSM health dashboard — per-account, automated</div>
+          <p class="bs-desc">PostHog engagement (active days), Pylon support tickets, AI-derived sentiment from Pylon Slack conversations, HubSpot renewal dates, and Stripe payment status all joined into a single per-account health card. Silent accounts (14d+ no activity) and frustrated accounts (AI tone analysis: Frustrated/Angry) surface automatically — no manual checking required. Sensor-driven orchestration pushes updates back into Pylon and Linear via reverse ETL.</p>
           <div class="bs-tags">
             <span class="bs-tag purple">Dagster sensors</span>
             <span class="bs-tag">Hex</span>
+            <span class="bs-tag green">AI sentiment</span>
             <span class="bs-tag">reverse ETL</span>
-            <span class="bs-tag green">Slack alerts</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY ARC -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">How it unfolded</span>
+    <h2 class="light">The cost was invisible. The at-risk accounts were invisible. Both are visible now.</h2>
+
+    <div class="story-arc">
+      <div class="story-chapter">
+        <div class="sc-step s1">Chapter 01 · Signal</div>
+        <div class="sc-stat blue">12 vendors</div>
+        <div class="sc-headline">Each billed separately. True cost of a call was unknown.</div>
+        <p class="sc-desc">GCP, Twilio, Azure, OpenAI, ElevenLabs, Deepgram — each with its own portal and invoice. Computing the real cost of a voice minute across Cloud Infra, LLM/AI, Speech, and Telephony categories meant stitching CSVs by hand. The team was pricing and negotiating without knowing their unit economics.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="sc-step s2">Chapter 02 · Root Cause</div>
+        <div class="sc-stat amber">No health view</div>
+        <div class="sc-headline">85 accounts. No signal on who was at risk.</div>
+        <p class="sc-desc">PostHog held engagement data. Pylon held support conversations. HubSpot held renewal dates. Stripe held payment status. None of it was connected. A customer could go silent for 14 days, rack up frustrated support threads, and miss their committed call minutes — and no CSM would know until the renewal conversation.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="sc-step s3">Chapter 03 · Outcome</div>
+        <div class="sc-stat green">Both visible</div>
+        <div class="sc-headline">Cost per minute known. At-risk accounts surfaced automatically.</div>
+        <p class="sc-desc">Twelve vendor bills unified into real COGS by category and customer segment. Per-account CSM health cards show utilization vs. committed minutes, PostHog active days, AI-derived sentiment from Pylon, and renewal status — all in one place. Silent and frustrated accounts appear without any manual checking.</p>
       </div>
     </div>
   </div>
@@ -491,33 +575,60 @@
 <section>
   <div class="container">
     <span class="eyebrow">What it powers</span>
-    <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Clean, modeled data served in Hex — refreshed on schedule, merged across both regions, and built on tokenized records that never broke residency rules.</p>
+    <h2>Two dashboards. Cost and customer health — both live.</h2>
+    <p class="section-sub">Modeled data served in Hex across two dashboards: one for finance and ops to understand COGS, one for CSMs to manage customer health. Both refreshed on schedule, built on the same unified model.</p>
 
     <div class="dash-grid">
       <div class="dash-card ops">
-        <div class="dash-label">Cost &amp; Margin</div>
-        <div class="dash-title">Unit Economics &amp; COGS</div>
-        <p class="dash-desc">Every voice minute costed across the full vendor stack and cloud bill — so the team finally knows what a call costs and where the margin goes.</p>
+        <div class="dash-label">Cost &amp; Unit Economics</div>
+        <div class="dash-title">COGS Dashboard V1</div>
+        <p class="dash-desc">Every voice minute costed across the full vendor stack — broken down by category, vendor, environment, and customer segment so the team finally knows where the spend goes and what a call actually costs.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Cost per minute and per call</div>
-          <div class="dash-kpi">Gross margin by customer and plan</div>
-          <div class="dash-kpi">Vendor spend: OpenAI, Deepgram, ElevenLabs, Twilio, LiveKit</div>
-          <div class="dash-kpi">Cloud cost by service and region</div>
-          <div class="dash-kpi">US + EU combined, one global view</div>
+          <div class="dash-kpi">Monthly spend by vendor: GCP, Twilio, Azure, OpenAI, ElevenLabs, Deepgram</div>
+          <div class="dash-kpi">Cost by category: Cloud Infra, LLM/AI, Speech (STT/TTS), Telephony, Database</div>
+          <div class="dash-kpi">Cost per minute by vendor and environment (dev vs. prod)</div>
+          <div class="dash-kpi">Call minutes and revenue per minute by customer segment (C1–C4, Self-Serve)</div>
+          <div class="dash-kpi">Twilio breakdown: phone number costs vs. call usage</div>
         </div>
       </div>
       <div class="dash-card sales">
-        <div class="dash-label">Customer &amp; GTM</div>
-        <div class="dash-title">Product, Sales &amp; Support</div>
-        <p class="dash-desc">The full customer story in one place — from product usage to a support ticket to the deal and onboarding — no cross-referencing five tools by hand.</p>
+        <div class="dash-label">Customer Success</div>
+        <div class="dash-title">CSM Dashboard — Global</div>
+        <p class="dash-desc">Per-account health for every CSM — utilization, engagement, sentiment, and renewal status in one view. Silent and frustrated accounts surface automatically without anyone having to look.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Pipeline and deal velocity from HubSpot</div>
-          <div class="dash-kpi">Call intelligence and signals from Gong</div>
-          <div class="dash-kpi">Product adoption and retention from Amplitude</div>
-          <div class="dash-kpi">Support health and SLAs from Pylon</div>
-          <div class="dash-kpi">Onboarding progress from Rocketlane</div>
+          <div class="dash-kpi">Utilization: call minutes used vs. committed — flagged red if far behind</div>
+          <div class="dash-kpi">Product engagement: PostHog active days in last 30 days</div>
+          <div class="dash-kpi">AI-derived sentiment: tone scored from Pylon support conversations (Happy / Neutral / Frustrated / Angry)</div>
+          <div class="dash-kpi">Support load: open, waiting, and resolved tickets per account</div>
+          <div class="dash-kpi">Renewals: days to renewal, payment status, auto-charge vs. invoice</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">The impact</span>
+    <h2 class="light">What the data made possible.</h2>
+
+    <div class="impact-row">
+      <div class="impact-stat">
+        <div class="impact-val green">Cost per minute</div>
+        <div class="impact-label">visible across 12 vendors and 5 cost categories — pricing grounded in real unit economics</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val blue">Silent accounts</div>
+        <div class="impact-label">flagged automatically — customers with no product activity in 14+ days surfaced before CSMs notice</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val amber">Sentiment tracked</div>
+        <div class="impact-label">AI-derived tone from Pylon support threads — frustrated accounts visible without surveys</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val purple">Renewals visible</div>
+        <div class="impact-label">upcoming renewals with utilization and payment status — managed 180 days out, not discovered at contract end</div>
       </div>
     </div>
   </div>
@@ -527,43 +638,43 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The outcome</span>
-    <h2>What changed for Synthflow.</h2>
-    <p class="section-sub">From a dozen disconnected billing portals and two irreconcilable regions to automated, trusted reporting across the whole company.</p>
+    <h2>What changed for the team.</h2>
+    <p class="section-sub">From twelve disconnected billing portals and 85 accounts with no health view — to a live COGS model and a CSM dashboard that surfaces at-risk accounts before anyone has to ask.</p>
 
     <div class="results-grid">
       <div class="result-card">
-        <div class="result-icon green">✓</div>
         <div>
-          <div class="result-title">A real cost per minute</div>
-          <p class="result-desc">Every AI vendor and cloud bill rolls up into true COGS and gross margin — pricing and packaging decisions now start from a number, not a guess.</p>
+          <div class="result-num green">Cost per minute</div>
+          <div class="result-title">Pricing grounded in real unit economics</div>
+          <p class="result-desc">Every AI vendor and cloud bill rolls up into cost per minute by vendor, category, and customer segment. Pricing and packaging decisions now start from a number, not a spreadsheet estimate.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon blue">🌍</div>
         <div>
-          <div class="result-title">One number, without breaking residency</div>
-          <p class="result-desc">Sensitive data is tokenized in-region before transit, then merged into a single global model — company-wide metrics, with raw records never leaving their region.</p>
+          <div class="result-num blue">Silent accounts</div>
+          <div class="result-title">CSMs know who's going dark before the contract expires</div>
+          <p class="result-desc">Accounts with no PostHog activity for 14+ days surface automatically in the CSM dashboard. Intervention happens while there's still time — not the week before renewal.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon amber">⚡</div>
         <div>
-          <div class="result-title">Reporting that doesn't break</div>
-          <p class="result-desc">Schema evolution absorbs new API fields, asset checks catch dropped rows, and the team gets a Slack alert the moment any pipeline fails.</p>
+          <div class="result-num amber">Sentiment tracked</div>
+          <div class="result-title">Frustrated accounts surfaced without surveys</div>
+          <p class="result-desc">AI-derived tone classification from Pylon support conversations gives each account a sentiment score. Frustrated and Angry accounts appear before they escalate — no manual thread-reading required.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon purple">🔧</div>
         <div>
-          <div class="result-title">Fully owned, on their own infra</div>
-          <p class="result-desc">The whole platform runs on Synthflow's own Kubernetes cluster — warehouse, pipelines, and code. No vendor lock-in, no black boxes, complete ownership.</p>
+          <div class="result-num purple">Renewals visible</div>
+          <div class="result-title">Renewal risk managed 180 days out</div>
+          <p class="result-desc">Upcoming renewals with utilization percentage and payment status in one view. Accounts with low utilization and poor sentiment are flagged early — not discovered at contract end.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"We sell minutes, and for the first time we actually know what a minute costs us — across every vendor, in both regions. The whole company finally works off the same numbers."</p>
-      <div class="quote-attr"><strong>Synthflow team</strong> · Vero client</div>
+      <p class="quote-text">"For the first time, we could see which accounts were silently heading for the door — and what a call was actually costing us. The CSM team finally had something to act on."</p>
+      <div class="quote-attr"><strong>AI Voice Agent SaaS team</strong> · Vero client</div>
     </div>
   </div>
 </section>

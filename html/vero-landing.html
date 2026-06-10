@@ -341,14 +341,28 @@
 
   /* Ingestion column */
   .df-ing {
-    width: 142px; flex-shrink: 0;
+    width: 155px; flex-shrink: 0;
     display: flex; flex-direction: column; gap: 5px; justify-content: center;
+  }
+  .df-card.c-ing-combo {
+    border-color: #4a9eed;
+    background: rgba(74,158,237,0.07);
+    padding: 0.65rem 0.6rem;
+  }
+  .ing-row {
+    display: flex; align-items: flex-start; gap: 4px; margin-top: 0.35rem;
+  }
+  .ing-opt { flex: 1; text-align: center; }
+  .ing-sep {
+    font-size: 0.5rem; font-weight: 700; color: #475569;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding-top: 0.25rem; flex-shrink: 0;
   }
 
   /* Warehouse + dbt column */
   .df-wh {
-    width: 150px; flex-shrink: 0;
-    display: flex; flex-direction: column; justify-content: center; gap: 0;
+    width: 160px; flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 0;
   }
 
   /* Cards */
@@ -363,13 +377,13 @@
   .df-card.c-dlt .dc-name { color: #4a9eed; }
   .df-card.c-fiv { border-color: rgba(74,158,237,0.4); background: rgba(74,158,237,0.04); }
   .df-card.c-fiv .dc-name { color: #60a5fa; font-size: 0.85rem; }
-  .df-card.c-wh  { border-color: #06b6d4; background: rgba(6,182,212,0.07); padding: 1rem 0.8rem; }
+  .df-card.c-wh  { border-color: #06b6d4; background: rgba(6,182,212,0.07); padding: 1rem 0.8rem; flex: 1; display: flex; flex-direction: column; justify-content: center; }
   .df-card.c-wh  .dc-name { color: #06b6d4; font-size: 1rem; }
   .df-card.c-dbt { border-color: #f59e0b; background: rgba(245,158,11,0.07); }
   .df-card.c-dbt .dc-name { color: #f59e0b; }
 
   /* Bidir arrow between BigQuery and dbt */
-  .df-bidir { display: flex; justify-content: center; align-items: center; padding: 4px 0; }
+  .df-bidir { display: flex; justify-content: center; align-items: center; padding: 6px 0; }
   .df-bidir svg { display: block; }
 
   /* Reports column */
@@ -446,18 +460,6 @@
   .cs-panel { display: none; }
   .cs-panel.active { display: grid; grid-template-columns: 1fr 270px; gap: 3rem; align-items: start; }
 
-  .cs-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--dark-card); border: 1px solid var(--dark-border);
-    border-radius: 999px; padding: 0.3rem 1rem 0.3rem 0.4rem;
-    font-size: 0.72rem; color: #64748b; margin-bottom: 1.25rem;
-  }
-  .cs-badge-dot {
-    width: 1.4rem; height: 1.4rem; border-radius: 50%;
-    background: var(--blue); color: #fff;
-    font-size: 0.55rem; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-  }
   .cs-headline { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; color: #f1f5f9; line-height: 1.2; margin: 0 0 0.85rem; }
   .cs-desc { font-size: 0.9rem; color: #94a3b8; line-height: 1.65; margin-bottom: 1.5rem; }
 
@@ -467,14 +469,6 @@
   }
   .cs-meta-item .cmi-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #475569; margin-bottom: 0.2rem; }
   .cs-meta-item .cmi-val { font-size: 0.82rem; color: #94a3b8; font-weight: 500; }
-
-  .cs-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .cs-stag { font-size: 0.65rem; font-weight: 700; border-radius: 4px; padding: 0.2rem 0.55rem; border: 1px solid; }
-  .cs-stag.blue   { background: rgba(74,158,237,0.1);  border-color: rgba(74,158,237,0.3);  color: #4a9eed; }
-  .cs-stag.amber  { background: rgba(245,158,11,0.1);  border-color: rgba(245,158,11,0.3);  color: #f59e0b; }
-  .cs-stag.purple { background: rgba(139,92,246,0.1);  border-color: rgba(139,92,246,0.3);  color: #8b5cf6; }
-  .cs-stag.cyan   { background: rgba(6,182,212,0.1);   border-color: rgba(6,182,212,0.3);   color: #06b6d4; }
-  .cs-stag.green  { background: rgba(34,197,94,0.1);   border-color: rgba(34,197,94,0.3);   color: #22c55e; }
 
   .cs-quote { border-left: 3px solid var(--blue); padding-left: 1rem; margin-bottom: 1.75rem; }
   .cs-quote p { font-size: 0.9rem; color: #cbd5e1; font-style: italic; line-height: 1.65; margin: 0 0 0.4rem; }
@@ -499,22 +493,13 @@
   .cs-stat-val.amber { color: var(--amber); }
   .cs-stat-label { font-size: 0.72rem; color: #475569; letter-spacing: 0.04em; }
 
-  .cs-results { display: flex; flex-direction: column; gap: 0.5rem; }
+  .cs-results { display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.25rem; }
   .cs-result {
-    display: flex; align-items: flex-start; gap: 0.6rem;
-    background: rgba(30,41,59,0.7); border: 1px solid var(--dark-border);
-    border-radius: 10px; padding: 0.75rem 1rem;
+    font-size: 0.8rem; color: #64748b; line-height: 1.5;
+    padding-left: 1rem; position: relative;
   }
-  .cs-result-icon {
-    width: 1.5rem; height: 1.5rem; border-radius: 5px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; font-size: 0.65rem;
-  }
-  .cs-result-icon.green  { background: rgba(34,197,94,0.15); }
-  .cs-result-icon.blue   { background: rgba(74,158,237,0.15); }
-  .cs-result-icon.amber  { background: rgba(245,158,11,0.15); }
-  .cs-result-icon.purple { background: rgba(139,92,246,0.15); }
-  .cs-result-text { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
-  .cs-result-text strong { color: #94a3b8; display: block; font-size: 0.8rem; margin-bottom: 0.1rem; }
+  .cs-result::before { content: "–"; position: absolute; left: 0; color: #334155; }
+  .cs-result strong { color: #94a3b8; font-weight: 600; }
 
   .proof-link {
     display: inline-flex; align-items: center;
@@ -578,7 +563,8 @@
   <div class="container">
     <span class="eyebrow light">Data infrastructure for growing teams</span>
     <h1>Connect all your data in one place. Get dashboards your team can actually trust.</h1>
-    <p class="hero-sub">Without the spreadsheet chaos. Without hiring a data team. Up and running in days.</p>
+    <p class="hero-sub">Without the spreadsheet chaos. Without hiring a data team. We build it. You just use it.
+</p>
     <div class="hero-cta-group">
       <a class="btn-primary" href="mailto:vero@datumlabs.io">Book a free 30-min call</a>
       <a class="btn-ghost" href="#how-it-works">See how it works</a>
@@ -588,9 +574,9 @@
       <span class="logos-label">Trusted by</span>
       <span class="logo-name">Voltera</span>
       <span class="logo-name">Filed</span>
-      <span class="logo-name">Westwise</span>
-      <span class="logo-name">Synthflow</span>
       <span class="logo-name">GovPlus</span>
+      <span class="logo-name">Kondo</span>
+      <span class="logo-name">ASR</span>
     </div>
   </div>
 </section>
@@ -648,7 +634,7 @@
       <div class="outcome-card">
         <div class="outcome-num">02</div>
         <div class="outcome-title">Dashboards your team actually trusts</div>
-        <p class="outcome-desc">MRR, channel ROI, cohort retention: live and self-serve. No analyst needed to refresh a pivot table.</p>
+        <p class="outcome-desc">MRR, marketing ROI, user retention: live and self-serve. No analyst needed to refresh a pivot table.</p>
       </div>
       <div class="outcome-card">
         <div class="outcome-num">03</div>
@@ -726,7 +712,7 @@
   <div class="container">
     <span class="eyebrow">Timeline</span>
     <h2>Days, not months.</h2>
-    <p class="section-sub">Warehouse, pipelines, your first dashboards: done in a week. Most teams spend months here. We don't.</p>
+    <p class="section-sub">Warehouse, pipelines, your first dashboards: done in days. Most teams spend months here. We don't.</p>
 
     <div class="speed-banner">
       <div class="speed-block">
@@ -755,7 +741,7 @@
       </div>
       <div class="tl-row">
         <div class="tl-when">Day 3</div>
-        <div class="tl-what">Pipelines running automatically on your cloud. Nothing to babysit.</div>
+        <div class="tl-what">Pipelines running automatically on your cloud. No manual monitoring required.</div>
       </div>
       <div class="tl-row">
         <div class="tl-when">Week 1</div>
@@ -806,7 +792,7 @@
 
     <div class="proof-grid">
       <div class="proof-card">
-        <div class="proof-client">Synthflow</div>
+        <div class="proof-client">AI Voice Agent SaaS</div>
         <div class="proof-before-after">
           <div class="proof-before">Before: Just raised seed funding. No data stack. No visibility into what was working.</div>
           <div class="proof-after">After: Full warehouse + dashboards live in 5 days. First board pack done without a spreadsheet.</div>
@@ -835,7 +821,7 @@
           <div class="proof-before">Before: Wanted to ship AI features. Couldn't. The underlying data was too messy to build on.</div>
           <div class="proof-after">After: Clean data layer in place. First AI feature shipped two weeks later.</div>
         </div>
-        <p class="proof-quote">"Vero built the foundation. Everything we wanted to build on top became possible."</p>
+        <p class="proof-quote">"Impressive work across the board — dashboards, reports, pipelines. Fast fixes, great communication. Exactly what we needed."</p>
         <a class="proof-link" href="case-studies/casestudy-govplus.html">Read full case study →</a>
       </div>
     </div>
@@ -862,11 +848,11 @@
         <span class="cs-tab-dot">F</span>
         Filed
       </button>
-      <button class="cs-tab" onclick="showCase('synthflow', this)">
+      <button class="cs-tab" onclick="showCase('ai-voice-agent', this)">
         <span class="cs-tab-dot">S</span>
-        Synthflow
+        AI Voice Agent SaaS
       </button>
-      <button class="cs-tab" onclick="showCase('wispr', this)">
+      <button class="cs-tab" onclick="showCase('ai-voice-dictation', this)">
         <span class="cs-tab-dot">AI</span>
         AI Voice SaaS
       </button>
@@ -875,12 +861,8 @@
     <!-- GovPlus Panel -->
     <div class="cs-panel active" id="cs-govplus">
       <div class="cs-left">
-        <div class="cs-badge">
-          <div class="cs-badge-dot">G+</div>
-          Case Study · GovPlus · SaaS
-        </div>
         <div class="cs-headline">From scattered spreadsheets to a single source of truth. In weeks.</div>
-        <p class="cs-desc">GovPlus needed full visibility across customer support, sales, and online reputation. Their data was split across 9 systems — Intercom, CloudTalk, Chargebee, Trustpilot, and more — with no warehouse, no shared KPIs, and no way to trust any number.</p>
+        <p class="cs-desc">GovPlus had 9 systems — Intercom, CloudTalk, Chargebee, Trustpilot, and more — with no warehouse and no shared KPIs. Nothing was auditable. Nobody agreed on a number.</p>
 
         <div class="cs-meta">
           <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Google BigQuery</div></div>
@@ -889,16 +871,8 @@
           <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">SaaS</div></div>
         </div>
 
-        <div class="cs-stack">
-          <span class="cs-stag blue">dlt</span>
-          <span class="cs-stag purple">Dagster Cloud</span>
-          <span class="cs-stag cyan">BigQuery</span>
-          <span class="cs-stag amber">dbt</span>
-          <span class="cs-stag green">Hex</span>
-        </div>
-
         <div class="cs-quote">
-          <p>"We wanted to build AI features on top of our data but nothing was clean enough. Vero built the foundation — everything we wanted to build on top became possible."</p>
+          <p>"From sales and operations dashboards to online reputation tracking, every deliverable has been polished and on point. When we flagged issues, they were resolved quickly. The reports are genuinely good and the team always kept us in the loop — exactly what we needed."</p>
           <cite>GovPlus team · Vero client since 2024</cite>
         </div>
 
@@ -911,26 +885,14 @@
           <div class="cs-stat-label">data sources connected</div>
         </div>
         <div class="cs-stat">
-          <div class="cs-stat-val blue">2</div>
-          <div class="cs-stat-label">live dashboards shipped</div>
+          <div class="cs-stat-val blue">2 wks</div>
+          <div class="cs-stat-label">to first AI feature shipped</div>
         </div>
         <div class="cs-results">
-          <div class="cs-result">
-            <div class="cs-result-icon green">✓</div>
-            <div class="cs-result-text"><strong>Zero manual exports</strong>All 9 sources run on schedule, automatically.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon blue">📊</div>
-            <div class="cs-result-text"><strong>One number everyone agrees on</strong>Shared KPIs across ops, sales, and finance.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon amber">⚡</div>
-            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Automated pipelines with monitoring and alerting built in.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon purple">🤖</div>
-            <div class="cs-result-text"><strong>Foundation for AI</strong>Clean data now powers GovPlus's AI workflows.</div>
-          </div>
+          <div class="cs-result"><strong>Zero manual exports</strong></div>
+          <div class="cs-result"><strong>One number across ops, sales, and finance</strong></div>
+          <div class="cs-result"><strong>Pipelines with monitoring and Slack alerts</strong></div>
+          <div class="cs-result"><strong>AI features unblocked on clean data</strong></div>
         </div>
       </div>
     </div>
@@ -938,26 +900,14 @@
     <!-- Voltera Panel -->
     <div class="cs-panel" id="cs-voltera">
       <div class="cs-left">
-        <div class="cs-badge">
-          <div class="cs-badge-dot">V</div>
-          Case Study · Voltera · EU (Netherlands)
-        </div>
         <div class="cs-headline">CRM, ERP, ads, and finance — finally in one warehouse.</div>
-        <p class="cs-desc">Voltera ran sales on a Postgres CRM, operations on an MSSQL ERP, and spend across Facebook Ads and Moneybird. Nothing talked to each other. Every report was a manual export. No metric carried across systems.</p>
+        <p class="cs-desc">Voltera ran sales on a Postgres CRM, ops on an MSSQL ERP, and spend across Facebook Ads and Moneybird. Every report was a manual export — no metric carried across systems.</p>
 
         <div class="cs-meta">
           <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Google BigQuery</div></div>
           <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster on GKE</div></div>
           <div class="cs-meta-item"><div class="cmi-label">Transformation</div><div class="cmi-val">dbt</div></div>
           <div class="cs-meta-item"><div class="cmi-label">Region</div><div class="cmi-val">EU (Netherlands)</div></div>
-        </div>
-
-        <div class="cs-stack">
-          <span class="cs-stag blue">dlt</span>
-          <span class="cs-stag purple">Dagster on GKE</span>
-          <span class="cs-stag cyan">BigQuery</span>
-          <span class="cs-stag amber">dbt</span>
-          <span class="cs-stag green">Docker + Helm</span>
         </div>
 
         <div class="cs-quote">
@@ -978,22 +928,10 @@
           <div class="cs-stat-label">CRM refresh cadence</div>
         </div>
         <div class="cs-results">
-          <div class="cs-result">
-            <div class="cs-result-icon green">✓</div>
-            <div class="cs-result-text"><strong>Zero manual exports</strong>All 5 sources run on schedule, automatically.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon blue">📊</div>
-            <div class="cs-result-text"><strong>One number everyone agrees on</strong>Shared dbt KPIs across sales, ops, marketing, and finance.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon amber">⚡</div>
-            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Schema evolution handles new source columns automatically.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon purple">🔧</div>
-            <div class="cs-result-text"><strong>Fully owned on their own infra</strong>Whole platform on Voltera's GKE cluster. No vendor lock-in.</div>
-          </div>
+          <div class="cs-result"><strong>Zero manual exports</strong></div>
+          <div class="cs-result"><strong>One number across sales, ops, marketing, and finance</strong></div>
+          <div class="cs-result"><strong>Schema changes handled automatically</strong></div>
+          <div class="cs-result"><strong>Fully owned on GKE — no vendor lock-in</strong></div>
         </div>
       </div>
     </div>
@@ -1001,28 +939,14 @@
     <!-- Filed Panel -->
     <div class="cs-panel" id="cs-filed">
       <div class="cs-left">
-        <div class="cs-badge">
-          <div class="cs-badge-dot">F</div>
-          Case Study · Filed · SaaS / Tax Tech
-        </div>
         <div class="cs-headline">12 systems. One warehouse. Every pipeline automated.</div>
-        <p class="cs-desc">Filed runs a product-led AI tax platform with data spread across 7 marketing channels, two product databases, CRM, event analytics, and billing. Every report was a manual export. Every product release broke something downstream.</p>
+        <p class="cs-desc">Filed had 12 sources across 7 ad channels, two product DBs, CRM, analytics, and billing. Every report was a manual export — and every product release broke something downstream.</p>
 
         <div class="cs-meta">
           <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Snowflake</div></div>
           <div class="cs-meta-item"><div class="cmi-label">Orchestration</div><div class="cmi-val">Dagster on Azure AKS</div></div>
-          <div class="cs-meta-item"><div class="cmi-label">BI Tools</div><div class="cmi-val">Metabase + Hex</div></div>
+          <div class="cs-meta-item"><div class="cmi-label">BI Tools</div><div class="cmi-val">Hex</div></div>
           <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">SaaS / Tax Tech</div></div>
-        </div>
-
-        <div class="cs-stack">
-          <span class="cs-stag blue">Fivetran</span>
-          <span class="cs-stag blue">dlt</span>
-          <span class="cs-stag purple">Dagster on AKS</span>
-          <span class="cs-stag cyan">Snowflake</span>
-          <span class="cs-stag amber">dbt Cloud</span>
-          <span class="cs-stag green">Metabase</span>
-          <span class="cs-stag green">Hex</span>
         </div>
 
         <div class="cs-quote">
@@ -1039,39 +963,23 @@
           <div class="cs-stat-label">data sources connected</div>
         </div>
         <div class="cs-stat">
-          <div class="cs-stat-val blue">5</div>
-          <div class="cs-stat-label">live dashboards shipped</div>
+          <div class="cs-stat-val blue">0</div>
+          <div class="cs-stat-label">pipeline failures since launch</div>
         </div>
         <div class="cs-results">
-          <div class="cs-result">
-            <div class="cs-result-icon green">✓</div>
-            <div class="cs-result-text"><strong>Zero manual exports</strong>All 12 sources run on schedule, automatically.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon blue">📊</div>
-            <div class="cs-result-text"><strong>Full funnel visible</strong>Ad spend → MQL → trial → workspace → billing, end to end.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon amber">⚡</div>
-            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Schema evolution + Slack alerts on every failure.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon purple">☁️</div>
-            <div class="cs-result-text"><strong>Fully owned on Azure</strong>Entire platform on Filed's own AKS cluster.</div>
-          </div>
+          <div class="cs-result"><strong>Zero manual exports</strong></div>
+          <div class="cs-result"><strong>Full funnel: ad spend → MQL → trial → billing</strong></div>
+          <div class="cs-result"><strong>Schema evolution + Slack alerts on every failure</strong></div>
+          <div class="cs-result"><strong>Fully owned on Azure AKS — no vendor lock-in</strong></div>
         </div>
       </div>
     </div>
 
-    <!-- Synthflow Panel -->
-    <div class="cs-panel" id="cs-synthflow">
+    <!-- AI Voice Agent SaaS Panel -->
+    <div class="cs-panel" id="cs-ai-voice-agent">
       <div class="cs-left">
-        <div class="cs-badge">
-          <div class="cs-badge-dot">S</div>
-          Case Study · Synthflow · AI Voice Agents
-        </div>
         <div class="cs-headline">Two regions, one source of truth — without moving a single raw record.</div>
-        <p class="cs-desc">Synthflow runs AI voice agents from separate US and EU regions, each with its own MongoDB, chat, and agent databases. Sensitive data is tokenized in-region before it ever leaves, then unified in a central cluster — where 20+ usage, cost, and GTM sources are modeled in dbt and served in Hex.</p>
+        <p class="cs-desc">This AI voice agent SaaS runs across separate US and EU regions, each with its own databases and strict data residency requirements. We unified 20+ sources into one warehouse — sensitive data tokenized in-region — giving the company its first true cost-per-minute.</p>
 
         <div class="cs-meta">
           <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">Google BigQuery</div></div>
@@ -1080,21 +988,12 @@
           <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">AI Voice Agents</div></div>
         </div>
 
-        <div class="cs-stack">
-          <span class="cs-stag blue">dlt</span>
-          <span class="cs-stag purple">Dagster · 3 clusters</span>
-          <span class="cs-stag cyan">BigQuery</span>
-          <span class="cs-stag amber">dbt</span>
-          <span class="cs-stag green">Hex</span>
-          <span class="cs-stag green">Reverse ETL</span>
-        </div>
-
         <div class="cs-quote">
           <p>"We sell minutes, and for the first time we actually know what a minute costs us — across every vendor, in both regions. The whole company finally works off the same numbers."</p>
-          <cite>Synthflow team · Vero client</cite>
+          <cite>Client team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-synthflow.html">Read full case study →</a>
+        <a class="cs-cta" href="case-studies/casestudy-ai-voice-agent.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -1103,39 +1002,23 @@
           <div class="cs-stat-label">data sources unified</div>
         </div>
         <div class="cs-stat">
-          <div class="cs-stat-val blue">3</div>
-          <div class="cs-stat-label">Dagster clusters · US, EU, Legacy</div>
+          <div class="cs-stat-val blue">2</div>
+          <div class="cs-stat-label">regions unified, zero residency violations</div>
         </div>
         <div class="cs-results">
-          <div class="cs-result">
-            <div class="cs-result-icon green">✓</div>
-            <div class="cs-result-text"><strong>A real cost per minute</strong>Every AI vendor and cloud bill rolls up into true COGS and gross margin.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon blue">🌍</div>
-            <div class="cs-result-text"><strong>One number, without breaking residency</strong>Sensitive data tokenized in-region — raw records never leave their region.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon amber">⚡</div>
-            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Schema evolution, asset checks, and Slack alerts on every failure.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon purple">🔧</div>
-            <div class="cs-result-text"><strong>Fully owned on their own infra</strong>Whole platform on Synthflow's Kubernetes cluster. No vendor lock-in.</div>
-          </div>
+          <div class="cs-result"><strong>First true cost-per-minute across all vendors</strong></div>
+          <div class="cs-result"><strong>One number without breaking residency</strong> — raw records never leave their region</div>
+          <div class="cs-result"><strong>Schema evolution + Slack alerts on every failure</strong></div>
+          <div class="cs-result"><strong>Fully owned on Kubernetes — no vendor lock-in</strong></div>
         </div>
       </div>
     </div>
 
     <!-- AI Voice SaaS Panel -->
-    <div class="cs-panel" id="cs-wispr">
+    <div class="cs-panel" id="cs-ai-voice-dictation">
       <div class="cs-left">
-        <div class="cs-badge">
-          <div class="cs-badge-dot">AI</div>
-          Case Study · AI Voice SaaS
-        </div>
         <div class="cs-headline">Product analytics, revenue metrics, and growth insights — automated end to end.</div>
-        <p class="cs-desc">A fast-growing AI voice dictation platform had product events, ad spend, CRM data, and lifecycle activity in completely separate systems. We unified everything into ClickHouse, modeled it with dbt, and delivered executive dashboards in Hex covering MRR, ARR, activation, adoption, and retention — with segments pushed back into Customer.io via reverse ETL.</p>
+        <p class="cs-desc">A fast-growing AI voice SaaS had product events, seven ad platforms, billing, CRM, and lifecycle data in separate silos. We unified 13+ sources into ClickHouse and delivered MRR, activation, and retention dashboards — with live segments pushed back into Customer.io automatically.</p>
 
         <div class="cs-meta">
           <div class="cs-meta-item"><div class="cmi-label">Warehouse</div><div class="cmi-val">ClickHouse</div></div>
@@ -1144,50 +1027,28 @@
           <div class="cs-meta-item"><div class="cmi-label">Industry</div><div class="cmi-val">AI Voice SaaS</div></div>
         </div>
 
-        <div class="cs-stack">
-          <span class="cs-stag blue">dlt</span>
-          <span class="cs-stag blue">Fivetran</span>
-          <span class="cs-stag purple">Dagster Cloud</span>
-          <span class="cs-stag cyan">ClickHouse</span>
-          <span class="cs-stag amber">dbt</span>
-          <span class="cs-stag green">Hex</span>
-          <span class="cs-stag green">Reverse ETL</span>
-        </div>
-
         <div class="cs-quote">
           <p>"For the first time, product, growth, and leadership are all working off the same numbers. Activation, retention, MRR — it's all in one place, and it updates itself."</p>
           <cite>Client team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-wispr.html">Read full case study →</a>
+        <a class="cs-cta" href="case-studies/casestudy-ai-voice-dictation.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
         <div class="cs-stat">
-          <div class="cs-stat-val green">5+</div>
-          <div class="cs-stat-label">sources connected</div>
+          <div class="cs-stat-val green">&lt; 1 wk</div>
+          <div class="cs-stat-label">to live MRR &amp; ARR dashboard</div>
         </div>
         <div class="cs-stat">
-          <div class="cs-stat-val blue">MRR &amp; ARR</div>
-          <div class="cs-stat-label">live in Hex — no spreadsheets</div>
+          <div class="cs-stat-val blue">3 teams</div>
+          <div class="cs-stat-label">on one source of truth</div>
         </div>
         <div class="cs-results">
-          <div class="cs-result">
-            <div class="cs-result-icon green">✓</div>
-            <div class="cs-result-text"><strong>MRR and ARR, live</strong>Revenue computed from dbt marts and served in Hex — no manual reconciliation.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon blue">📊</div>
-            <div class="cs-result-text"><strong>Full funnel, end to end</strong>Ad click → activation → feature adoption → retention, all in one dashboard.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon amber">⚡</div>
-            <div class="cs-result-text"><strong>Lifecycle campaigns on real data</strong>Warehouse segments pushed into Customer.io via reverse ETL — campaigns fire on actual behavior.</div>
-          </div>
-          <div class="cs-result">
-            <div class="cs-result-icon purple">🔧</div>
-            <div class="cs-result-text"><strong>Reporting that doesn't break</strong>Dagster Cloud handles scheduling, retries, and Slack alerts on every failure.</div>
-          </div>
+          <div class="cs-result"><strong>MRR and ARR live — no manual reconciliation</strong></div>
+          <div class="cs-result"><strong>Full funnel: ad click → activation → retention</strong></div>
+          <div class="cs-result"><strong>Lifecycle campaigns fire on actual behavior</strong> — segments pushed into Customer.io via reverse ETL</div>
+          <div class="cs-result"><strong>Scheduling, retries, and Slack alerts built in</strong></div>
         </div>
       </div>
     </div>
@@ -1211,7 +1072,10 @@
         <div class="df-lbl" style="width:44px;"></div>
         <div class="df-lbl" style="width:142px; text-align:center;">Ingestion</div>
         <div style="width:44px;"></div>
-        <div class="df-lbl" style="width:150px; text-align:center;">Warehouse + Transform</div>
+        <div style="width:160px; display:flex; flex-direction:column; align-items:center; gap:3px;">
+          <span class="df-lbl">Warehouse</span>
+          <span style="font-size:0.48rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#f59e0b; opacity:0.65;">↕ dbt Transform</span>
+        </div>
         <div style="width:44px;"></div>
         <div style="width:14px;"></div>
         <div class="df-lbl" style="flex:1;">Reporting &amp; Insights</div>
@@ -1272,17 +1136,21 @@
           <svg viewBox="0 0 44 14"><line class="df-anim" x1="0" y1="7" x2="32" y2="7" stroke="#4a9eed" stroke-width="1.5"/><polygon points="32,3 44,7 32,11" fill="#4a9eed"/></svg>
         </div>
 
-        <!-- 4. Ingestion: dlt + Fivetran, full stretch -->
+        <!-- 4. Ingestion: dlt + Fivetran combined -->
         <div class="df-ing">
-          <div class="df-card c-dlt">
-            <div class="dc-role">Primary</div>
-            <div class="dc-name">dlt</div>
-            <div class="dc-sub">25+ native connectors<br>custom API support</div>
-          </div>
-          <div class="df-card c-fiv">
-            <div class="dc-role">Alternative</div>
-            <div class="dc-name">Fivetran</div>
-            <div class="dc-sub">Managed connectors<br>for complex sources</div>
+          <div class="df-card c-ing-combo">
+            <div class="dc-role">Ingestion</div>
+            <div class="ing-row">
+              <div class="ing-opt">
+                <div class="dc-name" style="color:#4a9eed">dlt</div>
+                <div class="dc-sub">25+ native connectors<br>custom API support</div>
+              </div>
+              <div class="ing-sep">or</div>
+              <div class="ing-opt">
+                <div class="dc-name" style="color:#60a5fa;font-size:0.78rem">Fivetran</div>
+                <div class="dc-sub">Managed connectors<br>for complex sources</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1299,13 +1167,13 @@
             <div class="dc-sub">or ClickHouse · Snowflake</div>
           </div>
           <div class="df-bidir">
-            <svg width="24" height="40" viewBox="0 0 24 40">
+            <svg width="32" height="52" viewBox="0 0 32 52">
               <!-- down: BigQuery feeds dbt -->
-              <line x1="14" y1="2" x2="14" y2="30" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3" class="df-anim"/>
-              <polygon points="9,26 19,26 14,36" fill="#f59e0b"/>
+              <line x1="19" y1="2" x2="19" y2="38" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3" class="df-anim"/>
+              <polygon points="13,33 25,33 19,44" fill="#f59e0b"/>
               <!-- up: dbt writes back to BigQuery -->
-              <line x1="6" y1="38" x2="6" y2="10" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4 3" class="df-anim"/>
-              <polygon points="1,14 11,14 6,4" fill="#06b6d4"/>
+              <line x1="9" y1="50" x2="9" y2="14" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4 3" class="df-anim"/>
+              <polygon points="3,19 15,19 9,8" fill="#06b6d4"/>
             </svg>
           </div>
           <div class="df-card c-dbt">

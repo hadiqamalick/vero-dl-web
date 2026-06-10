@@ -71,10 +71,7 @@
   .nav-cta:hover { opacity: 0.85; }
 
   /* HERO */
-  .hero {
-    background: var(--dark);
-    padding: 5.5rem 4rem 4.5rem;
-  }
+  .hero { background: var(--dark); padding: 5.5rem 4rem 4.5rem; }
   .hero .container { max-width: 960px; }
   .hero-top {
     display: flex; align-items: flex-start; justify-content: space-between;
@@ -99,9 +96,7 @@
   .hero-desc { font-size: 1rem; color: #94a3b8; max-width: 480px; margin: 0; }
 
   /* outcome stats */
-  .hero-outcomes {
-    display: flex; flex-direction: column; gap: 0.5rem; min-width: 220px;
-  }
+  .hero-outcomes { display: flex; flex-direction: column; gap: 0.5rem; min-width: 220px; }
   .outcome-stat {
     background: var(--dark-card); border: 1px solid var(--dark-border);
     border-radius: 10px; padding: 1rem 1.25rem;
@@ -179,15 +174,41 @@
   .src-name { font-weight: 700; color: var(--ink); }
   .src-desc { color: var(--muted); font-size: 0.8rem; }
 
+  /* STORY ARC */
+  .story-arc {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--dark-border); border-radius: 16px; overflow: hidden;
+  }
+  .story-chapter {
+    background: var(--dark-card); padding: 2rem 1.75rem;
+    border-right: 1px solid var(--dark-border);
+  }
+  .story-chapter:last-child { border-right: none; }
+  .sc-step {
+    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .sc-step.s1 { color: var(--blue); }
+  .sc-step.s2 { color: var(--amber); }
+  .sc-step.s3 { color: var(--green); }
+  .sc-stat {
+    font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .sc-stat.blue  { color: var(--blue); }
+  .sc-stat.amber { color: var(--amber); }
+  .sc-stat.green { color: var(--green); }
+  .sc-headline { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.6rem; line-height: 1.35; }
+  .sc-desc { font-size: 0.8rem; color: #64748b; line-height: 1.65; margin: 0; }
+
   /* DASHBOARDS */
   .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
   .dash-card {
     background: var(--bg); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.4rem 1.25rem;
-    border-left: 3px solid;
+    border-radius: 12px; padding: 1.4rem 1.25rem; border-left: 3px solid;
   }
-  .dash-card.ops  { border-left-color: var(--blue); }
-  .dash-card.sales{ border-left-color: var(--green); }
+  .dash-card.ops   { border-left-color: var(--blue); }
+  .dash-card.sales { border-left-color: var(--green); }
   .dash-label {
     font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
     text-transform: uppercase; margin-bottom: 0.6rem;
@@ -200,6 +221,22 @@
   .dash-kpi   { font-size: 0.75rem; color: var(--muted); padding-left: 0.75rem; position: relative; }
   .dash-kpi::before { content: "·"; position: absolute; left: 0; color: var(--blue); font-weight: 800; }
   .dash-card.sales .dash-kpi::before { color: var(--green); }
+
+  /* IMPACT */
+  .impact-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; }
+  .impact-stat {
+    background: var(--dark-card); border: 1px solid var(--dark-border);
+    border-radius: 12px; padding: 1.5rem 1.25rem; text-align: center;
+  }
+  .impact-val {
+    font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1; margin-bottom: 0.35rem;
+  }
+  .impact-val.green  { color: var(--green); }
+  .impact-val.blue   { color: var(--blue); }
+  .impact-val.amber  { color: var(--amber); }
+  .impact-val.purple { color: var(--purple); }
+  .impact-label { font-size: 0.78rem; color: #64748b; line-height: 1.45; }
 
   /* RESULTS */
   .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
@@ -216,20 +253,21 @@
   .result-icon.blue   { background: var(--blue-bg); }
   .result-icon.amber  { background: var(--amber-bg); }
   .result-icon.purple { background: var(--purple-bg); }
-  .result-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .result-num { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.2rem; }
+  .result-num.green  { color: var(--green); }
+  .result-num.amber  { color: var(--amber); }
+  .result-num.blue   { color: var(--blue); }
+  .result-num.purple { color: var(--purple); }
+  .result-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--ink); }
   .result-desc  { font-size: 0.825rem; color: var(--muted); margin: 0; line-height: 1.5; }
 
   /* QUOTE */
   .quote-block {
     background: var(--dark-card); border: 1px solid var(--dark-border);
     border-left: 4px solid var(--blue);
-    border-radius: 14px; padding: 2rem 2.5rem;
-    margin-top: 1rem;
+    border-radius: 14px; padding: 2rem 2.5rem; margin-top: 1rem;
   }
-  .quote-text {
-    font-size: 1.15rem; color: #f1f5f9; line-height: 1.65;
-    font-style: italic; margin: 0 0 1rem;
-  }
+  .quote-text { font-size: 1.15rem; color: #f1f5f9; line-height: 1.65; font-style: italic; margin: 0 0 1rem; }
   .quote-attr { font-size: 0.8rem; color: #64748b; }
   .quote-attr strong { color: #94a3b8; }
 
@@ -282,7 +320,10 @@
     .hero h1 { font-size: 2rem; }
     h2 { font-size: 1.65rem; }
     .hero-top { flex-direction: column; }
-    .challenge-grid, .dash-grid, .results-grid { grid-template-columns: 1fr; }
+    .challenge-grid, .dash-grid, .results-grid, .impact-row { grid-template-columns: repeat(2, 1fr); }
+    .story-arc { grid-template-columns: 1fr; }
+    .story-chapter { border-right: none; border-bottom: 1px solid var(--dark-border); }
+    .story-chapter:last-child { border-bottom: none; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -305,17 +346,21 @@
           <div class="client-dot">G+</div>
           Case Study · GovPlus
         </div>
-        <h1>From scattered spreadsheets to a single source of truth. In weeks.</h1>
-        <p class="hero-desc">GovPlus needed full visibility across customer support, sales, and online reputation. Their data was split across 9 systems with no warehouse, no shared KPIs, and no way to trust the numbers.</p>
+        <h1>The complaints pointed to a problem. The data revealed exactly what it was.</h1>
+        <p class="hero-desc">GovPlus had data across 9 systems — customer support, payments, and reviews — but no way to connect them. Once unified, the data exposed the root cause of a growing refund crisis. The team fixed it. The numbers proved it.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
-          <div class="os-val green">9+</div>
-          <div class="os-label">data sources connected</div>
+          <div class="os-val green">Refund rate halved</div>
+          <div class="os-label">after root cause identified and services fixed</div>
         </div>
         <div class="outcome-stat">
-          <div class="os-val blue">2</div>
-          <div class="os-label">live dashboards shipped</div>
+          <div class="os-val blue">9 → 1</div>
+          <div class="os-label">data systems unified into one warehouse</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="os-val amber">CSAT up</div>
+          <div class="os-label">across every support channel</div>
         </div>
       </div>
     </div>
@@ -327,7 +372,7 @@
       </div>
       <div class="meta-item">
         <div class="mi-label">Industry</div>
-        <div class="mi-val">SaaS</div>
+        <div class="mi-val">SaaS · Government Services</div>
       </div>
       <div class="meta-item">
         <div class="mi-label">Warehouse</div>
@@ -366,7 +411,7 @@
       <div class="challenge-card">
         <div class="ch-num">03</div>
         <div class="ch-title">Reputation data was invisible</div>
-        <p class="ch-desc">Review volume, complaint trends, and 1-star spikes couldn't be connected to sales or support data. The team had no way to see the full picture.</p>
+        <p class="ch-desc">Review volume, complaint trends, and 1-star spikes couldn't be connected to sales or support data. The team had no way to see the full picture — or spot what was driving customer dissatisfaction.</p>
       </div>
     </div>
   </div>
@@ -443,14 +488,14 @@
   <div class="container">
     <span class="eyebrow">What we built</span>
     <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The same repeatable Vero playbook, adapted to GovPlus's sources and KPIs. Running in weeks, not months.</p>
+    <p class="section-sub">The same repeatable Vero playbook, adapted to GovPlus's sources and KPIs. Designed to surface the answers the team didn't know they were looking for.</p>
 
     <div class="built-flow">
       <div class="built-step">
         <div class="bs-num">01</div>
         <div>
           <div class="bs-title">Connected all 9 sources into a central warehouse</div>
-          <p class="bs-desc">Every system GovPlus relied on now feeds automatically into BigQuery. Because we ship Dagster as a managed part of our service, new pipelines go from scoped to live in hours — not weeks of setup. GovPlus had all 9 sources running before most teams finish their vendor evaluations.</p>
+          <p class="bs-desc">Every system GovPlus relied on now feeds automatically into BigQuery. Because we ship Dagster as a managed part of our service, new pipelines go from scoped to live fast — no months of vendor evaluations. GovPlus had all 9 sources running before most teams finish their setup calls.</p>
           <div class="bs-tags">
             <span class="bs-tag">dlt</span>
             <span class="bs-tag purple">Dagster Cloud</span>
@@ -461,24 +506,58 @@
       <div class="built-step">
         <div class="bs-num">02</div>
         <div>
-          <div class="bs-title">Built a single, agreed-on set of KPIs</div>
-          <p class="bs-desc">All business logic lives in one place. CSAT, chargeback rate, complaint-to-sales ratio: every metric has one definition the whole company trusts. No more pre-meeting reconciliation.</p>
+          <div class="bs-title">Built cross-domain transformations that connect what couldn't be connected before</div>
+          <p class="bs-desc">The dbt layer is where the real work happened. Staging models clean each source. Intermediate models join across domains — support conversations linked to revenue records, refund transactions joined to complaint threads, review scores correlated with chargeback signals. Mart models surface the final KPIs: CSAT, refund rate by product, complaint-to-refund ratio, chargeback rate by processor. Every metric has one definition the whole company trusts.</p>
           <div class="bs-tags">
             <span class="bs-tag amber">dbt</span>
+            <span class="bs-tag amber">staging → intermediate → mart</span>
+            <span class="bs-tag amber">cross-domain models</span>
           </div>
         </div>
       </div>
       <div class="built-step">
         <div class="bs-num">03</div>
         <div>
-          <div class="bs-title">Shipped live dashboards the team actually uses</div>
-          <p class="bs-desc">Two production dashboards covering Operations (support performance, channel breakdown, reputation) and Sales (revenue, refunds, chargebacks). Weekly grain, refreshed automatically, queryable in plain English via Hex AI.</p>
+          <div class="bs-title">Shipped three dashboards and enabled self-service analytics</div>
+          <p class="bs-desc">Three production dashboards: Operations (support performance, channel breakdown, AI vs human handling), Sales (revenue, refunds, chargebacks), and a Product Evaluation dashboard that cross-references refund ratios with customer complaints by product line. All refreshed automatically, with Hex AI threads so any team member can ask questions against live data without waiting on a report.</p>
           <div class="bs-tags">
             <span class="bs-tag green">Hex</span>
             <span class="bs-tag green">Operations dashboard</span>
             <span class="bs-tag green">Sales dashboard</span>
+            <span class="bs-tag green">Product Evaluation dashboard</span>
+            <span class="bs-tag">Hex AI threads</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY ARC -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">How it unfolded</span>
+    <h2 class="light">The data told a story nobody could read before.</h2>
+    <p class="section-sub" style="color:#94a3b8; margin-bottom: 2.5rem;">Once the systems were connected, three things became visible in sequence — a signal, a root cause, and an outcome. None of them were possible from a spreadsheet.</p>
+
+    <div class="story-arc">
+      <div class="story-chapter">
+        <div class="sc-step s1">01 · Signal</div>
+        <div class="sc-stat blue">↑ complaints</div>
+        <div class="sc-headline">Operations data exposed the pattern</div>
+        <p class="sc-desc">Complaint volume was rising. CSAT was slipping. CS wait times were climbing. For the first time, every support channel — calls, chat, and email — was visible in one place. The signal was clear. The cause wasn't yet.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="sc-step s2">02 · Root Cause</div>
+        <div class="sc-stat amber">Named by data</div>
+        <div class="sc-headline">Cross-domain data named the problem</div>
+        <p class="sc-desc">When complaint data was joined to refund transactions by product line, specific services emerged with extreme refund ratios. The problem had a product name attached to it — and that had never been possible from separate exports.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="sc-step s3">03 · Outcome</div>
+        <div class="sc-stat green">Refund rate halved</div>
+        <div class="sc-headline">GovPlus improved the services. The numbers followed.</div>
+        <p class="sc-desc">With specific products identified, the team made targeted improvements. The refund ratio dropped by more than half. CSAT climbed across every support channel. Measurable — because the data layer was there to track it.</p>
       </div>
     </div>
   </div>
@@ -488,25 +567,25 @@
 <section>
   <div class="container">
     <span class="eyebrow">Dashboards shipped</span>
-    <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Refreshed every 5 hours. Weekly grain for consistent trend analysis. Ask questions in plain English via Hex AI.</p>
+    <h2>Every metric the team needs. Always live.</h2>
+    <p class="section-sub">Any team member can ask questions against trusted data directly in Hex — no waiting on a report, no manual export, no version of the truth that disagrees with someone else's.</p>
 
     <div class="dash-grid">
       <div class="dash-card ops">
         <div class="dash-label">Operations</div>
         <div class="dash-title">Customer Support Performance</div>
-        <p class="dash-desc">Full visibility across every support channel — calls, chat, email, and AI. Track performance week-over-week without pulling a single export.</p>
+        <p class="dash-desc">Full visibility across every support channel — calls, chat, and email. Track how the team is performing without pulling a single export.</p>
         <div class="dash-kpis">
-          <div class="dash-kpi">Contact volume and attendance rates</div>
+          <div class="dash-kpi">Overall contact volume and attendance rates</div>
           <div class="dash-kpi">Average handle time by channel</div>
           <div class="dash-kpi">CSAT scores across chat and email</div>
-          <div class="dash-kpi">Govie AI resolution rate</div>
+          <div class="dash-kpi">AI vs human resolution breakdown</div>
           <div class="dash-kpi">Review scores and complaint-to-sales ratio</div>
         </div>
       </div>
       <div class="dash-card sales">
         <div class="dash-label">Sales</div>
-        <div class="dash-title">Revenue, Refunds & Chargebacks</div>
+        <div class="dash-title">Revenue, Refunds &amp; Chargebacks</div>
         <p class="dash-desc">A single view of revenue health across every product line and payment processor. Know your numbers before anyone asks.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Revenue, orders, and new customers</div>
@@ -516,6 +595,45 @@
           <div class="dash-kpi">Month-to-date by card network</div>
         </div>
       </div>
+      <div class="dash-card ops" style="grid-column: 1 / -1;">
+        <div class="dash-label">Product Evaluation</div>
+        <div class="dash-title">Refund Ratios &amp; Complaint Analysis by Product</div>
+        <p class="dash-desc">The dashboard that connects revenue and reputation data in one place — showing which products carry the highest refund rates and the customer complaints that come with them. Built on the dbt transformation layer that ties Chargebee, Paycom, Intercom, and the review platforms into a single model.</p>
+        <div class="dash-kpis">
+          <div class="dash-kpi">Refund rate by product line over time</div>
+          <div class="dash-kpi">Customer complaints mapped to product and payment source</div>
+          <div class="dash-kpi">Complaint volume vs refund volume by product</div>
+          <div class="dash-kpi">Review signals (Google, Trustpilot, BBB) correlated with refund spikes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="dark-sec">
+  <div class="container">
+    <span class="eyebrow light">The impact</span>
+    <h2 class="light">Four numbers that tell the whole story.</h2>
+    <p class="section-sub" style="color:#94a3b8; margin-bottom: 2rem;">Measured from what actually changed once the warehouse was live, the models were running, and the dashboards replaced the spreadsheets.</p>
+
+    <div class="impact-row">
+      <div class="impact-stat">
+        <div class="impact-val green">Halved</div>
+        <div class="impact-label">refund ratio — after cross-domain data identified which products were driving it</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val blue">9 → 1</div>
+        <div class="impact-label">data systems merged into a single warehouse — one source of truth every team runs off</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val amber">20 min</div>
+        <div class="impact-label">cut from every leadership sync — reconciliation before the meeting is gone</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-val purple">CSAT up</div>
+        <div class="impact-label">across all support channels — service quality tracked, measured, improved</div>
+      </div>
     </div>
   </div>
 </section>
@@ -524,42 +642,42 @@
 <section class="alt">
   <div class="container">
     <span class="eyebrow">The outcome</span>
-    <h2>What changed for GovPlus.</h2>
-    <p class="section-sub">From manual reconciliation to automated, trusted reporting across every team, every week.</p>
+    <h2>What actually changed for GovPlus.</h2>
+    <p class="section-sub">Not just pipelines. Not just dashboards. Decisions that used to stall now start from trusted numbers — and the results showed up in the business.</p>
 
     <div class="results-grid">
       <div class="result-card">
-        <div class="result-icon green">✓</div>
         <div>
-          <div class="result-title">Zero manual exports</div>
-          <p class="result-desc">All 9 sources run on schedule, automatically. The team stopped pulling CSVs and started asking questions against live data.</p>
+          <div class="result-num green">Refund rate halved</div>
+          <div class="result-title">Root cause found. Services fixed. Numbers followed.</div>
+          <p class="result-desc">Once complaints were joined to refund transactions by product line, specific services with extreme refund ratios became impossible to miss. The team fixed those products. The rate followed.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon blue">📊</div>
         <div>
-          <div class="result-title">One number everyone agrees on</div>
-          <p class="result-desc">Shared KPI definitions across Operations, Sales, and Finance. Leadership syncs now start with the actual conversation, not the reconciliation.</p>
+          <div class="result-num amber">CSAT improved</div>
+          <div class="result-title">Support quality up across every channel</div>
+          <p class="result-desc">With support performance visible across calls, chat, and email in one view, the team could see what was working and where to focus. Satisfaction scores climbed as service quality improved.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon amber">⚡</div>
         <div>
-          <div class="result-title">Reporting that doesn't break</div>
-          <p class="result-desc">Automated pipelines with monitoring and alerting built in. The team gets notified the moment something's off — before anyone notices a stale number.</p>
+          <div class="result-num blue">20 min</div>
+          <div class="result-title">Leadership syncs start with the real conversation</div>
+          <p class="result-desc">The reconciliation at the top of every meeting is gone. Numbers are agreed on before anyone opens a laptop — meetings start where they used to end.</p>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-icon purple">🤖</div>
         <div>
-          <div class="result-title">A foundation for Govie AI</div>
-          <p class="result-desc">Clean, structured data now powers GovPlus's AI workflows. The layer that had to exist before anything could be built on top — now exists.</p>
+          <div class="result-num purple">3 teams</div>
+          <div class="result-title">One source of truth across the company</div>
+          <p class="result-desc">Operations, Sales, and Finance now work off identical KPI definitions. Hex AI threads mean anyone can ask a question against live, trusted data without filing a request or waiting on an analyst.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"We wanted to build AI features on top of our data but nothing was clean enough. Vero built the foundation — everything we wanted to build on top became possible."</p>
+      <p class="quote-text">"For the first time we could see exactly which products were driving refunds — and which customer complaints came with them. We fixed the right things. The refund rate dropped by more than half."</p>
       <div class="quote-attr"><strong>GovPlus team</strong> · Vero client since 2024</div>
     </div>
   </div>
@@ -594,7 +712,7 @@
         <tr>
           <td><span class="stack-layer">Transformation</span></td>
           <td><span class="stack-tool amber">dbt</span></td>
-          <td><span class="stack-resp">Turns raw data into clean, agreed-on KPIs your whole team can trust</span></td>
+          <td><span class="stack-resp">Cross-domain models join support, revenue, reputation, and complaints into clean, agreed-on KPIs</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Orchestration</span></td>

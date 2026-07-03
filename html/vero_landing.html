@@ -529,6 +529,122 @@
     font-size: 0.8rem; color: #475569;
   }
 
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; align-items: start; margin-bottom: 2.5rem;
+  }
+  .price-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .price-card.featured {
+    border-color: var(--blue);
+    outline: 1px solid var(--blue);
+  }
+  .price-card.dark-price {
+    background: var(--dark-card); border-color: var(--dark-border);
+  }
+  .price-badge {
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--blue);
+    background: var(--blue-bg); padding: 0.22rem 0.65rem;
+    border-radius: 999px; display: inline-block; width: fit-content;
+    margin-bottom: 0.5rem;
+  }
+  .price-name {
+    font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink);
+  }
+  .price-card.dark-price .price-name { color: #f1f5f9; }
+  .price-tagline {
+    font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin: 0.35rem 0 0;
+  }
+  .price-card.dark-price .price-tagline { color: #64748b; }
+  .price-body {
+    border-top: 1px solid var(--border); padding-top: 1.25rem;
+  }
+  .price-card.dark-price .price-body { border-color: var(--dark-border); }
+  .price-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem;
+  }
+  .price-card.dark-price .price-label { color: #475569; }
+  .price-amount {
+    display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: 0.6rem;
+  }
+  .price-fig {
+    font-size: 2.1rem; font-weight: 800; letter-spacing: -0.04em;
+    color: var(--ink); line-height: 1;
+  }
+  .price-card.dark-price .price-fig { color: #f1f5f9; }
+  .price-unit { font-size: 0.8rem; color: var(--muted); }
+  .price-then { font-size: 0.825rem; color: var(--muted); margin: 0; }
+  .price-then strong { color: var(--ink); }
+  .price-card.dark-price .price-then strong { color: #e2e8f0; }
+  .price-features {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    border-top: 1px solid var(--border); padding-top: 1.25rem;
+  }
+  .price-card.dark-price .price-features { border-color: var(--dark-border); }
+  .price-features li {
+    font-size: 0.8rem; color: var(--ink); line-height: 1.5;
+    display: flex; gap: 0.55rem; align-items: flex-start;
+  }
+  .price-card.dark-price .price-features li { color: #94a3b8; }
+  .price-features .ck { color: var(--green); flex-shrink: 0; font-weight: 700; }
+  .price-cta-btn {
+    display: block; text-align: center;
+    background: var(--blue); color: #fff;
+    border-radius: 999px; padding: 0.75rem 1.25rem;
+    font-size: 0.875rem; font-weight: 600;
+    transition: opacity 0.15s; margin-top: auto;
+  }
+  .price-cta-btn:hover { opacity: 0.85; }
+  .price-cta-btn.ghost {
+    background: transparent; color: #64748b;
+    border: 1px solid var(--dark-border);
+  }
+  .price-cta-btn.ghost:hover { border-color: var(--blue); color: var(--blue); }
+  .pricing-note {
+    text-align: center; font-size: 0.825rem; color: var(--muted); margin-bottom: 3rem;
+  }
+
+  /* ── ADD-ONS ── */
+  .addons-sublabel {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block;
+  }
+  .addons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .addon-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-left: 3px solid #8b5cf6;
+    border-radius: 12px; padding: 1.5rem 1.6rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .addon-pill {
+    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #8b5cf6;
+    background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2);
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+    display: inline-block; width: fit-content;
+  }
+  .addon-name { font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; }
+  .addon-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin: 0; }
+  .addon-items {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .addon-items li {
+    font-size: 0.8rem; color: var(--ink); display: flex; gap: 0.5rem; line-height: 1.5;
+  }
+  .addon-items li::before { content: "→"; color: #8b5cf6; flex-shrink: 0; font-weight: 700; }
+  .addon-pricing {
+    font-size: 0.8rem; font-weight: 700; color: var(--muted);
+    margin-top: 0.25rem; padding-top: 0.75rem; border-top: 1px solid var(--border);
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 820px) {
     nav { padding: 0 1.5rem; }
@@ -537,6 +653,7 @@
     .hero h1 { font-size: 2.3rem; }
     h2 { font-size: 1.65rem; }
     .pain-grid, .outcomes-grid, .stack-grid, .proof-grid, .fit-grid { grid-template-columns: 1fr; }
+    .pricing-grid, .addons-grid { grid-template-columns: 1fr; }
     .cs-panel.active { grid-template-columns: 1fr; }
     .cs-right { flex-direction: row; flex-wrap: wrap; }
     .cs-stat { flex: 1; min-width: 120px; }
@@ -822,7 +939,7 @@
           <div class="proof-after">After: Clean data layer in place. First AI feature shipped two weeks later.</div>
         </div>
         <p class="proof-quote">"Impressive work across the board — dashboards, reports, pipelines. Fast fixes, great communication. Exactly what we needed."</p>
-        <a class="proof-link" href="case-studies/casestudy-govplus.html">Read full case study →</a>
+        <a class="proof-link" href="case_studies/casestudy_govplus.html">Read full case study →</a>
       </div>
     </div>
   </div>
@@ -876,7 +993,7 @@
           <cite>GovPlus team · Vero client since 2024</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-govplus.html">Read full case study →</a>
+        <a class="cs-cta" href="case_studies/casestudy_govplus.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -915,7 +1032,7 @@
           <cite>Voltera team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-voltera.html">Read full case study →</a>
+        <a class="cs-cta" href="case_studies/casestudy_voltera.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -954,7 +1071,7 @@
           <cite>Filed team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-filed.html">Read full case study →</a>
+        <a class="cs-cta" href="case_studies/casestudy_filed.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -993,7 +1110,7 @@
           <cite>Client team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-ai-voice-agent.html">Read full case study →</a>
+        <a class="cs-cta" href="case_studies/casestudy_ai_voice_agent.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -1032,7 +1149,7 @@
           <cite>Client team · Vero client</cite>
         </div>
 
-        <a class="cs-cta" href="case-studies/casestudy-ai-voice-dictation.html">Read full case study →</a>
+        <a class="cs-cta" href="case_studies/casestudy_ai_voice_dictation.html">Read full case study →</a>
       </div>
 
       <div class="cs-right">
@@ -1290,7 +1407,128 @@
   </div>
 </section>
 
-<!-- ── 09 FINAL CTA ── -->
+<!-- ── 09 PRICING ── -->
+<section class="alt" id="pricing">
+  <div class="container" style="max-width:1040px;">
+    <span class="eyebrow">Pricing</span>
+    <h2>Simple, transparent pricing.</h2>
+    <p class="section-sub">A fixed setup fee to get you live in a week, then a monthly retainer to keep it running and growing. No scope creep. No surprise invoices.</p>
+
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="price-card">
+        <div>
+          <div class="price-name">Starter</div>
+          <p class="price-tagline">For seed-stage teams connecting their first sources and getting dashboards live fast.</p>
+        </div>
+        <div class="price-body">
+          <div class="price-label">One-time setup</div>
+          <div class="price-amount">
+            <span class="price-fig">$3,500</span>
+            <span class="price-unit">one-time</span>
+          </div>
+          <p class="price-then">Then <strong>$1,200 / month</strong></p>
+        </div>
+        <ul class="price-features">
+          <li><span class="ck">✓</span> Up to 3 data source connectors</li>
+          <li><span class="ck">✓</span> Warehouse setup (BigQuery or ClickHouse)</li>
+          <li><span class="ck">✓</span> dbt staging + mart models</li>
+          <li><span class="ck">✓</span> 3 analytics dashboards</li>
+          <li><span class="ck">✓</span> Bi-weekly sync call</li>
+          <li><span class="ck">✓</span> Slack support (48h response)</li>
+        </ul>
+        <a class="price-cta-btn" href="mailto:vero@datumlabs.io">Book a free call</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="price-card featured">
+        <div>
+          <span class="price-badge">Most popular</span>
+          <div class="price-name">Growth</div>
+          <p class="price-tagline">For Series A teams scaling fast — more sources, full orchestration, unlimited dashboards.</p>
+        </div>
+        <div class="price-body">
+          <div class="price-label">One-time setup</div>
+          <div class="price-amount">
+            <span class="price-fig">$6,500</span>
+            <span class="price-unit">one-time</span>
+          </div>
+          <p class="price-then">Then <strong>$2,500 / month</strong></p>
+        </div>
+        <ul class="price-features">
+          <li><span class="ck">✓</span> Up to 7 data source connectors</li>
+          <li><span class="ck">✓</span> Warehouse + dbt + Dagster orchestration</li>
+          <li><span class="ck">✓</span> Unlimited dashboards &amp; reports</li>
+          <li><span class="ck">✓</span> Weekly sync call</li>
+          <li><span class="ck">✓</span> Priority Slack (24h response)</li>
+          <li><span class="ck">✓</span> Quarterly data review</li>
+        </ul>
+        <a class="price-cta-btn" href="mailto:vero@datumlabs.io">Book a free call</a>
+      </div>
+
+      <!-- Custom -->
+      <div class="price-card dark-price">
+        <div>
+          <div class="price-name">Custom</div>
+          <p class="price-tagline">For complex stacks — more than 7 sources, real-time pipelines, custom modeling, or AI at scale.</p>
+        </div>
+        <div class="price-body">
+          <div class="price-label">Scoped together</div>
+          <div class="price-amount">
+            <span class="price-fig">Let's talk</span>
+          </div>
+          <p class="price-then">Pricing based on scope, sources, and team size</p>
+        </div>
+        <ul class="price-features">
+          <li><span class="ck">✓</span> Unlimited data sources</li>
+          <li><span class="ck">✓</span> Custom connectors + real-time pipelines</li>
+          <li><span class="ck">✓</span> Complex metrics layer &amp; ML-ready models</li>
+          <li><span class="ck">✓</span> Dedicated data engineering capacity</li>
+          <li><span class="ck">✓</span> Multi-team support</li>
+          <li><span class="ck">✓</span> Custom SLA + async + Slack</li>
+        </ul>
+        <a class="price-cta-btn ghost" href="mailto:vero@datumlabs.io">Get a custom quote</a>
+      </div>
+
+    </div>
+
+    <p class="pricing-note">All plans run on your own cloud account. No new SaaS vendors. No lock-in. You own everything.</p>
+
+    <!-- Add-ons -->
+    <span class="addons-sublabel">Add-ons — available on any plan</span>
+    <div class="addons-grid">
+
+      <div class="addon-card">
+        <span class="addon-pill">Add-on</span>
+        <div class="addon-name">Reverse ETL</div>
+        <p class="addon-desc">Push enriched, modeled data from your warehouse back into the operational tools your team already uses — automatically.</p>
+        <ul class="addon-items">
+          <li>Sync scores, segments &amp; enriched fields to HubSpot, Salesforce, Intercom, Customer.io, or Notion</li>
+          <li>Triggered on schedule or on data change</li>
+          <li>Full lineage — trace every synced value back to its source</li>
+        </ul>
+        <div class="addon-pricing">From $800 / month — scoped per destination</div>
+      </div>
+
+      <div class="addon-card">
+        <span class="addon-pill">Add-on</span>
+        <div class="addon-name">Agentic Flows</div>
+        <p class="addon-desc">AI agents that act on your warehouse data — so insights trigger real actions, not just another dashboard.</p>
+        <ul class="addon-items">
+          <li>Auto-qualify leads from product usage signals</li>
+          <li>Fire Slack alerts when a metric crosses a threshold</li>
+          <li>Trigger CRM sequences from churn-risk scores</li>
+          <li>Custom flows — you define the trigger, we build the agent</li>
+        </ul>
+        <div class="addon-pricing">From $1,200 / month — scoped per flow</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 10 FINAL CTA ── -->
 <section class="dark-sec" style="padding-top: 1rem; padding-bottom: 6rem;">
   <div class="container">
     <div class="cta-inner">

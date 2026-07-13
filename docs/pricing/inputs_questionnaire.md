@@ -1,8 +1,10 @@
-# Vero Pricing — Team Input Questionnaire
+# Vero Pricing: Team Input Questionnaire
 
 *Datum Labs · Fill this in to populate the [pricing model](model.md) · Last updated 2026-06-30*
 
-Ask your team these questions. Every answer is an **input** the cost model needs. Fill in the blanks — once these are locked, the build fee and retainer fall out of the formulas automatically.
+Ask your team these questions. Every answer is an **input** the cost model needs. Fill in the blanks, once these are locked, the build fee and retainer fall out of the formulas automatically.
+
+> **Shortcut:** use the interactive [pricing calculator](pricing_calculator.html) once you have rough numbers. It implements §3 of [model.md](model.md).
 
 > Legend: **[one-time]** feeds the build fee · **[monthly]** feeds the retainer · **[%]** feeds margin/overhead.
 
@@ -21,11 +23,11 @@ Ask your team these questions. Every answer is an **input** the cost model needs
 
 ## B. Ingestion (per source)
 
-7. For a **simple (T1)** source (verified dlt connector — Stripe, HubSpot, Google Ads), how many hours to build one pipeline? **[one-time]** → `____ hrs`
+7. For a **simple (T1)** source (verified dlt connector, Stripe, HubSpot, Google Ads), how many hours to build one pipeline? **[one-time]** → `____ hrs`
 8. For a **moderate (T2)** source (custom REST API, pagination, incremental)? **[one-time]** → `____ hrs`
 9. For a **complex (T3)** source (no connector, hard auth, big historical backfill)? **[one-time]** → `____ hrs`
-10. Default ingestion tool — **dlt everywhere**, or **Fivetran** for some? → `________`
-11. If Fivetran: what's the **monthly cost** at our typical volume (MAR tier)? **[monthly]** → `$____ /mo` — and do we **pass it through** to the client or absorb it? → `________`
+10. Default ingestion tool, **dlt everywhere**, or **Fivetran** for some? → `________`
+11. If Fivetran: what's the **monthly cost** at our typical volume (MAR tier)? **[monthly]** → `$____ /mo`, and do we **pass it through** to the client or absorb it? → `________`
 12. Average **maintenance hours per source per month** (schema drift, breakages)? **[monthly]** → `____ hrs/source`
 
 ---
@@ -41,16 +43,16 @@ Ask your team these questions. Every answer is an **input** the cost model needs
 
 ## D. Warehouse
 
-17. Default warehouse — **BigQuery / Snowflake / ClickHouse**? → `________`
+17. Default warehouse, **BigQuery / Snowflake / ClickHouse**? → `________`
 18. **Setup hours** (provisioning, datasets, IAM, networking)? **[one-time]** → `____ hrs`
-19. Who pays warehouse **compute + storage** — client's own cloud (pass-through) or us? → `________`
+19. Who pays warehouse **compute + storage**, client's own cloud (pass-through) or us? → `________`
 20. Rough **monthly compute/storage** estimate for a typical client (to show in proposal)? → `$____ /mo`
 
 ---
 
 ## E. Orchestration
 
-21. Default — **Dagster self-hosted on K8s/GCP** or managed? → `________`
+21. Default, **Dagster self-hosted on K8s/GCP** or managed? → `________`
 22. **Setup hours**? **[one-time]** → `____ hrs`
 23. Monthly **infra cost** for the orchestration layer (client cloud / ours)? **[monthly]** → `$____ /mo`
 
@@ -58,7 +60,7 @@ Ask your team these questions. Every answer is an **input** the cost model needs
 
 ## F. Analytics / BI
 
-24. Default BI tool — **Metabase / Hex / Looker / Power BI**? → `________`
+24. Default BI tool, **Metabase / Hex / Looker / Power BI**? → `________`
 25. **License cost** of that tool (per seat or flat, monthly)? **[monthly]** → `$____ /mo`
 26. If self-hosted (Metabase): **VM cost** per month? **[monthly]** → `$____ /mo`
 27. **BI setup hours** (install, connect, auth, base config)? **[one-time]** → `____ hrs`
@@ -78,7 +80,7 @@ Ask your team these questions. Every answer is an **input** the cost model needs
 
 ## H. Packaging & commercial terms
 
-34. What defines our **standard tiers** — max sources / dashboards / models per tier? → `________`
+34. What defines our **standard tiers**, max sources / dashboards / models per tier? → `________`
 35. **Per-source add-on** price (outside a tier)? → `$____`
 36. **Per-dashboard add-on** price? → `$____`
 37. Retainer billed **monthly or annual prepay**? Any **prepay discount**? → `________`

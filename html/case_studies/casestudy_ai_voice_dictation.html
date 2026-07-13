@@ -347,8 +347,8 @@
           <div class="client-dot">AI</div>
           Case Study · AI Voice SaaS
         </div>
-        <h1>Downloads were climbing. The data finally showed who was actually engaged — and who was about to leave.</h1>
-        <p class="hero-desc">A fast-growing AI voice SaaS had product events, billing, and ad spend living in completely separate systems across four platforms. Nobody could see engagement dips, identify at-risk users, or know which channels produced people who actually stayed. We unified everything into ClickHouse and built the dashboards that made those signals visible — so the team could act on them before users churned.</p>
+        <h1>Downloads were climbing. The data finally showed who was actually engaged, and who was about to leave.</h1>
+        <p class="hero-desc">A fast-growing AI voice SaaS had product events, billing, and ad spend living in completely separate systems across four platforms. Nobody could see engagement dips, identify at-risk users, or know which channels produced people who actually stayed. We unified everything into ClickHouse and built the dashboards that made those signals visible, so the team could act on them before users churned.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
@@ -406,12 +406,12 @@
       <div class="challenge-card">
         <div class="ch-num">01</div>
         <div class="ch-title">No unified view of the customer journey</div>
-        <p class="ch-desc">Product events in PostHog, ad conversions in a separate ad platform, support activity in Pylon, and lifecycle campaigns in Customer.io — each team had their own slice of the customer, and no one had the full picture from acquisition through retention.</p>
+        <p class="ch-desc">Product events in PostHog, ad conversions in a separate ad platform, support activity in Pylon, and lifecycle campaigns in Customer.io. Each team had their own slice of the customer, and no one had the full picture from acquisition through retention.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">02</div>
         <div class="ch-title">Revenue metrics built in spreadsheets</div>
-        <p class="ch-desc">MRR, ARR, and activation rates had no automated source. Someone had to pull exports, reconcile numbers, and paste them into a spreadsheet before every board or leadership meeting — a process that was slow, error-prone, and always slightly out of date.</p>
+        <p class="ch-desc">MRR, ARR, and activation rates had no automated source. Someone had to pull exports, reconcile numbers, and paste them into a spreadsheet before every board or leadership meeting, a process that was slow, error-prone, and always slightly out of date.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">03</div>
@@ -427,7 +427,7 @@
   <div class="container">
     <span class="eyebrow">Data sources connected</span>
     <h2>13+ systems. One warehouse.</h2>
-    <p class="section-sub">Every system the business runs on — product events, seven ad platforms, link analytics, billing, CRM, and lifecycle — connected, normalized, and loaded into ClickHouse via ClickPipe, dlt, and Fivetran on automated schedules.</p>
+    <p class="section-sub">Every system the business runs on. Product events, seven ad platforms, link analytics, billing, CRM, and lifecycle, connected, normalized, and loaded into ClickHouse via ClickPipe, dlt, and Fivetran on automated schedules.</p>
 
     <table class="sources-table">
       <thead>
@@ -441,72 +441,72 @@
         <tr>
           <td><span class="src-domain erp">Product Analytics</span></td>
           <td><span class="src-name">PostHog</span></td>
-          <td><span class="src-desc">Product events, persons, feature usage, session data, activation and retention signals — streamed in real-time via ClickPipe</span></td>
+          <td><span class="src-desc">Product events, persons, feature usage, session data, activation and retention signals, streamed in real-time via ClickPipe</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">Vibe Ad Platform</span></td>
-          <td><span class="src-desc">Ad spend, impressions, conversions, and campaign performance — daily batch ingestion via dlt</span></td>
+          <td><span class="src-desc">Ad spend, impressions, conversions, and campaign performance, daily batch ingestion via dlt</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">Facebook Ads</span></td>
-          <td><span class="src-desc">Ad reports, spend, and campaign metrics — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Ad reports, spend, and campaign metrics, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">Google Ads</span></td>
-          <td><span class="src-desc">Ad stats and campaign performance — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Ad stats and campaign performance, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">AppLovin</span></td>
-          <td><span class="src-desc">Ad reports and performance data — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Ad reports and performance data, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">Apple Ads</span></td>
-          <td><span class="src-desc">Ad reports and campaign data — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Ad reports and campaign data, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">AppsFlyer</span></td>
-          <td><span class="src-desc">Mobile attribution events and install data — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Mobile attribution events and install data, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Growth &amp; Ads</span></td>
           <td><span class="src-name">Partnerships</span></td>
-          <td><span class="src-desc">Partnership spend reports — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Partnership spend reports, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain mkt">Link Analytics</span></td>
           <td><span class="src-name">Dub</span></td>
-          <td><span class="src-desc">Link clicks, referral sources, and traffic attribution — incremental sync every 15 minutes via dlt</span></td>
+          <td><span class="src-desc">Link clicks, referral sources, and traffic attribution, incremental sync every 15 minutes via dlt</span></td>
         </tr>
         <tr>
           <td><span class="src-domain fin">Revenue / Billing</span></td>
           <td><span class="src-name">RevenueCat</span></td>
-          <td><span class="src-desc">In-app purchase transactions and subscription data — 24-hour batch sync via ClickPipe</span></td>
+          <td><span class="src-desc">In-app purchase transactions and subscription data, 24-hour batch sync via ClickPipe</span></td>
         </tr>
         <tr>
           <td><span class="src-domain fin">Revenue / Billing</span></td>
           <td><span class="src-name">Stripe</span></td>
-          <td><span class="src-desc">Subscriptions and billing events — 15-minute batch sync via Fivetran</span></td>
+          <td><span class="src-desc">Subscriptions and billing events, 15-minute batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain crm">CRM &amp; Support</span></td>
           <td><span class="src-name">Pylon</span></td>
-          <td><span class="src-desc">Accounts, contacts, and support issues — streamed in real-time via dlt</span></td>
+          <td><span class="src-desc">Accounts, contacts, and support issues, streamed in real-time via dlt</span></td>
         </tr>
         <tr>
           <td><span class="src-domain crm">CRM &amp; Support</span></td>
           <td><span class="src-name">Attio</span></td>
-          <td><span class="src-desc">CRM record values and customer data — 6-hour batch sync via Fivetran</span></td>
+          <td><span class="src-desc">CRM record values and customer data, 6-hour batch sync via Fivetran</span></td>
         </tr>
         <tr>
           <td><span class="src-domain fin">Lifecycle</span></td>
           <td><span class="src-name">Customer.io</span></td>
-          <td><span class="src-desc">Email and lifecycle campaign engagement — streamed in real-time via ClickPipe, and the reverse-ETL destination where modeled user segments are pushed back to power automated campaigns</span></td>
+          <td><span class="src-desc">Email and lifecycle campaign engagement, streamed in real-time via ClickPipe, and the reverse-ETL destination where modeled user segments are pushed back to power automated campaigns</span></td>
         </tr>
       </tbody>
     </table>
@@ -518,14 +518,14 @@
   <div class="container">
     <span class="eyebrow">What we built</span>
     <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The full Vero playbook — ingestion, transformation, reporting, and activation — adapted to a product-led SaaS with a ClickHouse warehouse at its core.</p>
+    <p class="section-sub">The full Vero playbook, ingestion, transformation, reporting, and activation, adapted to a product-led SaaS with a ClickHouse warehouse at its core.</p>
 
     <div class="built-flow">
       <div class="built-step">
         <div class="bs-num">01</div>
         <div>
           <div class="bs-title">Unified 13+ sources into ClickHouse via ClickPipe, dlt, and Fivetran</div>
-          <p class="bs-desc">PostHog, RevenueCat, and Customer.io stream in real-time via ClickPipe. Pylon, Vibe, and Dub load via dlt with incremental cursors and state management. Stripe, Facebook Ads, Google Ads, AppLovin, Apple Ads, AppsFlyer, Attio, and Partnerships run on Fivetran managed connectors. All orchestrated by Dagster Cloud — every failure posts straight to Slack.</p>
+          <p class="bs-desc">PostHog, RevenueCat, and Customer.io stream in real-time via ClickPipe. Pylon, Vibe, and Dub load via dlt with incremental cursors and state management. Stripe, Facebook Ads, Google Ads, AppLovin, Apple Ads, AppsFlyer, Attio, and Partnerships run on Fivetran managed connectors. All orchestrated by Dagster Cloud, every failure posts straight to Slack.</p>
           <div class="bs-tags">
             <span class="bs-tag">ClickPipe</span>
             <span class="bs-tag">dlt</span>
@@ -539,7 +539,7 @@
         <div class="bs-num">02</div>
         <div>
           <div class="bs-title">Modeled product, growth, and revenue in dbt</div>
-          <p class="bs-desc">A single dbt project — staging → marts — turns raw events and CRM data into trusted definitions the whole company shares. Activation is one definition. Retention cohorts are one definition. MRR and ARR roll up from the same mart that powers every dashboard. No more reconciling numbers before a meeting.</p>
+          <p class="bs-desc">A single dbt project, staging → marts, turns raw events and CRM data into trusted definitions the whole company shares. Activation is one definition. Retention cohorts are one definition. MRR and ARR roll up from the same mart that powers every dashboard. No more reconciling numbers before a meeting.</p>
           <div class="bs-tags">
             <span class="bs-tag amber">dbt</span>
             <span class="bs-tag">activation model</span>
@@ -552,7 +552,7 @@
         <div class="bs-num">03</div>
         <div>
           <div class="bs-title">Delivered dashboards in Hex and pushed segments back to Customer.io</div>
-          <p class="bs-desc">Modeled data is served in Hex across three dashboard surfaces: an executive dashboard (MRR, ARR, revenue growth), a product analytics dashboard (activation, feature adoption, retention), and a growth dashboard (ad spend, CAC, funnel). Warehouse-modeled user segments are pushed back into Customer.io via reverse ETL — so lifecycle campaigns fire on real behavior, not guesswork.</p>
+          <p class="bs-desc">Modeled data is served in Hex across three dashboard surfaces: an executive dashboard (MRR, ARR, revenue growth), a product analytics dashboard (activation, feature adoption, retention), and a growth dashboard (ad spend, CAC, funnel). Warehouse-modeled user segments are pushed back into Customer.io via reverse ETL, so lifecycle campaigns fire on real behavior, not guesswork.</p>
           <div class="bs-tags">
             <span class="bs-tag">Hex</span>
             <span class="bs-tag purple">reverse ETL</span>
@@ -586,7 +586,7 @@
         <div class="sc-step s3">03 · Outcome</div>
         <div class="sc-stat green">Engagement visible</div>
         <div class="sc-headline">At-risk users flagged. Channels ranked by what actually works.</div>
-        <p class="sc-desc">Now the team tracks engagement depth — not just whether someone downloaded, but whether they're actively using the product. At-risk users are surfaced automatically when usage drops below a threshold. Acquisition channels are ranked by real activation rate, so growth spend goes to sources that produce retained users, not just installs.</p>
+        <p class="sc-desc">Now the team tracks engagement depth, not just whether someone downloaded, but whether they're actively using the product. At-risk users are surfaced automatically when usage drops below a threshold. Acquisition channels are ranked by real activation rate, so growth spend goes to sources that produce retained users, not just installs.</p>
       </div>
     </div>
   </div>
@@ -597,13 +597,13 @@
   <div class="container">
     <span class="eyebrow">What it powers</span>
     <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Three dashboard surfaces in Hex, each built on dbt mart models in ClickHouse — refreshed automatically and ready for every team from product to leadership.</p>
+    <p class="section-sub">Three dashboard surfaces in Hex, each built on dbt mart models in ClickHouse, refreshed automatically and ready for every team from product to leadership.</p>
 
     <div class="dash-grid">
       <div class="dash-card exec">
         <div class="dash-label">Executive Dashboard</div>
         <div class="dash-title">Revenue, Retention &amp; Business Health</div>
-        <p class="dash-desc">The board-level view — $46M ARR, 121% B2B NRR, cohort expansion, and at-risk accounts all live in Hex. No exports, no reconciliation before a leadership meeting.</p>
+        <p class="dash-desc">The board-level view, $46M ARR, 121% B2B NRR, cohort expansion, and at-risk accounts all live in Hex. No exports, no reconciliation before a leadership meeting.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">ARR, MRR, new vs. expansion vs. churn</div>
           <div class="dash-kpi">B2B NRR rolling 30 days</div>
@@ -615,7 +615,7 @@
       <div class="dash-card ops">
         <div class="dash-label">Product Analytics</div>
         <div class="dash-title">Engagement &amp; Activation</div>
-        <p class="dash-desc">DAU, cumulative words, activation funnel, and engagement depth — the product team has cohort-level visibility without writing custom SQL every time.</p>
+        <p class="dash-desc">DAU, cumulative words, activation funnel, and engagement depth. The product team has cohort-level visibility without writing custom SQL every time.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">DAU / cDAU across desktop and mobile</div>
           <div class="dash-kpi">Cumulative words and milestones (10k / 100k / 1M)</div>
@@ -626,7 +626,7 @@
       <div class="dash-card sales">
         <div class="dash-label">Marketing Dashboard</div>
         <div class="dash-title">Acquisition, Channel Quality &amp; CAC</div>
-        <p class="dash-desc">$4M/month in ad spend tied to real activations — the growth team can see CAC by platform, channel quality by HDYHAU, and which sources produce users who actually reach 200 words.</p>
+        <p class="dash-desc">$4M/month in ad spend tied to real activations. The growth team can see CAC by platform, channel quality by HDYHAU, and which sources produce users who actually reach 200 words.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Downloads pacing: iOS, Android, Mac, Windows</div>
           <div class="dash-kpi">CAC per activation and per 200-word user</div>
@@ -638,7 +638,7 @@
       <div class="dash-card ops">
         <div class="dash-label">CRM &amp; Support</div>
         <div class="dash-title">Customer Health</div>
-        <p class="dash-desc">Pylon CRM data joined to product usage — the team can see which customers are at risk before they churn.</p>
+        <p class="dash-desc">Pylon CRM data joined to product usage. The team can see which customers are at risk before they churn.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Support ticket volume and response time</div>
           <div class="dash-kpi">CRM activity by account</div>
@@ -655,7 +655,7 @@
   <div class="container">
     <span class="eyebrow">The outcome</span>
     <h2>What changed.</h2>
-    <p class="section-sub">From scattered exports and manual spreadsheets to a fully automated analytics platform — product, growth, and revenue visible in one place.</p>
+    <p class="section-sub">From scattered exports and manual spreadsheets to a fully automated analytics platform. Product, growth, and revenue visible in one place.</p>
 
     <div class="impact-row" style="margin-bottom:2rem;">
       <div class="impact-stat">
@@ -681,34 +681,34 @@
         <div>
           <div class="result-num green">At-risk users</div>
           <div class="result-title">Flagged before they churn</div>
-          <p class="result-desc">Users who go quiet — below a usage threshold across any platform — are surfaced automatically. The team has a window to act before a disengaged user becomes a lost one.</p>
+          <p class="result-desc">Users who go quiet, below a usage threshold across any platform, are surfaced automatically. The team has a window to act before a disengaged user becomes a lost one.</p>
         </div>
       </div>
       <div class="result-card">
         <div>
           <div class="result-num blue">4 → 1</div>
           <div class="result-title">Four platforms, one engagement view</div>
-          <p class="result-desc">iOS, Mac, Windows, and Android usage unified into a single engagement model. For the first time, the team could see patterns across the full product surface — not four separate silos.</p>
+          <p class="result-desc">iOS, Mac, Windows, and Android usage unified into a single engagement model. For the first time, the team could see patterns across the full product surface, not four separate silos.</p>
         </div>
       </div>
       <div class="result-card">
         <div>
           <div class="result-num amber">Channel quality</div>
           <div class="result-title">Spend directed to what actually activates</div>
-          <p class="result-desc">Acquisition channels are now ranked by the users they produce — not just downloads, but users who reach meaningful engagement. Growth spend shifts to the sources that retain.</p>
+          <p class="result-desc">Acquisition channels are now ranked by the users they produce, not just downloads, but users who reach meaningful engagement. Growth spend shifts to the sources that retain.</p>
         </div>
       </div>
       <div class="result-card">
         <div>
           <div class="result-num purple">Full funnel</div>
           <div class="result-title">Every team works off the same picture</div>
-          <p class="result-desc">Executive, product, growth, and customer success all see the same funnel — from first download through activation, paid conversion, and long-term retention. One source of truth, always live.</p>
+          <p class="result-desc">Executive, product, growth, and customer success all see the same funnel, from first download through activation, paid conversion, and long-term retention. One source of truth, always live.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"We finally had a way to see who was engaged and who wasn't — across every platform, in one place. That changed how we prioritised growth and how we thought about retention."</p>
+      <p class="quote-text">"We finally had a way to see who was engaged and who wasn't, across every platform, in one place. That changed how we prioritised growth and how we thought about retention."</p>
       <div class="quote-attr"><strong>Client team</strong> · Vero client</div>
     </div>
   </div>
@@ -743,17 +743,17 @@
         <tr>
           <td><span class="stack-layer">Transformation</span></td>
           <td><span class="stack-tool amber">dbt</span></td>
-          <td><span class="stack-resp">Turns raw events, CRM, and ad data into shared definitions — activation, retention cohorts, MRR, ARR, and CAC all in one project</span></td>
+          <td><span class="stack-resp">Turns raw events, CRM, and ad data into shared definitions, activation, retention cohorts, MRR, ARR, and CAC all in one project</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Orchestration</span></td>
           <td><span class="stack-tool purple">Dagster Cloud</span></td>
-          <td><span class="stack-resp">Schedules every pipeline, tracks asset lineage, handles retries, and posts failures to Slack — managed, so no cluster to maintain</span></td>
+          <td><span class="stack-resp">Schedules every pipeline, tracks asset lineage, handles retries, and posts failures to Slack, managed, so no cluster to maintain</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Reporting</span></td>
           <td><span class="stack-tool cyan">Hex</span></td>
-          <td><span class="stack-resp">Executive, product, and growth dashboards — live, role-secured, and built on dbt mart models</span></td>
+          <td><span class="stack-resp">Executive, product, and growth dashboards, live, role-secured, and built on dbt mart models</span></td>
         </tr>
         <tr>
           <td><span class="stack-layer">Activation</span></td>

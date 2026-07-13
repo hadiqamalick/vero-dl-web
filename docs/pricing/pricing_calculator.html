@@ -540,8 +540,8 @@
           </select>
           <div style="margin-top:0.75rem;">
             <label for="warehouseMonthly">Infra / mo</label>
-            <input type="number" id="warehouseMonthly" value="0" min="0" max="50000" step="5">
-            <span class="hint">You enter cost for any warehouse. Switching type suggests a default if this is $0.</span>
+            <input type="number" id="warehouseMonthly" value="500" min="0" max="50000" step="5">
+            <span class="hint">Default is $500/mo for any warehouse. Edit to match the client bill.</span>
           </div>
         </div>
       </div>
@@ -787,9 +787,9 @@
       mix: { label: 'Mix (dlt + Fivetran)', monthly: 0, buildMult: 0.8 }
     },
     warehouse: {
-      bigquery: { label: 'BigQuery', monthlyMode: 'estimate' },
-      clickhouse: { label: 'ClickHouse', monthly: 150 },
-      snowflake: { label: 'Snowflake', monthly: 200 }
+      bigquery: { label: 'BigQuery', monthly: 500 },
+      clickhouse: { label: 'ClickHouse', monthly: 500 },
+      snowflake: { label: 'Snowflake', monthly: 500 }
     },
     dbt: {
       core: { label: 'dbt Core', monthly: 0 },
@@ -813,7 +813,7 @@
     billRate: 70,
     t1Count: 4, t1Hours: 6, t2Count: 0, t2Hours: 12, t3Count: 0, t3Hours: 28,
     ingestionTool: 'dlt', fivetranMonthly: 0,
-    warehouseHours: 16, warehouseType: 'bigquery', warehouseMonthly: 0,
+    warehouseHours: 16, warehouseType: 'bigquery', warehouseMonthly: 500,
     dbtHours: 45, dbtPlatform: 'core', dbtCloudMonthly: 0,
     reportCount: 3, hoursPerReport: 6, reportingSetupHours: 8,
     reportingTool: 'metabase', reportingToolMonthly: 0,
@@ -1064,15 +1064,6 @@
     return GKE[tier] || GKE.small;
   }
 
-  function warehouseMonthly() {
-    const storage = num('storageGb') || autoStorageGb();
-    const tb = num('monthlyTbScanned') || autoTbScanned();
-    const storageCost = storage * 0.02;
-    const queryCost = tb * 5;
-    const base = 25;
-    return storageCost + queryCost + base;
-  }
-
   function reportingBuildHours() {
     return num('reportingSetupHours') + int('reportCount') * num('hoursPerReport');
   }
@@ -1101,13 +1092,7 @@
     if (!force && num('warehouseMonthly') > 0) return;
     const whType = $('warehouseType').value;
     const cfg = TOOL_LOOKUP.warehouse[whType];
-    if (!cfg) return;
-    if (cfg.monthlyMode === 'estimate') {
-      syncStorageEstimates();
-      $('warehouseMonthly').value = Math.round(warehouseMonthly() * 100) / 100;
-    } else {
-      $('warehouseMonthly').value = cfg.monthly || 0;
-    }
+    $('warehouseMonthly').value = cfg ? (cfg.monthly || 500) : 500;
   }
 
   function onWarehouseTypeChange() {
@@ -1348,9 +1333,6 @@
 
   ['refreshCadence', 't1Count', 't2Count', 't3Count', 'gkeTier'].forEach((id) => {
     $(id).addEventListener('change', () => {
-      if ($('warehouseType').value === 'bigquery' && num('warehouseMonthly') === 0) {
-        suggestWarehouseMonthly(false);
-      }
       syncAllToolPricing(false);
       onFieldChange();
     });

@@ -155,7 +155,7 @@
   /* === Slide 2: Problem === */
   .s-problem { background: var(--bg); }
   .pain-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 1rem; margin-top: 0.25rem;
   }
   .pain-card {
@@ -175,12 +175,17 @@
   /* === Slide 3: What we build === */
   .s-build { background: var(--bg); }
   .build-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 0.85rem;
   }
   .build-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.75rem 1.5rem;
+    border-radius: 12px; padding: 1.35rem 1.25rem;
+    grid-column: span 2;
+  }
+  .build-card:nth-child(4),
+  .build-card:nth-child(5) {
+    grid-column: span 3;
   }
   .build-card .bnum {
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
@@ -261,7 +266,7 @@
     border: 1px solid var(--border); border-radius: 8px;
     font-weight: 600; font-size: 0.95rem; text-align: center;
   }
-  .clients-panel li.c-volter { border-left: 3px solid var(--blue); }
+  .clients-panel li.c-voltera { border-left: 3px solid var(--blue); }
   .clients-panel li.c-filed { border-left: 3px solid var(--green); }
   .clients-panel li.c-westwise { border-left: 3px solid var(--amber); }
   .clients-panel li.c-synthflow { border-left: 3px solid #8b5cf6; }
@@ -998,6 +1003,11 @@
     .icp-layout, .icp-grid, .speed-banner, .flow {
       grid-template-columns: 1fr;
     }
+    .build-card,
+    .build-card:nth-child(4),
+    .build-card:nth-child(5) {
+      grid-column: span 1;
+    }
     .speed-arrow { justify-content: center; transform: rotate(90deg); }
     .flow-step::after { content: ""; }
   }
@@ -1016,7 +1026,7 @@
   <p class="brand">VERO</p>
   <h1 class="hero-line">Data infrastructure for growing teams</h1>
   <p class="hero-sub">Live in days, not months</p>
-  <p class="def"><strong>Vero</strong> connects scattered systems into one foundation: warehouse, pipelines, and dashboards your team runs on, fully owned by the customer</p>
+  <p class="def"><strong>Vero</strong> builds your warehouse, pipelines and dashboards, so your whole team finally works from one number everyone trusts</p>
   <div class="presenter-card">
     <div class="label">Presented by</div>
     <div class="names">Hadiqa &amp; Nidal</div>
@@ -1048,6 +1058,11 @@
       <div class="pain-title">No data team to build the foundation</div>
       <p class="pain-desc">You need a warehouse, models, and dashboards, not a six-month hiring cycle before anything ships.</p>
     </article>
+    <article class="pain-card">
+      <div class="pain-num">04</div>
+      <div class="pain-title">AI and dashboards are blocked</div>
+      <p class="pain-desc">You want exec dashboards or AI answers on your data, but nothing is trustworthy enough to build on yet. Every question still waits on a person.</p>
+    </article>
   </div>
 </section>
 
@@ -1055,7 +1070,7 @@
 <section class="slide s-journey" data-journey-slide>
     <span class="slide-num">03 / 13</span>
   <span class="eyebrow">The fix</span>
-    <h1 id="journeyTitle">Every system talks past the others.</h1>
+    <h1 id="journeyTitle">Your tools don't talk to each other</h1>
   <h2 id="journeySub">Product, marketing, ecommerce, finance, CRM, and customer support, all disconnected.</h2>
     <div class="journey-wrap">
       <div class="journey-meta">
@@ -1180,7 +1195,7 @@
 <section class="slide s-build">
   <span class="slide-num">04 / 13</span>
   <span class="eyebrow">What we build</span>
-  <h1>The data foundation has four forms</h1>
+  <h1>The data foundation has five forms</h1>
   <h2>Turn scattered tools into a single source of truth. Same deliverables on every engagement.</h2>
 
   <div class="build-grid">
@@ -1201,11 +1216,15 @@
     </article>
     <article class="build-card">
       <div class="bnum">04</div>
+      <div class="btitle">Natural language answers</div>
+      <p class="bdesc">Ask a question in plain English and get a quality answer from your warehouse, grounded in your definitions, not generic AI guesses.</p>
+    </article>
+    <article class="build-card">
+      <div class="bnum">05</div>
       <div class="btitle">Orchestration &amp; deployment</div>
       <p class="bdesc">Dagster runs the stack on a schedule in their cloud. Pipelines, lineage, and alerts owned end to end, not bolted on later.</p>
     </article>
   </div>
-  <p class="stack-foot">Stack: dlt · dbt · Dagster · warehouse of choice · runs in their cloud</p>
 </section>
 
 <!-- ===== SLIDE 5: Delivery ===== -->
@@ -1253,7 +1272,7 @@
     <aside class="clients-panel">
       <div class="who-title">Sample clients</div>
       <ul>
-        <li class="c-volter">Volter</li>
+        <li class="c-voltera">Voimage.pngltera</li>
         <li class="c-filed">Filed</li>
         <li class="c-westwise">Westwise</li>
         <li class="c-synthflow">Synthflow</li>
@@ -1314,7 +1333,7 @@
       <p class="plabel">Ops, sales, and finance on shared KPI definitions</p>
     </div>
   </div>
-  <p class="proof-note">More case studies: <a href="https://www.datumlabs.io/vero">datumlabs.io/vero</a></p>
+  <p class="proof-note">More case studies: <a href="https://www.datumlabs.io/vero#Case-Studies">datumlabs.io/vero</a></p>
 </section>
 
 <!-- ===== SLIDE 9: How we sell it ===== -->
@@ -1539,8 +1558,8 @@
 <!-- ===== SLIDE 13: Close ===== -->
 <section class="slide s-cta dark">
   <span class="slide-num">13 / 13</span>
-  <h1 class="big">Align and land the first offers</h1>
-  <p class="ask">Agree positioning, ICPs, and the first land packages. Public face of the offer stays on the site.</p>
+  <h1 class="big">One foundation. Their cloud. Live in days.</h1>
+  <p class="ask">Architecture and delivery are ready to take to market. Next up: vero-init with engineering, then the first client stacks.</p>
   <div class="cta-pill">datumlabs.io/vero</div>
   <div class="cta-url">vero@datumlabs.io</div>
   <div class="footer">Datumlabs · Vero · Internal intro for Head of Engineering · 2026</div>
@@ -1586,7 +1605,7 @@
 
   const JOURNEY_COPY = {
     1: {
-      title: 'Every system talks past the others.',
+      title: 'Your tools don\'t talk to each other',
       sub: 'Product, marketing, ecommerce, finance, CRM, and customer support, all disconnected.'
     },
     2: {
@@ -1638,16 +1657,18 @@
     ind.textContent = `${n} / ${t}`;
     pbar.style.width = `${((i + 1) / total) * 100}%`;
   }
-  function goTo(i) {
+  function goTo(i, opts) {
     const prev = currentSlide();
     const jIdx = journeySlideIndex();
     const sIdx = stackSlideIndex();
     i = Math.max(0, Math.min(total - 1, i));
     if (prev === jIdx && i !== jIdx) setJourneyStep(1);
     if (prev === sIdx && i !== sIdx) setStackStep(1);
-    window.scrollTo({ top: i * window.innerHeight, behavior: 'smooth' });
+    const behavior = (opts && opts.instant) ? 'auto' : 'smooth';
+    window.scrollTo({ top: i * window.innerHeight, behavior });
     if (i === jIdx) scheduleLayoutArrows();
     if (i === sIdx) scheduleStackLayout();
+    updateIndicator();
   }
 
   function hubConnector(x1, y1, x2, y2, options) {
@@ -1871,6 +1892,20 @@
 
   setJourneyStep(1);
   setStackStep(1);
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  function resetToFirstSlide() {
+    setJourneyStep(1);
+    setStackStep(1);
+    goTo(0, { instant: true });
+  }
+  resetToFirstSlide();
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) resetToFirstSlide();
+  });
+  window.addEventListener('load', resetToFirstSlide);
 
   document.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;

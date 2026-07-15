@@ -983,13 +983,45 @@
     font-size: 0.85rem; font-weight: 500;
   }
 
-  /* Technical placeholder */
+  /* === Slide 12: Vero init (technical) === */
   .s-tech { background: var(--bg); }
-  .tech-note {
-    margin-top: 1.5rem; max-width: 36rem;
-    font-size: 1.05rem; color: var(--muted); line-height: 1.55;
-    padding: 1.25rem 1.5rem; background: var(--card);
-    border: 1px solid var(--border); border-radius: 12px;
+  .tech-grid {
+    margin-top: 1.5rem;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; align-items: stretch;
+  }
+  .tech-card {
+    display: flex; flex-direction: column;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem 1.4rem;
+    border-top: 3px solid var(--blue);
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+  }
+  .tech-card-num {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 0.85rem;
+  }
+  .tech-card-title {
+    font-size: 1.15rem; font-weight: 700; line-height: 1.3;
+    margin: 0 0 0.6rem; color: var(--ink);
+  }
+  .tech-card-desc {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.55;
+    margin: 0 0 1.25rem;
+  }
+  .tech-card-tags {
+    margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.4rem;
+    padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+  .tech-tag {
+    font-size: 0.75rem; font-weight: 600; color: var(--blue);
+    background: var(--blue-bg); border-radius: 6px;
+    padding: 0.28rem 0.6rem;
+  }
+  .tech-foot {
+    margin-top: 1.25rem; font-size: 0.95rem; color: var(--muted);
+    line-height: 1.5; padding: 0.95rem 1.3rem;
+    background: var(--blue-bg); border-radius: 10px;
     border-left: 3px solid var(--blue);
   }
 
@@ -1000,7 +1032,7 @@
     .s-hero .hero-sub { font-size: 1.45rem; }
     .s-cta .big { font-size: 2rem; }
     .pain-grid, .build-grid, .proof-stats, .channels, .tiers,
-    .icp-layout, .icp-grid, .speed-banner, .flow {
+    .icp-layout, .icp-grid, .speed-banner, .flow, .tech-grid {
       grid-template-columns: 1fr;
     }
     .build-card,
@@ -1243,9 +1275,39 @@
   </div>
 </section>
 
-<!-- ===== SLIDE 6: ICPs ===== -->
-<section class="slide s-icp">
+<!-- ===== SLIDE 6: Why Vero / speed ===== -->
+<section class="slide s-speed">
   <span class="slide-num">06 / 13</span>
+  <span class="eyebrow">Speed</span>
+  <h1>Days, not months</h1>
+  <h2>Most businesses we work with have the same problems. That is why Vero ships in days, not months.</h2>
+
+  <div class="speed-banner">
+    <div class="speed-block">
+      <div class="speed-label">Building in-house</div>
+      <div class="speed-val">4–6 weeks</div>
+      <p class="speed-note">Hire · ramp · build</p>
+    </div>
+    <div class="speed-arrow" aria-hidden="true">→</div>
+    <div class="speed-block after">
+      <div class="speed-label">With Vero</div>
+      <div class="speed-val">3–5 days</div>
+      <p class="speed-note">Sources connected · pipelines live · dashboards shipped</p>
+    </div>
+  </div>
+
+  <div class="speed-chips">
+    <span class="speed-chip">Similar problems solved</span>
+    <span class="speed-chip">Different businesses</span>
+    <span class="speed-chip">Fully owned by you</span>
+  </div>
+
+  <p class="why-line"><strong>Vero is not a hire.</strong> It is a specialist team with a repeatable process: production-ready foundation in their cloud, without the ramp-up or ongoing headcount.</p>
+</section>
+
+<!-- ===== SLIDE 7: ICPs ===== -->
+<section class="slide s-icp">
+  <span class="slide-num">07 / 13</span>
   <span class="eyebrow">Who Vero is for</span>
   <h1>Ideal customer profiles</h1>
   <h2>Seed / Series A SaaS with CRM + billing + product or ads data, and no platform team to build the foundation.</h2>
@@ -1282,36 +1344,6 @@
   </div>
 </section>
 
-<!-- ===== SLIDE 7: Why Vero / speed ===== -->
-<section class="slide s-speed">
-  <span class="slide-num">07 / 13</span>
-  <span class="eyebrow">Speed</span>
-  <h1>Days, not months</h1>
-  <h2>Most businesses we work with have the same problems. That is why Vero ships in days, not months.</h2>
-
-  <div class="speed-banner">
-    <div class="speed-block">
-      <div class="speed-label">Building in-house</div>
-      <div class="speed-val">4–6 weeks</div>
-      <p class="speed-note">Hire · ramp · build</p>
-    </div>
-    <div class="speed-arrow" aria-hidden="true">→</div>
-    <div class="speed-block after">
-      <div class="speed-label">With Vero</div>
-      <div class="speed-val">3–5 days</div>
-      <p class="speed-note">Sources connected · pipelines live · dashboards shipped</p>
-    </div>
-  </div>
-
-  <div class="speed-chips">
-    <span class="speed-chip">Similar problems solved</span>
-    <span class="speed-chip">Different businesses</span>
-    <span class="speed-chip">Fully owned by you</span>
-  </div>
-
-  <p class="why-line"><strong>Vero is not a hire.</strong> It is a specialist team with a repeatable process: production-ready foundation in their cloud, without the ramp-up or ongoing headcount.</p>
-</section>
-
 <!-- ===== SLIDE 8: Proof ===== -->
 <section class="slide s-proof">
   <span class="slide-num">08 / 13</span>
@@ -1321,16 +1353,16 @@
 
   <div class="proof-stats">
     <div class="proof-stat">
-      <div class="pval">9 → 1</div>
-      <p class="plabel">Disconnected systems into one warehouse</p>
+      <div class="pval">9 to 1</div>
+      <p class="plabel">Systems unified into one BigQuery warehouse</p>
     </div>
     <div class="proof-stat">
-      <div class="pval">50%</div>
-      <p class="plabel">Refund rate halved once root cause was visible</p>
+      <div class="pval">3 dashboards</div>
+      <p class="plabel">Ops, Sales, and Product with AI querying</p>
     </div>
     <div class="proof-stat">
-      <div class="pval">One truth</div>
-      <p class="plabel">Ops, sales, and finance on shared KPI definitions</p>
+      <div class="pval">&lt; 6 weeks</div>
+      <p class="plabel">Fixed scope, deployed on their own GCP</p>
     </div>
   </div>
   <p class="proof-note">More case studies: <a href="https://www.datumlabs.io/vero#Case-Studies">datumlabs.io/vero</a></p>
@@ -1545,21 +1577,53 @@
     </div>
   </section>
 
-<!-- ===== SLIDE 12: Vero init placeholder ===== -->
+<!-- ===== SLIDE 12: Vero init ===== -->
 <section class="slide s-tech">
   <span class="slide-num">12 / 13</span>
   <span class="eyebrow">Technical</span>
   <h1>Vero init</h1>
   <h2>Bootstrap, repo layout, and skills for the engineering team.</h2>
-  <p class="tech-note">Placeholder for the technical walkthrough. A colleague will add the vero-init repo, skills, and bootstrap steps here.</p>
-  <!-- COLLEAGUE: insert vero-init / git technical slides here -->
+  <div class="tech-grid">
+    <article class="tech-card">
+      <div class="tech-card-num">01 · Extraction</div>
+      <h3 class="tech-card-title">Skills for the extraction layer</h3>
+      <p class="tech-card-desc">Skill files scaffold and generate the extraction layer: one repeatable pattern to pull data from each source.</p>
+      <div class="tech-card-tags">
+        <span class="tech-tag">dltHub</span>
+        <span class="tech-tag">Airbyte</span>
+        <span class="tech-tag">Fivetran</span>
+      </div>
+    </article>
+    <article class="tech-card">
+      <div class="tech-card-num">02 · Infrastructure</div>
+      <h3 class="tech-card-title">Terraform scripts + infra skill</h3>
+      <p class="tech-card-desc">Terraform stands up the infrastructure, paired with a skill that drives setup so every environment comes up identically.</p>
+      <div class="tech-card-tags">
+        <span class="tech-tag">Kubernetes</span>
+        <span class="tech-tag">Terraform</span>
+        <span class="tech-tag">Vault</span>
+        <span class="tech-tag">ArgoCD</span>
+        <span class="tech-tag">Grafana</span>
+      </div>
+    </article>
+    <article class="tech-card">
+      <div class="tech-card-num">03 · Transform</div>
+      <h3 class="tech-card-title">Skill for the dbt staging layer</h3>
+      <p class="tech-card-desc">A skill generates the dbt staging (stg) layer, turning raw extracted data into clean, modelled staging tables.</p>
+      <div class="tech-card-tags">
+        <span class="tech-tag">Dagster</span>
+        <span class="tech-tag">dbt</span>
+      </div>
+    </article>
+  </div>
+  <p class="tech-foot">Each layer is captured as a reusable skill. A new client stack is bootstrapped by running the skills, not hand-building from scratch.</p>
 </section>
 
 <!-- ===== SLIDE 13: Close ===== -->
 <section class="slide s-cta dark">
   <span class="slide-num">13 / 13</span>
   <h1 class="big">One foundation. Their cloud. Live in days.</h1>
-  <p class="ask">Architecture and delivery are ready to take to market. Next up: vero-init with engineering, then the first client stacks.</p>
+  <p class="ask">Architecture and vero-init are ready. Next: take the first client stacks to market.</p>
   <div class="cta-pill">datumlabs.io/vero</div>
   <div class="cta-url">vero@datumlabs.io</div>
   <div class="footer">Datumlabs · Vero · Internal intro for Head of Engineering · 2026</div>

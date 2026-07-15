@@ -367,13 +367,13 @@
           <div class="client-dot">F</div>
           Case Study · Filed · SaaS / Tax Tech
         </div>
-        <h1>Trials were starting. Nobody knew which ones were actually going anywhere — until the data showed them.</h1>
-        <p class="hero-desc">Filed runs a product-led AI tax platform. Prospects came in from ads, organic, and referrals. Trials started. Some converted. But with product usage in Postgres, leads in HubSpot, and ad spend across three portals, nobody could see how a prospect became a trial or which trials were actually using the product. We connected both journeys — Lead to Cash and trial health — into one view.</p>
+        <h1>Trials were starting. Nobody knew which ones were actually going anywhere until the data showed them.</h1>
+        <p class="hero-desc">Filed runs a product-led AI tax platform. Prospects came in from ads, organic, and referrals. Trials started. Some converted. But with product usage in Postgres, leads in HubSpot, and ad spend across three portals, nobody could see how a prospect became a trial or which trials were actually using the product. We connected both journeys, Lead to Cash and trial health, into one view.</p>
       </div>
       <div class="hero-outcomes">
         <div class="outcome-stat">
           <div class="os-val green">Trial health</div>
-          <div class="os-label">each workspace scored by engagement — AMs know which trials need a call</div>
+          <div class="os-label">each workspace scored by engagement, AMs know which trials need a call</div>
         </div>
         <div class="outcome-stat">
           <div class="os-val blue">Lead → Cash</div>
@@ -416,13 +416,13 @@
   <div class="container">
     <span class="eyebrow">The challenge</span>
     <h2>Two journeys. Neither one visible.</h2>
-    <p class="section-sub">A prospect's path from first web visit to paying workspace, and a trial user's path from signup to product engagement — both invisible. Each lived in a separate system with no way to connect them.</p>
+    <p class="section-sub">A prospect's path from first web visit to paying workspace, and a trial user's path from signup to product engagement, both invisible. Each lived in a separate system with no way to connect them.</p>
 
     <div class="challenge-grid">
       <div class="challenge-card">
         <div class="ch-num">01</div>
         <div class="ch-title">Trial users going quiet with no warning</div>
-        <p class="ch-desc">Workspaces signed up for trials, received credits, and started tax preps — but account managers had no way to see who was completing returns vs. abandoning them halfway. By the time a trial went cold, the window to intervene had already closed.</p>
+        <p class="ch-desc">Workspaces signed up for trials, received credits, and started tax preps, but account managers had no way to see who was completing returns vs. abandoning them halfway. By the time a trial went cold, the window to intervene had already closed.</p>
       </div>
       <div class="challenge-card">
         <div class="ch-num">02</div>
@@ -432,7 +432,7 @@
       <div class="challenge-card">
         <div class="ch-num">03</div>
         <div class="ch-title">Product deploys silently broke reports</div>
-        <p class="ch-desc">Postgres schemas changed with every product release. Columns disappeared, names shifted — no alerts, no contracts. Reports went stale between deploys and stakeholders saw wrong numbers without knowing. Nobody trusted the data.</p>
+        <p class="ch-desc">Postgres schemas changed with every product release. Columns disappeared, names shifted, no alerts, no contracts. Reports went stale between deploys and stakeholders saw wrong numbers without knowing. Nobody trusted the data.</p>
       </div>
     </div>
   </div>
@@ -443,7 +443,7 @@
   <div class="container">
     <span class="eyebrow">Data sources connected</span>
     <h2>12 systems. One warehouse.</h2>
-    <p class="section-sub">Every platform Filed relied on — marketing, product, CRM, billing, and event analytics — connected, normalized, and loading on schedule into Snowflake.</p>
+    <p class="section-sub">Every platform Filed relied on. Marketing, product, CRM, billing, and event analytics, connected, normalized, and loading on schedule into Snowflake.</p>
 
     <table class="sources-table">
       <thead>
@@ -531,14 +531,14 @@
   <div class="container">
     <span class="eyebrow">What we built</span>
     <h2>A complete, automated analytics platform.</h2>
-    <p class="section-sub">The same repeatable Vero playbook, adapted to Filed's full-funnel stack — running on Azure, fully owned by their team.</p>
+    <p class="section-sub">The same repeatable Vero playbook, adapted to Filed's full-funnel stack, running on Azure, fully owned by their team.</p>
 
     <div class="built-flow">
       <div class="built-step">
         <div class="bs-num">01</div>
         <div>
           <div class="bs-title">Connected all 12 sources into a central warehouse</div>
-          <p class="bs-desc">Marketing channels run on Fivetran for low-maintenance, managed ingestion. Product databases and HubSpot run on dlt pipelines scheduled via Dagster — with schema evolution built in, so new Postgres columns no longer break downstream reports. PostHog and Sequence connect directly. Everything lands in Snowflake on schedule.</p>
+          <p class="bs-desc">Marketing channels run on Fivetran for low-maintenance, managed ingestion. Product databases and HubSpot run on dlt pipelines scheduled via Dagster, with schema evolution built in, so new Postgres columns no longer break downstream reports. PostHog and Sequence connect directly. Everything lands in Snowflake on schedule.</p>
           <div class="bs-tags">
             <span class="bs-tag">dlt</span>
             <span class="bs-tag">Fivetran</span>
@@ -551,7 +551,7 @@
         <div class="bs-num">02</div>
         <div>
           <div class="bs-title">Built a Lead-to-Cash model the whole company trusts</div>
-          <p class="bs-desc">All business logic lives in one dbt project — staging, intermediate, and mart layers. The Lead-to-Cash model connects ad spend in Google/Facebook/LinkedIn all the way through HubSpot deal stages to active workspaces and billing in Sequence. One definition. No more reconciling spreadsheets before a board meeting.</p>
+          <p class="bs-desc">All business logic lives in one dbt project, staging, intermediate, and mart layers. The Lead-to-Cash model connects ad spend in Google/Facebook/LinkedIn all the way through HubSpot deal stages to active workspaces and billing in Sequence. One definition. No more reconciling spreadsheets before a board meeting.</p>
           <div class="bs-tags">
             <span class="bs-tag amber">dbt Cloud</span>
           </div>
@@ -561,7 +561,7 @@
         <div class="bs-num">03</div>
         <div>
           <div class="bs-title">Shipped 5 production dashboards across every team</div>
-          <p class="bs-desc">Lead to Cash for marketing and sales. Existing Customers and Trial Users for the product and account management team. Trial Funnel from PostHog events. Billing and invoice data. All refreshed automatically — HubSpot every 30 minutes, product every hour, marketing every hour.</p>
+          <p class="bs-desc">Lead to Cash for marketing and sales. Existing Customers and Trial Users for the product and account management team. Trial Funnel from PostHog events. Billing and invoice data. All refreshed automatically, HubSpot every 30 minutes, product every hour, marketing every hour.</p>
           <div class="bs-tags">
             <span class="bs-tag green">Hex</span>
             <span class="bs-tag green">5 dashboards</span>
@@ -572,7 +572,7 @@
         <div class="bs-num">04</div>
         <div>
           <div class="bs-title">Deployed on Azure with Slack alerting end to end</div>
-          <p class="bs-desc">All services run in Docker containers on Azure Kubernetes Service. Dagster orchestrates every pipeline with automatic retries and failure notifications. Custom alerts fire to Slack when adspend per MQL exceeds $100 — and whenever any job fails.</p>
+          <p class="bs-desc">All services run in Docker containers on Azure Kubernetes Service. Dagster orchestrates every pipeline with automatic retries and failure notifications. Custom alerts fire to Slack when adspend per MQL exceeds $100, and whenever any job fails.</p>
           <div class="bs-tags">
             <span class="bs-tag purple">Azure AKS</span>
             <span class="bs-tag">Docker</span>
@@ -586,7 +586,7 @@
       <div class="ac-icon">🔔</div>
       <div class="ac-text">
         <strong>Proactive alerting built in</strong>
-        Dagster sends pipeline failure alerts to Slack immediately. A custom adspend-per-MQL alert fires hourly whenever the metric exceeds $100 — so the marketing team knows before the week ends, not after.
+        Dagster sends pipeline failure alerts to Slack immediately. A custom adspend-per-MQL alert fires hourly whenever the metric exceeds $100, so the marketing team knows before the week ends, not after.
       </div>
     </div>
   </div>
@@ -597,14 +597,14 @@
   <div class="container">
     <span class="eyebrow light">How it unfolded</span>
     <h2 class="light">Two journeys. Both finally visible.</h2>
-    <p class="section-sub" style="color:#94a3b8; margin-bottom: 2.5rem;">The deal journey and the user journey were running in parallel — and both were invisible. Once the data was connected, the team could see every step of both.</p>
+    <p class="section-sub" style="color:#94a3b8; margin-bottom: 2.5rem;">The deal journey and the user journey were running in parallel, and both were invisible. Once the data was connected, the team could see every step of both.</p>
 
     <div class="story-arc">
       <div class="story-chapter">
         <div class="sc-step s1">01 · Signal</div>
         <div class="sc-stat blue">Trials going dark</div>
         <div class="sc-headline">Workspaces signed up. Nobody knew what happened next.</div>
-        <p class="sc-desc">Trial workspaces received credits and started tax preps — but account managers had no performance view. Without joining Postgres product data (completed vs. incomplete returns) to HubSpot deal stages, there was no way to know which trials were engaging and which had quietly gone dormant.</p>
+        <p class="sc-desc">Trial workspaces received credits and started tax preps, but account managers had no performance view. Without joining Postgres product data (completed vs. incomplete returns) to HubSpot deal stages, there was no way to know which trials were engaging and which had quietly gone dormant.</p>
       </div>
       <div class="story-chapter">
         <div class="sc-step s2">02 · Root Cause</div>
@@ -616,7 +616,7 @@
         <div class="sc-step s3">03 · Outcome</div>
         <div class="sc-stat green">Both journeys live</div>
         <div class="sc-headline">Trial health per workspace. Full funnel from first click to paid.</div>
-        <p class="sc-desc">Account managers now see a performance indicator per trial workspace — completed returns vs. incomplete, credit usage, active seats. The Lead-to-Cash model traces every prospect from first web session through MQL and meeting to active workspace. And when adspend per MQL climbs above threshold, the alert fires before the team notices.</p>
+        <p class="sc-desc">Account managers now see a performance indicator per trial workspace, completed returns vs. incomplete, credit usage, active seats. The Lead-to-Cash model traces every prospect from first web session through MQL and meeting to active workspace. And when adspend per MQL climbs above threshold, the alert fires before the team notices.</p>
       </div>
     </div>
   </div>
@@ -627,13 +627,13 @@
   <div class="container">
     <span class="eyebrow">Dashboards shipped</span>
     <h2>Every metric the team needs. Always up to date.</h2>
-    <p class="section-sub">Five production dashboards covering the full funnel — from first ad click to paying workspace. All refreshed on schedule, all queryable directly in Hex.</p>
+    <p class="section-sub">Five production dashboards covering the full funnel, from first ad click to paying workspace. All refreshed on schedule, all queryable directly in Hex.</p>
 
     <div class="dash-grid">
       <div class="dash-card ops">
         <div class="dash-label">Marketing &amp; Sales</div>
         <div class="dash-title">Lead to Cash</div>
-        <p class="dash-desc">The full deal journey in one view — from first web session through form submission, MQL qualification, meeting booked, and trial started. Connects ad spend across every channel to the prospects who actually convert.</p>
+        <p class="dash-desc">The full deal journey in one view, from first web session through form submission, MQL qualification, meeting booked, and trial started. Connects ad spend across every channel to the prospects who actually convert.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Web sessions, bounce rate, and pages per session by channel</div>
           <div class="dash-kpi">Form submissions and MQL conversion rate</div>
@@ -645,7 +645,7 @@
       <div class="dash-card prod">
         <div class="dash-label">Product</div>
         <div class="dash-title">Existing Customers</div>
-        <p class="dash-desc">Live view of the active customer base — workspaces, seats, and AI usage. Connects backend product data with billing and credit consumption.</p>
+        <p class="dash-desc">Live view of the active customer base. Workspaces, seats, and AI usage. Connects backend product data with billing and credit consumption.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Workspaces: active vs inactive</div>
           <div class="dash-kpi">Seats and user activity</div>
@@ -656,7 +656,7 @@
       <div class="dash-card sales">
         <div class="dash-label">Account Management</div>
         <div class="dash-title">Trial User Health &amp; Performance</div>
-        <p class="dash-desc">A workspace-level view for account managers — each trial scored by engagement. Completed tax returns vs. incomplete is the performance signal: good performance means completions are ahead; bad means the team needs to reach out.</p>
+        <p class="dash-desc">A workspace-level view for account managers. Each trial scored by engagement. Completed tax returns vs. incomplete is the performance signal: good performance means completions are ahead; bad means the team needs to reach out.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Performance indicator per workspace: good vs. not ideal</div>
           <div class="dash-kpi">Completed vs. incomplete tax returns by trial</div>
@@ -668,7 +668,7 @@
       <div class="dash-card fin">
         <div class="dash-label">Finance</div>
         <div class="dash-title">Billing &amp; Invoices</div>
-        <p class="dash-desc">Revenue and billing data from Sequence surfaced in Hex — invoices, payment patterns, and subscription health all in one place.</p>
+        <p class="dash-desc">Revenue and billing data from Sequence surfaced in Hex, invoices, payment patterns, and subscription health all in one place.</p>
         <div class="dash-kpis">
           <div class="dash-kpi">Invoice and transaction history</div>
           <div class="dash-kpi">Payment patterns and billing cycles</div>
@@ -690,7 +690,7 @@
     <div class="impact-row">
       <div class="impact-stat">
         <div class="impact-val green">Trial health</div>
-        <div class="impact-label">per workspace — AMs see completion rate before a trial goes cold</div>
+        <div class="impact-label">per workspace, AMs see completion rate before a trial goes cold</div>
       </div>
       <div class="impact-stat">
         <div class="impact-val blue">Lead → Cash</div>
@@ -698,11 +698,11 @@
       </div>
       <div class="impact-stat">
         <div class="impact-val amber">0 exports</div>
-        <div class="impact-label">all 12 sources automated — no CSVs, no manual reconciliation</div>
+        <div class="impact-label">all 12 sources automated, no CSVs, no manual reconciliation</div>
       </div>
       <div class="impact-stat">
         <div class="impact-val purple">$100 alert</div>
-        <div class="impact-label">adspend per MQL monitored — team acts the same day, not end of quarter</div>
+        <div class="impact-label">adspend per MQL monitored, team acts the same day, not end of quarter</div>
       </div>
     </div>
   </div>
@@ -720,34 +720,34 @@
         <div>
           <div class="result-num green">Trial health</div>
           <div class="result-title">AMs know which trials need a call</div>
-          <p class="result-desc">Each trial workspace is scored by engagement: completed tax returns vs. incomplete, credit usage, active seats. Account managers see which workspaces are performing and which have gone quiet — before the trial expires.</p>
+          <p class="result-desc">Each trial workspace is scored by engagement: completed tax returns vs. incomplete, credit usage, active seats. Account managers see which workspaces are performing and which have gone quiet, before the trial expires.</p>
         </div>
       </div>
       <div class="result-card">
         <div>
           <div class="result-num blue">Lead → Cash</div>
           <div class="result-title">The deal journey traced end to end</div>
-          <p class="result-desc">From first web session through form fill, MQL qualification, meeting booked, and trial started — the full deal journey is in one view. The team can see where prospects fall off and which acquisition sources produce trials that convert.</p>
+          <p class="result-desc">From first web session through form fill, MQL qualification, meeting booked, and trial started. The full deal journey is in one view. The team can see where prospects fall off and which acquisition sources produce trials that convert.</p>
         </div>
       </div>
       <div class="result-card">
         <div>
           <div class="result-num amber">No surprises</div>
           <div class="result-title">Product deploys no longer break reports</div>
-          <p class="result-desc">Schema evolution handles new Postgres columns automatically. Dagster retries transient failures. Slack alerts fire the moment something goes wrong — the team knows before a meeting, not during one.</p>
+          <p class="result-desc">Schema evolution handles new Postgres columns automatically. Dagster retries transient failures. Slack alerts fire the moment something goes wrong. The team knows before a meeting, not during one.</p>
         </div>
       </div>
       <div class="result-card">
         <div>
           <div class="result-num purple">$100 alert</div>
           <div class="result-title">Spend efficiency monitored, not discovered</div>
-          <p class="result-desc">Adspend per MQL is tracked daily. When the metric climbs above threshold, the alert fires automatically — so marketing can adjust the same day, not at end of quarter when it's too late to act.</p>
+          <p class="result-desc">Adspend per MQL is tracked daily. When the metric climbs above threshold, the alert fires automatically, so marketing can adjust the same day, not at end of quarter when it's too late to act.</p>
         </div>
       </div>
     </div>
 
     <div class="quote-block">
-      <p class="quote-text">"For the first time, we could see which trials were actually engaging with the product. Account managers knew exactly who to call — and the full deal journey from first click was finally in one place."</p>
+      <p class="quote-text">"For the first time, we could see which trials were actually engaging with the product. Account managers knew exactly who to call, and the full deal journey from first click was finally in one place."</p>
       <div class="quote-attr"><strong>Filed team</strong> · Vero client</div>
     </div>
   </div>
@@ -802,7 +802,7 @@
         <tr>
           <td><span class="stack-layer">Reporting</span></td>
           <td><span class="stack-tool green">Hex</span></td>
-          <td><span class="stack-resp">5 dashboards — Lead to Cash, product usage, trials, customers, and billing — with natural language querying</span></td>
+          <td><span class="stack-resp">5 dashboards, Lead to Cash, product usage, trials, customers, and billing, with natural language querying</span></td>
         </tr>
       </tbody>
     </table>

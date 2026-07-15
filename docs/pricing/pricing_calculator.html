@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vero Pricing Estimator · Datum Labs</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --blue: #4a9eed;
+    --blue-bg: #eaf3fd;
+    --green: #22c55e;
+    --green-bg: #e6f7ec;
+    --amber: #f59e0b;
+    --amber-bg: #fff4e0;
+    --dark: #0f172a;
+    --dark-card: #1e293b;
+    --dark-border: #334155;
+    --dark-muted: #94a3b8;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-header {
+    background: var(--dark);
+    color: #f1f5f9;
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--dark-border);
+  }
+  .page-header .inner { max-width: 1200px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem;
+    display: block;
+  }
+  h1 {
+    font-size: 2rem; font-weight: 800; letter-spacing: -0.03em;
+    margin: 0 0 0.5rem; line-height: 1.15;
+  }
+  .subtitle { color: var(--dark-muted); margin: 0; max-width: 640px; font-size: 0.95rem; }
+
+  .layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; }
+    .sticky-panel { position: static !important; }
+  }
+
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem 1.35rem;
+    margin-bottom: 1rem;
+  }
+  .panel h2 {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    margin: 0 0 1rem;
+  }
+  .panel h3 {
+    font-size: 0.95rem; font-weight: 700; margin: 1.25rem 0 0.75rem;
+    color: var(--ink);
+  }
+  .panel h3:first-of-type { margin-top: 0; }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 1rem;
+  }
+  .field-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .field-grid.one { grid-template-columns: 1fr; }
+  @media (max-width: 600px) {
+    .field-grid, .field-grid.three { grid-template-columns: 1fr; }
+  }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  label .hint {
+    display: block;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 0.72rem;
+    margin-top: 0.1rem;
+  }
+
+  input[type="number"], select {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #fff;
+    color: var(--ink);
+  }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  input:focus, select:focus {
+    outline: 2px solid var(--blue-bg);
+    border-color: var(--blue);
+  }
+
+  .tier-row {
+    display: grid;
+    grid-template-columns: 1fr 72px 72px;
+    gap: 0.5rem;
+    align-items: end;
+    margin-bottom: 0.65rem;
+  }
+  .tier-row .tier-label { font-size: 0.82rem; font-weight: 600; padding-bottom: 0.45rem; }
+  .tier-row .tier-label span { display: block; font-weight: 400; color: var(--muted); font-size: 0.72rem; }
+
+  .sticky-panel {
+    position: sticky;
+    top: 1rem;
+  }
+
+  .summary-card {
+    background: var(--dark);
+    color: #f1f5f9;
+    border-radius: 14px;
+    padding: 1.35rem;
+    margin-bottom: 1rem;
+  }
+  .summary-card .big-price {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 1.1;
+  }
+  .summary-card .price-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--dark-muted);
+    margin-bottom: 0.25rem;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--dark-border);
+    font-size: 0.88rem;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row .val { font-weight: 700; color: #fff; }
+  .summary-row.muted .val { color: var(--dark-muted); font-weight: 500; }
+  .summary-row.highlight {
+    background: rgba(74, 158, 237, 0.12);
+    margin: 0 -0.5rem;
+    padding: 0.65rem 0.5rem;
+    border-radius: 8px;
+    border: none;
+  }
+  .summary-row.highlight .val { color: var(--blue); font-size: 1.05rem; }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: var(--amber-bg);
+    color: #b45309;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+  }
+  .tag.estimate { background: var(--blue-bg); color: #2563eb; }
+
+  table.breakdown {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  table.breakdown th {
+    text-align: left;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.5rem 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  table.breakdown td {
+    padding: 0.45rem 0.4rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.breakdown td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.breakdown tr.subtotal td { font-weight: 700; border-top: 2px solid var(--border); }
+  table.breakdown tr.total td { font-weight: 800; background: var(--blue-bg); }
+
+  .note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+  .note strong { color: var(--ink); }
+
+  .tier-segment {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .tier-segment-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+  }
+  .tier-segment-btn:last-child { border-right: none; }
+  .tier-segment-btn:hover { color: var(--ink); background: #fff; }
+  .tier-segment-btn.active {
+    background: var(--blue-bg);
+    color: #1d4ed8;
+  }
+  .rate-presets {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+  .rate-preset-btn {
+    flex: 1;
+    padding: 0.45rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .rate-preset-btn:hover { color: var(--ink); border-color: #cbd5e1; }
+  .rate-preset-btn.active {
+    background: var(--blue-bg);
+    border-color: #93c5fd;
+    color: #1d4ed8;
+  }
+  .tier-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+    flex-wrap: wrap;
+  }
+  .tier-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: var(--blue-bg);
+    color: #1d4ed8;
+  }
+  .tier-badge.custom {
+    background: var(--amber-bg);
+    color: #b45309;
+  }
+  .tier-factors {
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .tier-factors li { margin-bottom: 0.15rem; }
+
+  .compare-box {
+    background: var(--green-bg);
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    margin-top: 1rem;
+  }
+  .compare-box strong { color: #15803d; }
+
+  .stat-pill {
+    display: inline-block;
+    background: var(--blue-bg);
+    color: #1d4ed8;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+
+  footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 2rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .layer-total {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--blue-bg);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1d4ed8;
+  }
+
+  .step-panel h2 { margin-bottom: 0.85rem; }
+
+  .step-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  @media (max-width: 768px) {
+    .step-split { grid-template-columns: 1fr; }
+  }
+
+  .step-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    background: var(--bg);
+  }
+  .step-block-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-block-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .step-block-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .step-build-total {
+    margin-top: 0.75rem;
+    padding: 0.55rem 0.7rem;
+    background: var(--blue-bg);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1d4ed8;
+  }
+  .tool-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.65rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .tool-price-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .tool-price-display {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="inner">
+    <span class="eyebrow">Datum Labs · Internal</span>
+    <h1>Vero Pricing Estimator</h1>
+    <p class="subtitle">Pick a tier, price each stack layer (build hours × rate), then list tool $/mo in the monthly retainer. New scope is quoted separately.</p>
+  </div>
+</header>
+
+<div class="layout">
+  <div class="inputs-col">
+
+    <div class="panel">
+      <h2>Bill rate</h2>
+      <div class="field-grid one">
+        <div>
+          <label for="billRate">Rate / hr (all labor)</label>
+          <div class="rate-presets" role="group" aria-label="Bill rate presets">
+            <button type="button" class="rate-preset-btn active" data-rate="70">$70</button>
+            <button type="button" class="rate-preset-btn" data-rate="80">$80</button>
+            <button type="button" class="rate-preset-btn" data-rate="90">$90</button>
+          </div>
+          <input type="number" id="billRate" value="70" min="40" max="400" step="1">
+          <span class="hint">Type any rate, or use a preset. Applies to build and maintenance labor on every layer.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Package tier</h2>
+      <div class="tier-segment" role="group" aria-label="Package tier">
+        <button type="button" class="tier-segment-btn active" data-tier="starter">Starter</button>
+        <button type="button" class="tier-segment-btn" data-tier="growth">Growth</button>
+        <button type="button" class="tier-segment-btn" data-tier="scale">Scale</button>
+      </div>
+      <div class="tier-meta">
+        <span class="tier-badge" id="tierBadge">Starter</span>
+        <span style="font-size:0.78rem;color:var(--muted);">Re-select a tier to reset all fields. Edit anything to customize.</span>
+      </div>
+      <ul class="tier-factors" id="tierFactors"></ul>
+    </div>
+
+  <!-- STEP 1: Ingestion -->
+    <div class="panel step-panel">
+      <h2>Step 1 · Ingestion</h2>
+      <div class="step-split">
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Build</span>
+            <span class="step-block-meta" id="ingestionRateMeta">@ $70/hr</span>
+          </div>
+          <div class="tier-row" style="grid-template-columns:1fr 56px 56px 48px;">
+            <div class="tier-label"></div>
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--muted);">Cnt</div>
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--muted);">Hrs</div>
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--muted);">Sub</div>
+          </div>
+          <div class="tier-row" style="grid-template-columns:1fr 56px 56px 48px;">
+            <div class="tier-label">T1<span>Stripe, HubSpot</span></div>
+            <input type="number" id="t1Count" value="4" min="0" max="50">
+            <input type="number" id="t1Hours" value="6" min="2" max="40" step="1">
+            <div id="t1Subtotal" class="tier-label" style="text-align:right;padding-bottom:0.45rem;">—</div>
+          </div>
+          <div class="tier-row" style="grid-template-columns:1fr 56px 56px 48px;">
+            <div class="tier-label">T2<span>Custom API</span></div>
+            <input type="number" id="t2Count" value="0" min="0" max="50">
+            <input type="number" id="t2Hours" value="12" min="4" max="60" step="1">
+            <div id="t2Subtotal" class="tier-label" style="text-align:right;padding-bottom:0.45rem;">—</div>
+          </div>
+          <div class="tier-row" style="grid-template-columns:1fr 56px 56px 48px;">
+            <div class="tier-label">T3<span>Hard auth</span></div>
+            <input type="number" id="t3Count" value="0" min="0" max="50">
+            <input type="number" id="t3Hours" value="28" min="8" max="80" step="1">
+            <div id="t3Subtotal" class="tier-label" style="text-align:right;padding-bottom:0.45rem;">—</div>
+          </div>
+          <div class="step-build-total" id="ingestionLayerTotal">—</div>
+        </div>
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Tool</span>
+          </div>
+          <label for="ingestionTool">Connector</label>
+          <select id="ingestionTool">
+            <option value="dlt" selected>dlt</option>
+            <option value="fivetran">Fivetran</option>
+            <option value="mix">Mix (dlt + Fivetran)</option>
+          </select>
+          <div id="fivetranMonthlyRow" style="display:none;margin-top:0.75rem;">
+            <label for="fivetranMonthly">License / mo</label>
+            <input type="number" id="fivetranMonthly" value="0" min="0" max="50000" step="50">
+            <span class="hint">You enter Fivetran MAR / license cost.</span>
+          </div>
+          <span class="hint" id="fivetranImpact" style="display:block;margin-top:0.5rem;"></span>
+        </div>
+      </div>
+    </div>
+
+  <!-- STEP 2: Warehousing -->
+    <div class="panel step-panel">
+      <h2>Step 2 · Warehousing</h2>
+      <div class="step-split">
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Build</span>
+            <span class="step-block-meta" id="warehouseRateMeta">@ $70/hr</span>
+          </div>
+          <label for="warehouseHours">Setup hours</label>
+          <input type="number" id="warehouseHours" value="16" min="0" max="80">
+          <div class="step-build-total" id="warehouseLayerTotal">—</div>
+        </div>
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Tool</span>
+          </div>
+          <label for="warehouseType">Warehouse</label>
+          <select id="warehouseType">
+            <option value="bigquery" selected>BigQuery</option>
+            <option value="clickhouse">ClickHouse</option>
+            <option value="snowflake">Snowflake</option>
+          </select>
+          <div style="margin-top:0.75rem;">
+            <label for="warehouseMonthly">Infra / mo</label>
+            <input type="number" id="warehouseMonthly" value="500" min="0" max="50000" step="5">
+            <span class="hint">Default is $500/mo for any warehouse. Edit to match the client bill.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- STEP 3: Transformation -->
+    <div class="panel step-panel">
+      <h2>Step 3 · Transformation (dbt)</h2>
+      <div class="step-split">
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Build</span>
+            <span class="step-block-meta" id="dbtRateMeta">@ $70/hr</span>
+          </div>
+          <label for="dbtHours">Modeling hours</label>
+          <input type="number" id="dbtHours" value="45" min="0" max="500">
+          <div class="step-build-total" id="dbtLayerTotal">—</div>
+        </div>
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Tool</span>
+          </div>
+          <label for="dbtPlatform">dbt platform</label>
+          <select id="dbtPlatform">
+            <option value="core" selected>dbt Core</option>
+            <option value="cloud">dbt Cloud</option>
+          </select>
+          <div style="margin-top:0.75rem;">
+            <label for="dbtCloudMonthly">License / mo</label>
+            <input type="number" id="dbtCloudMonthly" value="0" min="0" max="5000" step="25">
+            <span class="hint" id="dbtCloudHint">dbt Core is $0. Enter dbt Cloud license when selected.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- STEP 4: Reporting -->
+    <div class="panel step-panel">
+      <h2>Step 4 · Reporting</h2>
+      <div class="step-split">
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Build</span>
+            <span class="step-block-meta" id="reportingRateMeta">@ $70/hr</span>
+          </div>
+          <div class="field-grid three">
+            <div>
+              <label for="reportCount">Reports</label>
+              <input type="number" id="reportCount" value="3" min="0" max="30">
+            </div>
+            <div>
+              <label for="hoursPerReport">Hrs / report</label>
+              <input type="number" id="hoursPerReport" value="6" min="2" max="20" step="1">
+            </div>
+            <div>
+              <label for="reportingSetupHours">Setup hrs</label>
+              <input type="number" id="reportingSetupHours" value="8" min="0" max="40">
+            </div>
+          </div>
+          <div class="step-build-total" id="reportingLayerTotal">—</div>
+        </div>
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Tool</span>
+          </div>
+          <label for="reportingTool">BI tool</label>
+          <select id="reportingTool">
+            <option value="metabase" selected>Metabase</option>
+            <option value="hex">Hex</option>
+            <option value="looker">Looker</option>
+            <option value="powerbi">Power BI</option>
+            <option value="none">None</option>
+          </select>
+          <div style="margin-top:0.75rem;">
+            <label for="reportingToolMonthly">License / mo</label>
+            <input type="number" id="reportingToolMonthly" value="0" min="0" max="50000" step="25">
+            <span class="hint">You enter BI tool cost (Metabase VM, Hex, Looker, etc.).</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- STEP 5: Deployment -->
+    <div class="panel step-panel">
+      <h2>Step 5 · Deployment</h2>
+      <div class="step-split">
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Build</span>
+            <span class="step-block-meta" id="deploymentRateMeta">@ $70/hr</span>
+          </div>
+          <div class="field-grid two">
+            <div>
+              <label for="discoveryHours">Discovery + IAM hrs</label>
+              <input type="number" id="discoveryHours" value="12" min="0" max="40">
+            </div>
+            <div>
+              <label for="orchSetupHours">Orchestration hrs</label>
+              <input type="number" id="orchSetupHours" value="0" min="0" max="60">
+            </div>
+          </div>
+          <div class="step-build-total" id="deploymentLayerTotal">—</div>
+        </div>
+        <div class="step-block">
+          <div class="step-block-head">
+            <span class="step-block-title">Tool</span>
+          </div>
+          <label for="orchestration">Hosting model</label>
+          <select id="orchestration">
+            <option value="none" selected>None (cron / lightweight)</option>
+            <option value="gke">Dagster self-host on K8s/GCP</option>
+            <option value="dagster_cloud">Dagster Cloud (managed)</option>
+          </select>
+          <div id="gkeTierRow" style="display:none;margin-top:0.75rem;">
+            <label for="gkeTier">Cluster footprint</label>
+            <select id="gkeTier">
+              <option value="auto">Auto (sources + refresh)</option>
+              <option value="small">Small, 2× e2-standard-2 (~$191/mo)</option>
+              <option value="medium">Medium, 3× e2-standard-4 (~$397/mo)</option>
+              <option value="large">Large, 5× custom nodes (~$592/mo)</option>
+            </select>
+          </div>
+          <div style="margin-top:0.75rem;">
+            <label for="refreshCadence">Pipeline refresh</label>
+            <select id="refreshCadence">
+              <option value="weekly">Weekly</option>
+              <option value="daily" selected>Daily</option>
+              <option value="hourly">Hourly</option>
+              <option value="realtime">Near real-time</option>
+            </select>
+          </div>
+          <div class="tool-price-row" id="orchestrationToolPriceRow" style="display:none;">
+            <span class="tool-price-label">Infra / mo</span>
+            <span id="orchestrationToolMonthlyDisplay" class="tool-price-display">$0</span>
+          </div>
+          <input type="hidden" id="orchestrationMonthly" value="0">
+        </div>
+      </div>
+    </div>
+
+    <div id="tierHiddenFields" hidden>
+      <input type="hidden" id="monitoringMonthly" value="50">
+      <input type="hidden" id="storageGb" value="80">
+      <input type="hidden" id="monthlyTbScanned" value="0.3">
+    </div>
+
+  <!-- Build breakdown table -->
+    <div class="panel">
+      <h2>One-time build breakdown</h2>
+      <table class="breakdown" id="buildTable">
+        <thead>
+          <tr><th>Line item</th><th style="text-align:right">Hours</th><th style="text-align:right">Labor $</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  <!-- Retainer breakdown -->
+    <div class="panel">
+      <h2>Monthly retainer breakdown</h2>
+      <div style="max-width:280px;margin-bottom:1rem;">
+        <label for="maintHoursMonthly">Maintenance labor hrs / mo</label>
+        <input type="number" id="maintHoursMonthly" value="7" min="0" max="200" step="0.5">
+        <span class="hint">Vero labor for upkeep. $/mo uses bill rate at top.</span>
+      </div>
+      <table class="breakdown" id="runTable">
+        <thead>
+          <tr><th>Layer</th><th>Tool / service</th><th style="text-align:right">Hrs / mo</th><th style="text-align:right">$/mo</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Sticky summary -->
+  <div class="sticky-panel">
+    <div class="summary-card">
+      <div class="price-label">One-time build</div>
+      <div class="big-price" id="outBuildPrice">—</div>
+      <div class="summary-row muted">
+        <span>Build labor</span>
+        <span class="val" id="outBuildLabor">—</span>
+      </div>
+      <div class="summary-row muted">
+        <span>Includes 1× monthly retainer</span>
+        <span class="val" id="outBuildFirstMonth">—</span>
+      </div>
+      <div class="summary-row">
+        <span>Build hours</span>
+        <span class="val" id="outBuildHours">—</span>
+      </div>
+      <div class="summary-row highlight" style="margin-top:0.75rem;">
+        <span>Monthly retainer</span>
+        <span class="val" id="outRetainerPrice">—</span>
+      </div>
+      <div class="summary-row">
+        <span>Maintenance hours / mo</span>
+        <span class="val" id="outRetainerHours">—</span>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:0;">
+      <h2>Year 1 snapshot</h2>
+      <div class="summary-row highlight" style="border:none;background:var(--green-bg);">
+        <span style="color:#15803d;font-weight:700;">Year 1 all-in</span>
+        <span class="val" id="outYear1Total" style="color:#15803d;">—</span>
+      </div>
+      <div class="summary-row" style="border-color:var(--border);color:var(--ink);margin-top:0.5rem;">
+        <span>One-time build</span>
+        <span class="val" id="outYear1Build" style="color:var(--ink);">—</span>
+      </div>
+      <div class="summary-row" style="border-color:var(--border);color:var(--ink);">
+        <span>+ 11× monthly retainer</span>
+        <span class="val" id="outYear1Retainer" style="color:var(--ink);">—</span>
+      </div>
+
+      <div class="compare-box">
+        vs. hiring a data engineer (~<strong id="outDeSalary">$130k</strong>/yr): Vero year-one is roughly <strong id="outSavingsPct">—</strong> of that cost, with live stack in days not months.
+      </div>
+
+      <div class="note" style="margin-top:1rem;">
+        <strong>One-time build</strong> = build labor + first month retainer (tools + maintenance). <strong>Monthly retainer</strong> applies from month 2 onward. New sources, reports, or scope changes are quoted separately.
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Internal estimator only. Figures are illustrative. Validate against real rates and cloud bills before sending a proposal. See <a href="model.md">model.md</a> · GKE: <code>gke_cost_comparison.docx</code>
+</footer>
+
+<script>
+(function () {
+  const GKE = { small: 191, medium: 397, large: 592, none: 0 };
+  const CADENCE_MULT = { weekly: 0.75, daily: 1.0, hourly: 1.35, realtime: 1.6 };
+  const CADENCE_GKE = { weekly: 'small', daily: 'small', hourly: 'medium', realtime: 'large' };
+
+  const TOOL_LOOKUP = {
+    ingestion: {
+      dlt: { label: 'dlt', monthly: 0, buildMult: 1 },
+      fivetran: { label: 'Fivetran', monthly: 0, buildMult: 0.6 },
+      mix: { label: 'Mix (dlt + Fivetran)', monthly: 0, buildMult: 0.8 }
+    },
+    warehouse: {
+      bigquery: { label: 'BigQuery', monthly: 500 },
+      clickhouse: { label: 'ClickHouse', monthly: 500 },
+      snowflake: { label: 'Snowflake', monthly: 500 }
+    },
+    dbt: {
+      core: { label: 'dbt Core', monthly: 0 },
+      cloud: { label: 'dbt Cloud', monthly: 100 }
+    },
+    reporting: {
+      metabase: { label: 'Metabase', monthly: 0 },
+      hex: { label: 'Hex', monthly: 450 },
+      looker: { label: 'Looker', monthly: 3000 },
+      powerbi: { label: 'Power BI', monthly: 10 },
+      none: { label: 'None', monthly: 0 }
+    },
+    orchestration: {
+      none: { label: 'None', monthly: 0 },
+      gke: { label: 'Dagster self-host on K8s/GCP', monthlyMode: 'gke' },
+      dagster_cloud: { label: 'Dagster Cloud (managed)', monthly: 100 }
+    }
+  };
+
+  const BASE_DEFAULTS = {
+    billRate: 70,
+    t1Count: 4, t1Hours: 6, t2Count: 0, t2Hours: 12, t3Count: 0, t3Hours: 28,
+    ingestionTool: 'dlt', fivetranMonthly: 0,
+    warehouseHours: 16, warehouseType: 'bigquery', warehouseMonthly: 500,
+    dbtHours: 45, dbtPlatform: 'core', dbtCloudMonthly: 0,
+    reportCount: 3, hoursPerReport: 6, reportingSetupHours: 8,
+    reportingTool: 'metabase', reportingToolMonthly: 0,
+    discoveryHours: 12, orchSetupHours: 0, orchestration: 'none',
+    orchestrationMonthly: 0, gkeTier: 'auto',
+    refreshCadence: 'daily',
+    maintHoursMonthly: 7, monitoringMonthly: 50,
+    storageGb: 80, monthlyTbScanned: 0.3
+  };
+
+  const TIERS = {
+    starter: {
+      label: 'Starter',
+      factors: [
+        'Up to 4 sources',
+        '3 reports',
+        'Metabase reporting',
+        '5-day build'
+      ],
+      values: {}
+    },
+    growth: {
+      label: 'Growth',
+      factors: [
+        'Up to 10 sources (7 T1 + 2 T2)',
+        '6 reports',
+        'Metabase reporting',
+        'Dagster on GKE',
+        '6-day build'
+      ],
+      values: {
+        t1Count: 7, t2Count: 2, t3Count: 0,
+        warehouseHours: 20,
+        dbtHours: 83,
+        reportCount: 6,
+        discoveryHours: 16,
+        orchSetupHours: 24,
+        maintHoursMonthly: 16,
+        orchestration: 'gke',
+        refreshCadence: 'daily',
+        gkeTier: 'medium',
+        orchestrationMonthly: 397,
+        storageGb: 200,
+        monthlyTbScanned: 1
+      }
+    },
+    scale: {
+      label: 'Scale',
+      factors: [
+        '10+ sources (8 T1 + 3 T2 + 1 T3)',
+        '8 reports',
+        'Hex reporting',
+        'Dagster on GKE (large)',
+        'Hourly refresh · 7-day build'
+      ],
+      values: {
+        t1Count: 8, t2Count: 3, t3Count: 1,
+        warehouseHours: 24,
+        dbtHours: 126,
+        reportCount: 8,
+        reportingTool: 'hex',
+        ingestionTool: 'mix',
+        fivetranMonthly: 500,
+        discoveryHours: 20,
+        orchSetupHours: 32,
+        maintHoursMonthly: 31,
+        orchestration: 'gke',
+        refreshCadence: 'hourly',
+        gkeTier: 'large',
+        orchestrationMonthly: 592,
+        storageGb: 500,
+        monthlyTbScanned: 3
+      }
+    }
+  };
+
+  const FIELD_KEYS = Object.keys(BASE_DEFAULTS);
+  const TIER_IDS = Object.keys(TIERS);
+
+  const $ = (id) => document.getElementById(id);
+  const num = (id) => parseFloat($(id).value) || 0;
+  const int = (id) => parseInt($(id).value, 10) || 0;
+
+  let applyingTier = false;
+  let activeTierId = 'starter';
+
+  function laborRate() {
+    return num('billRate') || 70;
+  }
+
+  function syncStorageEstimates() {
+    if (applyingTier) return;
+    $('storageGb').value = autoStorageGb();
+    $('monthlyTbScanned').value = autoTbScanned();
+  }
+
+  function updateBillRatePresetUI() {
+    const rate = num('billRate');
+    document.querySelectorAll('.rate-preset-btn').forEach((btn) => {
+      btn.classList.toggle('active', parseInt(btn.dataset.rate, 10) === rate);
+    });
+  }
+
+  function onBillRateChange() {
+    updateBillRatePresetUI();
+    updateStepRateMeta();
+    onFieldChange();
+  }
+
+  function updateStepRateMeta() {
+    const label = '@ ' + fmt(laborRate()) + '/hr';
+    ['ingestionRateMeta', 'warehouseRateMeta', 'dbtRateMeta', 'reportingRateMeta', 'deploymentRateMeta'].forEach((id) => {
+      if ($(id)) $(id).textContent = label;
+    });
+  }
+
+  function getTierValues(tierId) {
+    return { ...BASE_DEFAULTS, ...(TIERS[tierId] ? TIERS[tierId].values : {}) };
+  }
+
+  function readCurrentValues() {
+    const vals = {};
+    FIELD_KEYS.forEach((key) => {
+      const el = $(key);
+      if (el) vals[key] = el.value;
+    });
+    return vals;
+  }
+
+  function valuesMatchTier(tierId, current) {
+    const expected = getTierValues(tierId);
+    return FIELD_KEYS.every((key) => String(current[key]) === String(expected[key]));
+  }
+
+  function detectActiveTier() {
+    const current = readCurrentValues();
+    for (const id of TIER_IDS) {
+      if (valuesMatchTier(id, current)) return id;
+    }
+    return 'custom';
+  }
+
+  function updateTierUI() {
+    const tier = TIERS[activeTierId];
+    const isCustom = !valuesMatchTier(activeTierId, readCurrentValues());
+
+    document.querySelectorAll('.tier-segment-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.tier === activeTierId);
+    });
+
+    const badge = $('tierBadge');
+    if (isCustom) {
+      badge.textContent = 'Custom';
+      badge.className = 'tier-badge custom';
+    } else {
+      badge.textContent = tier.label;
+      badge.className = 'tier-badge';
+    }
+
+    $('tierFactors').innerHTML = tier.factors.map((f) => '<li>' + f + '</li>').join('');
+  }
+
+  function applyTier(tierId) {
+    if (!TIERS[tierId]) return;
+    applyingTier = true;
+    activeTierId = tierId;
+
+    const vals = getTierValues(tierId);
+    FIELD_KEYS.forEach((key) => {
+      const el = $(key);
+      if (el) el.value = vals[key];
+    });
+
+    syncInfraMonthlyFromEstimates(true);
+    syncAllToolPricing(true);
+    updateBillRatePresetUI();
+    updateStepRateMeta();
+    applyingTier = false;
+    updateTierUI();
+    calc();
+  }
+
+  function onFieldChange() {
+    if (!applyingTier) updateTierUI();
+    calc();
+  }
+
+  function hasOrchestration() {
+    return $('orchestration').value !== 'none';
+  }
+
+  function isGkeOrchestration() {
+    return $('orchestration').value === 'gke';
+  }
+
+  function deploymentBuildHours() {
+    const orch = hasOrchestration() ? num('orchSetupHours') : 0;
+    return num('discoveryHours') + orch;
+  }
+
+  function layerTotalLabel(hours, rate, price) {
+    return hours.toFixed(0) + ' hrs × ' + fmt(rate) + '/hr = ' + fmt(price);
+  }
+
+  function fmt(n) {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  }
+  function fmtDec(n) {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n);
+  }
+
+  function totalSources() {
+    return int('t1Count') + int('t2Count') + int('t3Count');
+  }
+
+  function ingestionBuildHours() {
+    let h = int('t1Count') * num('t1Hours') + int('t2Count') * num('t2Hours') + int('t3Count') * num('t3Hours');
+    const cfg = TOOL_LOOKUP.ingestion[$('ingestionTool').value] || TOOL_LOOKUP.ingestion.dlt;
+    return h * (cfg.buildMult || 1);
+  }
+
+  function autoStorageGb() {
+    const s = totalSources();
+    const base = 50 + s * 25;
+    const cadence = $('refreshCadence').value;
+    const mult = CADENCE_MULT[cadence] || 1;
+    return Math.round(base * mult);
+  }
+
+  function autoTbScanned() {
+    const s = totalSources();
+    const cadence = $('refreshCadence').value;
+    const perSource = { weekly: 0.08, daily: 0.15, hourly: 0.4, realtime: 0.8 };
+    return Math.max(0.1, +(s * (perSource[cadence] || 0.15)).toFixed(2));
+  }
+
+  function resolveGkeMonthly() {
+    if (!isGkeOrchestration()) return 0;
+
+    let tier = $('gkeTier').value;
+    if (tier === 'auto') {
+      const sources = totalSources();
+      const cadence = $('refreshCadence').value;
+      if (sources <= 3 && (cadence === 'weekly' || cadence === 'daily')) tier = 'small';
+      else if (sources <= 7) tier = CADENCE_GKE[cadence] || 'medium';
+      else tier = cadence === 'weekly' ? 'medium' : 'large';
+    }
+    return GKE[tier] || GKE.small;
+  }
+
+  function reportingBuildHours() {
+    return num('reportingSetupHours') + int('reportCount') * num('hoursPerReport');
+  }
+
+  function ingestionToolLabel() {
+    const cfg = TOOL_LOOKUP.ingestion[$('ingestionTool').value];
+    return cfg ? cfg.label : 'dlt';
+  }
+
+  function ingestionToolMonthly() {
+    const tool = $('ingestionTool').value;
+    if (tool === 'dlt') return 0;
+    return num('fivetranMonthly');
+  }
+
+  function warehouseToolLabel() {
+    const cfg = TOOL_LOOKUP.warehouse[$('warehouseType').value];
+    return cfg ? cfg.label : $('warehouseType').value;
+  }
+
+  function warehouseToolMonthly() {
+    return num('warehouseMonthly');
+  }
+
+  function suggestWarehouseMonthly(force) {
+    if (!force && num('warehouseMonthly') > 0) return;
+    const whType = $('warehouseType').value;
+    const cfg = TOOL_LOOKUP.warehouse[whType];
+    $('warehouseMonthly').value = cfg ? (cfg.monthly || 500) : 500;
+  }
+
+  function onWarehouseTypeChange() {
+    suggestWarehouseMonthly(false);
+    onFieldChange();
+  }
+
+  function transformationToolLabel() {
+    const cfg = TOOL_LOOKUP.dbt[$('dbtPlatform').value];
+    return cfg ? cfg.label : 'dbt Core';
+  }
+
+  function dbtPlatformMonthly() {
+    if ($('dbtPlatform').value === 'core') return 0;
+    return num('dbtCloudMonthly');
+  }
+
+  function updateDbtCloudField() {
+    const isCloud = $('dbtPlatform').value === 'cloud';
+    $('dbtCloudMonthly').disabled = !isCloud;
+    $('dbtCloudHint').textContent = isCloud
+      ? 'Default is $100/mo. Change to match your dbt Cloud quote.'
+      : 'dbt Core is $0. Switch to dbt Cloud to enter license cost.';
+    if (!isCloud) $('dbtCloudMonthly').value = 0;
+  }
+
+  function reportingToolLabel() {
+    const cfg = TOOL_LOOKUP.reporting[$('reportingTool').value];
+    return cfg ? cfg.label : 'None';
+  }
+
+  function reportingToolMonthly() {
+    if ($('reportingTool').value === 'none') return 0;
+    return num('reportingToolMonthly');
+  }
+
+  function updateIngestionToolField() {
+    const tool = $('ingestionTool').value;
+    const showFivetran = tool !== 'dlt';
+    $('fivetranMonthlyRow').style.display = showFivetran ? 'block' : 'none';
+    if (!showFivetran) $('fivetranMonthly').value = 0;
+  }
+
+  function updateReportingToolField() {
+    const isNone = $('reportingTool').value === 'none';
+    $('reportingToolMonthly').disabled = isNone;
+    if (isNone) $('reportingToolMonthly').value = 0;
+  }
+
+  function deploymentToolLabel() {
+    const cfg = TOOL_LOOKUP.orchestration[$('orchestration').value];
+    return cfg ? cfg.label : 'None';
+  }
+
+  function deploymentToolMonthly() {
+    if (!hasOrchestration()) return 0;
+    const mode = $('orchestration').value;
+    if (mode === 'gke') return resolveGkeMonthly();
+    if (mode === 'dagster_cloud') return num('orchestrationMonthly') || TOOL_LOOKUP.orchestration.dagster_cloud.monthly;
+    return 0;
+  }
+
+  function syncAllToolPricing(force) {
+    syncInfraMonthlyFromEstimates(force);
+    updateIngestionToolField();
+    updateDbtCloudField();
+    updateReportingToolField();
+
+    const showOrch = hasOrchestration();
+    $('orchestrationToolPriceRow').style.display = showOrch ? 'flex' : 'none';
+    $('gkeTierRow').style.display = isGkeOrchestration() ? 'block' : 'none';
+    if (showOrch) {
+      if ($('orchestration').value === 'dagster_cloud' && (force || num('orchestrationMonthly') === 0)) {
+        $('orchestrationMonthly').value = TOOL_LOOKUP.orchestration.dagster_cloud.monthly;
+      }
+      $('orchestrationToolMonthlyDisplay').textContent = fmtDec(deploymentToolMonthly());
+    } else {
+      $('orchestrationMonthly').value = 0;
+    }
+  }
+
+  function syncInfraMonthlyFromEstimates(force) {
+    if (applyingTier && !force) return;
+    if (isGkeOrchestration()) {
+      $('orchestrationMonthly').value = resolveGkeMonthly();
+    }
+    if (force) suggestWarehouseMonthly(true);
+  }
+
+  function onReportingToolChange() {
+    if (!applyingTier && $('reportingTool').value !== 'none' && num('reportingToolMonthly') === 0) {
+      const cfg = TOOL_LOOKUP.reporting[$('reportingTool').value];
+      if (cfg) $('reportingToolMonthly').value = cfg.monthly;
+    }
+    syncAllToolPricing(false);
+    onFieldChange();
+  }
+
+  function onDbtPlatformChange() {
+    if (!applyingTier && $('dbtPlatform').value === 'cloud' && num('dbtCloudMonthly') === 0) {
+      $('dbtCloudMonthly').value = TOOL_LOOKUP.dbt.cloud.monthly;
+    }
+    syncAllToolPricing(false);
+    onFieldChange();
+  }
+
+  function monthlyRetainerRows(maintHrs, maintLabor) {
+    return [
+      { layer: 'Maintenance', tool: 'Vero labor', hrs: maintHrs, monthly: maintLabor },
+      { layer: 'Ingestion', tool: ingestionToolLabel(), hrs: null, monthly: ingestionToolMonthly() },
+      { layer: 'Warehousing', tool: warehouseToolLabel(), hrs: null, monthly: warehouseToolMonthly() },
+      { layer: 'Transformation', tool: transformationToolLabel(), hrs: null, monthly: dbtPlatformMonthly() },
+      { layer: 'Reporting', tool: reportingToolLabel(), hrs: null, monthly: reportingToolMonthly() },
+      { layer: 'Deployment', tool: deploymentToolLabel(), hrs: null, monthly: deploymentToolMonthly() },
+      { layer: 'Operations', tool: 'Monitoring', hrs: null, monthly: num('monitoringMonthly') }
+    ];
+  }
+
+  function maintenanceLaborHours() {
+    return num('maintHoursMonthly');
+  }
+
+  function calc() {
+    const rate = laborRate();
+
+    const ingHrs = ingestionBuildHours();
+    const whHrs = num('warehouseHours');
+    const dbtHrs = num('dbtHours');
+    const repHrs = reportingBuildHours();
+    const depHrs = deploymentBuildHours();
+
+    const layers = [
+      { name: 'Ingestion (pipelines)', hours: ingHrs, rate: rate },
+      { name: 'Warehousing', hours: whHrs, rate: rate },
+      { name: 'Transformation (dbt)', hours: dbtHrs, rate: rate },
+      { name: 'Reporting (' + int('reportCount') + ' × ' + num('hoursPerReport') + 'h + setup)', hours: repHrs, rate: rate },
+      { name: 'Deployment (discovery + orchestration)', hours: depHrs, rate: rate }
+    ];
+
+    const totalHours = layers.reduce((s, l) => s + l.hours, 0);
+    const buildLabor = layers.reduce((s, l) => s + l.hours * l.rate, 0);
+
+    $('ingestionLayerTotal').textContent = layerTotalLabel(ingHrs, rate, ingHrs * rate);
+    $('warehouseLayerTotal').textContent = layerTotalLabel(whHrs, rate, whHrs * rate);
+    $('dbtLayerTotal').textContent = layerTotalLabel(dbtHrs, rate, dbtHrs * rate);
+    $('reportingLayerTotal').textContent = layerTotalLabel(repHrs, rate, repHrs * rate);
+    $('deploymentLayerTotal').textContent = layerTotalLabel(depHrs, rate, depHrs * rate);
+    syncAllToolPricing(false);
+    updateStepRateMeta();
+
+    const rawT1 = int('t1Count') * num('t1Hours');
+    const rawT2 = int('t2Count') * num('t2Hours');
+    const rawT3 = int('t3Count') * num('t3Hours');
+    const rawIng = rawT1 + rawT2 + rawT3;
+    const ingMult = rawIng > 0 ? ingHrs / rawIng : 1;
+    $('t1Subtotal').textContent = (rawT1 * ingMult).toFixed(0) + 'h';
+    $('t2Subtotal').textContent = (rawT2 * ingMult).toFixed(0) + 'h';
+    $('t3Subtotal').textContent = (rawT3 * ingMult).toFixed(0) + 'h';
+
+    const maintHrs = maintenanceLaborHours();
+    const maintLabor = maintHrs * laborRate();
+    const retainerRows = monthlyRetainerRows(maintHrs, maintLabor);
+    const retainerPrice = retainerRows.reduce((s, r) => s + r.monthly, 0);
+    const quotedBuild = buildLabor + retainerPrice;
+
+    const tbody = $('buildTable').querySelector('tbody');
+    tbody.innerHTML = layers.map(l => {
+      const labor = l.hours * l.rate;
+      return '<tr><td>' + l.name + ' @ ' + fmt(l.rate) + '/hr</td><td class="num">' + l.hours.toFixed(1) + '</td><td class="num">' + fmt(labor) + '</td></tr>';
+    }).join('');
+    tbody.innerHTML += '<tr><td colspan="2">Build labor subtotal</td><td class="num">' + fmt(buildLabor) + '</td></tr>';
+    tbody.innerHTML += '<tr><td colspan="2">+ 1× monthly retainer (tools + maintenance)</td><td class="num">' + fmt(retainerPrice) + '</td></tr>';
+    tbody.innerHTML += '<tr class="total"><td>One-time build total</td><td class="num">' + totalHours.toFixed(0) + '</td><td class="num">' + fmt(quotedBuild) + '</td></tr>';
+
+    const runBody = $('runTable').querySelector('tbody');
+    runBody.innerHTML = retainerRows.map(r => {
+      const hrsCell = r.hrs != null ? r.hrs.toFixed(1) : '—';
+      const monthlyCell = fmt(r.monthly);
+      return '<tr><td>' + r.layer + '</td><td>' + r.tool + '</td><td class="num">' + hrsCell + '</td><td class="num">' + monthlyCell + '</td></tr>';
+    }).join('');
+    runBody.innerHTML += '<tr class="total"><td colspan="2">Monthly retainer total</td><td class="num">' + maintHrs.toFixed(1) + '</td><td class="num">' + fmt(retainerPrice) + '</td></tr>';
+
+    $('outBuildPrice').textContent = fmt(quotedBuild);
+    $('outBuildLabor').textContent = fmt(buildLabor);
+    $('outBuildFirstMonth').textContent = fmt(retainerPrice);
+    $('outBuildHours').textContent = totalHours.toFixed(0) + ' hrs';
+    $('outRetainerPrice').textContent = fmt(retainerPrice) + '/mo';
+    $('outRetainerHours').textContent = maintHrs.toFixed(1) + ' hrs';
+
+    const year1Total = quotedBuild + retainerPrice * 11;
+    $('outYear1Total').textContent = fmt(year1Total);
+    $('outYear1Build').textContent = fmt(quotedBuild);
+    $('outYear1Retainer').textContent = fmt(retainerPrice * 11);
+
+    const deSalary = 130000;
+    $('outDeSalary').textContent = fmt(deSalary);
+    $('outSavingsPct').textContent = Math.round((year1Total / deSalary) * 100) + '%';
+
+    const fivetranImpact = $('fivetranImpact');
+    const fivetran = ingestionToolMonthly();
+    if ($('ingestionTool').value === 'dlt') {
+      fivetranImpact.textContent = '';
+    } else if (fivetran > 0) {
+      fivetranImpact.textContent = 'Fivetran adds ' + fmt(fivetran) + '/mo to monthly retainer. Lowers ingestion build hours.';
+    } else {
+      fivetranImpact.textContent = 'Enter Fivetran license $/mo above. Lowers ingestion build hours.';
+    }
+  }
+
+  document.querySelectorAll('input, select').forEach((el) => {
+    if (el.id === 'billRate') return;
+    el.addEventListener('input', onFieldChange);
+    el.addEventListener('change', onFieldChange);
+  });
+
+  $('billRate').addEventListener('input', onBillRateChange);
+  $('billRate').addEventListener('change', onBillRateChange);
+  document.querySelectorAll('.rate-preset-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      $('billRate').value = btn.dataset.rate;
+      onBillRateChange();
+    });
+  });
+
+  $('dbtPlatform').addEventListener('change', onDbtPlatformChange);
+  $('warehouseType').addEventListener('change', onWarehouseTypeChange);
+
+  $('orchestration').addEventListener('change', () => {
+    if (hasOrchestration() && num('orchSetupHours') === 0) {
+      $('orchSetupHours').value = $('orchestration').value === 'dagster_cloud' ? 16 : 24;
+    }
+    if (!hasOrchestration()) $('orchSetupHours').value = 0;
+    syncAllToolPricing(true);
+    onFieldChange();
+  });
+
+  $('ingestionTool').addEventListener('change', () => { syncAllToolPricing(false); onFieldChange(); });
+
+  ['refreshCadence', 't1Count', 't2Count', 't3Count', 'gkeTier'].forEach((id) => {
+    $(id).addEventListener('change', () => {
+      syncAllToolPricing(false);
+      onFieldChange();
+    });
+  });
+
+  document.querySelectorAll('.tier-segment-btn').forEach((btn) => {
+    btn.addEventListener('click', () => applyTier(btn.dataset.tier));
+  });
+
+  $('reportingTool').addEventListener('change', onReportingToolChange);
+
+  updateStepRateMeta();
+  updateBillRatePresetUI();
+  syncAllToolPricing(true);
+  applyTier('starter');
+})();
+</script>
+</body>
+</html>

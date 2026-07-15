@@ -1,4 +1,4 @@
-# Vero — Documentation Hub
+# Vero: Documentation Hub
 
 Internal workspace for all Vero context: copy drafts, pricing, case study notes, HTML prototypes, and sales/video assets. Use this repo to discuss ongoing changes before they ship to the live site.
 
@@ -18,9 +18,9 @@ Internal workspace for all Vero context: copy drafts, pricing, case study notes,
 
 ### `docs/`
 
-- [`pricing/`](docs/pricing/) — pricing model, questionnaire, simple version
-- [`case_studies/impact_metrics.md`](docs/case_studies/impact_metrics.md) — internal impact numbers per client
-- [`video_plan.md`](docs/video_plan.md) — index to Upwork/Vero video assets
+- [`pricing/`](docs/pricing/), pricing model, questionnaire, [calculator](docs/pricing/pricing_calculator.html), simple version
+- [`case_studies/impact_metrics.md`](docs/case_studies/impact_metrics.md), internal impact numbers per client
+- [`video_plan.md`](docs/video_plan.md), index to Upwork/Vero video assets
 
 ### `html/`
 
@@ -35,7 +35,7 @@ Working HTML prototypes (may differ from the production Webflow site).
 
 ### `upwork/`
 
-Loom/video scripts and slide decks — see [`upwork/README.md`](upwork/README.md).
+Loom/video scripts and slide decks, see [`upwork/README.md`](upwork/README.md).
 
 ### `assets/`
 
@@ -45,14 +45,14 @@ Brand and roadmap images used in docs and decks.
 
 These folders stay on disk for context but are excluded in `.gitignore`:
 
-- **`Vero/`** — source `.docx` files, pitch deck, landing copy, competitor notes, PDF exports
-- **`Dashboards/`** — client dashboard PDFs and screenshots (may contain client-specific data)
+- **`Vero/`**, source `.docx` files, pitch deck, landing copy, competitor notes, PDF exports
+- **`Dashboards/`**, client dashboard PDFs and screenshots (may contain client-specific data)
 
 To track either folder, remove its entry from `.gitignore` and commit deliberately.
 
 ## Naming
 
-File and folder names use `_` (not `-`). **datumlabs** is one word in paths. See [`.cursor/rules/file_naming.mdc`](.cursor/rules/file_naming.mdc).
+File and folder names use `_` (not `-`). **datumlabs** is one word in paths. See [`.cursor/rules/project_conventions.mdc`](.cursor/rules/project_conventions.mdc).
 
 ## External references
 

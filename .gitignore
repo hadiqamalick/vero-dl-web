@@ -1,8 +1,13 @@
 .DS_Store
 *.local
+__pycache__/
+*.pyc
 
 # Large local-only folders (documented in README.md)
 Vero/
 Dashboards/
-.cursor/rules
-upwork
+assets/
+upwork/
+
+# Cursor project rules (local only)
+.cursor/rules/

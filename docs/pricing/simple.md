@@ -1,4 +1,4 @@
-# Vero Pricing — The Simple Version
+# Vero Pricing: The Simple Version
 
 *Datum Labs · 2026-06-30*
 
@@ -22,13 +22,13 @@ Two prices, always:
 7. Hours per **dashboard**? `____`
 
 **Monthly tool costs**
-8. Ingestion — using free **dlt**, or paid **Fivetran**? If Fivetran, `$____/mo`
-9. Transformation — free **dbt Core**, or **dbt Cloud**? If Cloud, `$____/mo`
-10. BI — free **Metabase**, or paid **Hex/Looker**? If paid, `$____/mo`
+8. Ingestion, using free **dlt**, or paid **Fivetran**? If Fivetran, `$____/mo`
+9. Transformation, free **dbt Core**, or **dbt Cloud**? If Cloud, `$____/mo`
+10. BI, free **Metabase**, or paid **Hex/Looker**? If paid, `$____/mo`
 11. Hours/month to **maintain** it (per source)? `____`
 
 **Terms**
-12. Who pays the **cloud bill** — client's own account? (usually yes)
+12. Who pays the **cloud bill**, client's own account? (usually yes)
 13. Retainer billed **monthly or yearly**?
 
 ---
@@ -36,11 +36,11 @@ Two prices, always:
 ## How the price is built
 
 ```
-Build fee  =  (all the build hours added up)  ×  cost/hr  ×  markup
-Retainer   =  (paid tool costs + maintenance hours × cost/hr)  ×  markup
+Build fee  =  (all scoped build hours)  ×  bill rate / hr
+Retainer   =  (maintenance hrs × bill rate)  +  tool costs ($/mo)
 ```
 
-That's it. Everything else is detail.
+That's it. PM overhead, contingency, and retainer markup can be added back later if needed.
 
 ---
 
@@ -53,5 +53,7 @@ That's it. Everything else is detail.
 - Client pays their own cloud bill separately.
 
 Anchor both against the alternative: *hiring a data engineer = $120k+/yr and 3–6 months.* You're a fraction of that.
+
+> **Interactive calculator:** open [`pricing_calculator.html`](pricing_calculator.html) in a browser for live build + retainer estimates from scope inputs.
 
 > Full breakdown (source tiers, formulas, the long questionnaire) lives in [model.md](model.md) if you need it.

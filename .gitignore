@@ -6,7 +6,6 @@ __pycache__/
 # Large local-only folders (documented in README.md)
 Vero/
 Dashboards/
-assets/
 upwork/
 
 # Cursor project rules (local only)

@@ -19,6 +19,7 @@ Internal workspace for all Vero context: copy drafts, pricing, case study notes,
 ### `docs/`
 
 - [`pricing/`](docs/pricing/), pricing model, questionnaire, [calculator](docs/pricing/pricing_calculator.html), simple version
+- [`data_audit.html`](docs/data_audit.html), stakeholder discovery (Grain / email / Slack → Answer log → PRD)
 - [`case_studies/impact_metrics.md`](docs/case_studies/impact_metrics.md), internal impact numbers per client
 - [`video_plan.md`](docs/video_plan.md), index to Upwork/Vero video assets
 
@@ -39,7 +40,7 @@ Loom/video scripts and slide decks, see [`upwork/README.md`](upwork/README.md).
 
 ### `assets/`
 
-Brand and roadmap images used in docs and decks.
+Brand images and stack logos used by `vero_v2.html` and decks.
 
 ### Local-only (not in git)
 
@@ -47,8 +48,9 @@ These folders stay on disk for context but are excluded in `.gitignore`:
 
 - **`Vero/`**, source `.docx` files, pitch deck, landing copy, competitor notes, PDF exports
 - **`Dashboards/`**, client dashboard PDFs and screenshots (may contain client-specific data)
+- **`upwork/`**, Loom/video scripts and slide decks
 
-To track either folder, remove its entry from `.gitignore` and commit deliberately.
+To track a local-only folder, remove its entry from `.gitignore` and commit deliberately.
 
 ## Naming
 

@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vero — Datumlabs pitch deck</title>
+<style>
+  :root {
+    --bg: #fafbfc;
+    --card: #ffffff;
+    --ink: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --blue:   #4a9eed;
+    --blue-bg:#eaf3fd;
+    --cyan:   #06b6d4;
+    --cyan-bg:#e0f7fa;
+    --green:  #22c55e;
+    --green-bg:#e6f7ec;
+    --amber:  #f59e0b;
+    --amber-bg:#fff4e0;
+    --purple: #8b5cf6;
+    --purple-bg:#efeaff;
+    --pink:   #ec4899;
+    --pink-bg:#fdeaf3;
+    --red:    #ef4444;
+    --red-bg: #fde8e8;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Progress bar */
+  .progress {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 3px; background: transparent; z-index: 100;
+  }
+  .progress-bar {
+    height: 100%; width: 0%; background: var(--blue);
+    transition: width .25s ease;
+  }
+
+  /* Slide indicator */
+  .indicator {
+    position: fixed; bottom: 1.25rem; right: 1.5rem;
+    font-size: 0.85rem; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    background: rgba(255,255,255,0.85);
+    padding: 0.4rem 0.7rem; border-radius: 999px;
+    border: 1px solid var(--border); z-index: 100;
+  }
+  .nav-hint {
+    position: fixed; bottom: 1.25rem; left: 1.5rem;
+    font-size: 0.75rem; color: var(--muted); z-index: 100;
+  }
+  .nav-hint kbd {
+    background: #fff; border: 1px solid var(--border);
+    border-bottom-width: 2px; border-radius: 4px;
+    padding: 1px 6px; font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.75rem;
+  }
+
+  /* Slide layout */
+  section.slide {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 5rem 6rem;
+    position: relative;
+  }
+  section.slide .slide-num {
+    position: absolute; top: 1.75rem; right: 2rem;
+    font-size: 0.8rem; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+  section.slide h1 { font-size: 2.5rem; margin: 0 0 .5rem 0; font-weight: 700; letter-spacing: -0.02em; }
+  section.slide h2 { font-size: 1.15rem; margin: 0 0 2rem 0; font-weight: 500; color: var(--muted); }
+  section.slide p  { margin: 0 0 1rem 0; }
+
+  /* === Slide 1: Title === */
+  .s-title { text-align: center; background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg) 70%); }
+  .s-title .hero { font-size: 7rem; font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1; }
+  .s-title .tagline { font-size: 1.5rem; margin-top: 1rem; color: var(--ink); }
+  .s-title .subtag  { font-size: 1rem; color: var(--blue); margin-top: 0.5rem; }
+  .presenter-card {
+    margin: 3rem auto 0; max-width: 26rem;
+    background: var(--card); border: 1px solid var(--blue);
+    border-radius: 14px; padding: 1.5rem;
+  }
+  .presenter-card .label  { font-size: 0.8rem; color: var(--muted); }
+  .presenter-card .names  { font-size: 1.85rem; font-weight: 600; margin: 0.25rem 0; }
+  .presenter-card .org    { font-size: 0.85rem; color: var(--blue); }
+  .s-title .footer { position: absolute; bottom: 2rem; left: 0; right: 0; font-size: 0.8rem; color: var(--muted); }
+
+  /* === Slide 2: Problem === */
+  .s-problem { background: linear-gradient(180deg, var(--red-bg) 0%, var(--bg) 100%); }
+  .pain-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 0.9rem; margin-top: 1rem;
+  }
+  .pain-card {
+    background: #fff; border-radius: 12px; padding: 1.25rem 1.1rem;
+    border: 1px solid var(--border); border-top: 4px solid var(--red);
+    grid-column: span 2; display: flex; flex-direction: column;
+  }
+  .pain-card:nth-child(4),
+  .pain-card:nth-child(5) { grid-column: span 3; }
+  .pain-num {
+    font-size: 0.7rem; color: var(--red); font-weight: 700;
+    letter-spacing: 0.15em; margin-bottom: 0.5rem;
+  }
+  .pain-title {
+    font-size: 1.05rem; font-weight: 600; color: var(--ink);
+    margin-bottom: 0.45rem; line-height: 1.3;
+  }
+  .pain-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.45; }
+
+  /* === Slide 3: 5 repeatables === */
+  .s-repeat { background: linear-gradient(180deg, var(--purple-bg) 0%, var(--bg) 100%); }
+  .repeat-grid { display: flex; flex-direction: column; gap: 0.6rem; }
+  .repeat-row { display: grid; grid-template-columns: 13rem 1fr; gap: 0.75rem; align-items: stretch; }
+  .repeat-badge {
+    border-radius: 10px; padding: 0.9rem 1.2rem;
+    font-weight: 600; font-size: 1.05rem;
+    display: flex; align-items: center;
+    border: 1px solid;
+  }
+  .repeat-desc {
+    background: var(--card); border-radius: 10px;
+    padding: 0.9rem 1.2rem; font-size: 0.95rem;
+    border: 1px solid var(--border);
+    display: flex; align-items: center;
+  }
+  .repeat-desc code {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.9em; background: #f3f4f6; padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .badge-blue   { background: var(--blue-bg);   border-color: var(--blue);   color: var(--blue); }
+  .badge-cyan   { background: var(--cyan-bg);   border-color: var(--cyan);   color: var(--cyan); }
+  .badge-green  { background: var(--green-bg);  border-color: var(--green);  color: var(--green); }
+  .badge-amber  { background: var(--amber-bg);  border-color: var(--amber);  color: var(--amber); }
+  .badge-purple { background: var(--purple-bg); border-color: var(--purple); color: var(--purple); }
+
+  /* === Slide 3: Workflow === */
+  .s-workflow { background: linear-gradient(180deg, var(--green-bg) 0%, var(--bg) 100%); }
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 1.5rem 0 2.5rem; }
+  .flow-step {
+    background: var(--card); border: 1px solid var(--green);
+    border-radius: 10px; padding: 1.5rem 0.5rem;
+    text-align: center; font-weight: 500; font-size: 0.95rem;
+    position: relative;
+  }
+  .flow-step.last { background: var(--green-bg); }
+  .flow-step::after {
+    content: "→"; position: absolute; right: -0.95rem; top: 50%;
+    transform: translateY(-50%); color: var(--green); font-weight: 700;
+    z-index: 1;
+  }
+  .flow-step:last-child::after { content: ""; }
+  .flow-step .stepn { display: block; font-size: 0.7rem; color: var(--muted); margin-bottom: 0.25rem; letter-spacing: 0.1em; }
+  .skills-chain {
+    background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--green);
+    border-radius: 8px; padding: 1rem 1.25rem; font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.9rem; color: var(--ink); margin-bottom: 0.5rem;
+  }
+  .skills-foot { color: var(--muted); font-size: 0.85rem; }
+
+  /* === Slide 4: Days not quarters === */
+  .s-speed { background: linear-gradient(180deg, var(--amber-bg) 0%, var(--bg) 100%); }
+  .timeline { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.5rem; }
+  .timeline-row {
+    background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--amber);
+    border-radius: 8px; padding: 0.85rem 1.25rem; display: flex; align-items: center; gap: 1.25rem;
+  }
+  .timeline-when { font-weight: 600; color: var(--amber); min-width: 4.5rem; }
+  .timeline-what { color: var(--ink); font-size: 0.95rem; }
+  .timeline-what code {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.88em; background: #f3f4f6; padding: 1px 6px; border-radius: 4px;
+  }
+  .speed-callout {
+    background: var(--amber); color: white;
+    border-radius: 10px; padding: 1rem 1.5rem;
+    font-size: 1.15rem; font-weight: 600;
+    display: flex; justify-content: center; align-items: center; gap: 2rem;
+  }
+  .speed-callout .arrow { opacity: 0.6; }
+
+  /* === Slide 5: Who === */
+  .s-who { background: linear-gradient(180deg, var(--cyan-bg) 0%, var(--bg) 100%); }
+  .who-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .who-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+  }
+  .who-card .who-title { font-size: 0.85rem; color: var(--cyan); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
+  .who-card ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .who-card li {
+    padding: 0.7rem 1rem; background: var(--cyan-bg);
+    border-radius: 8px; font-size: 0.95rem;
+  }
+  .who-card.clients li {
+    color: var(--ink); font-weight: 600; font-size: 1.05rem;
+    text-align: center; background: #fff; border: 1px solid var(--border);
+  }
+  .who-card.clients li.c-volter   { border-left: 4px solid var(--blue); }
+  .who-card.clients li.c-filed    { border-left: 4px solid var(--green); }
+  .who-card.clients li.c-westwise { border-left: 4px solid var(--amber); }
+  .who-card.clients li.c-synthflow{ border-left: 4px solid var(--purple); }
+  .who-card.clients li.c-govplus  { border-left: 4px solid var(--pink); }
+
+  /* === Slide 6: How we sell === */
+  .s-sell { background: linear-gradient(180deg, var(--amber-bg) 0%, var(--bg) 100%); }
+  .channels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-bottom: 1.25rem; }
+  .channel {
+    background: #fff; border: 1px solid var(--amber); color: var(--amber);
+    border-radius: 999px; padding: 0.55rem 1rem;
+    text-align: center; font-size: 0.9rem; font-weight: 500;
+  }
+  .voltera {
+    background: #fff; border: 2px solid var(--amber);
+    border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 1.5rem;
+  }
+  .voltera .vlabel { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .voltera .vmath { font-size: 1.4rem; font-weight: 600; font-family: ui-monospace, SFMono-Regular, monospace; }
+  .voltera .vmath .price { color: var(--amber); }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .tier {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.25rem;
+  }
+  .tier .tname { font-size: 0.95rem; font-weight: 700; color: var(--amber); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .tier p { font-size: 0.85rem; line-height: 1.45; color: var(--ink); }
+
+  /* === Slide 7: CTA === */
+  .s-cta { text-align: center; background: linear-gradient(180deg, var(--blue-bg) 0%, var(--bg) 100%); }
+  .s-cta .big { font-size: 5rem; font-weight: 800; letter-spacing: -0.04em; margin: 0; line-height: 1; }
+  .s-cta .ask { font-size: 1.35rem; margin-top: 0.75rem; color: var(--blue); }
+  .cta-email {
+    margin: 2rem auto 0.75rem; display: inline-block;
+    background: #fff; border: 1px solid var(--blue);
+    border-radius: 999px; padding: 0.85rem 1.75rem;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 1.1rem; color: var(--ink);
+  }
+  .cta-url { font-size: 1rem; color: var(--blue); font-family: ui-monospace, SFMono-Regular, monospace; }
+  .s-cta .footer { position: absolute; bottom: 2rem; left: 0; right: 0; font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    section.slide { padding: 3rem 2rem; }
+    .s-title .hero { font-size: 4.5rem; }
+    .s-cta .big { font-size: 3.5rem; }
+    .repeat-row { grid-template-columns: 1fr; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .pain-card, .pain-card:nth-child(4), .pain-card:nth-child(5) { grid-column: span 1; }
+    .flow { grid-template-columns: 1fr; }
+    .flow-step::after { content: ""; }
+    .who-cols, .channels, .tiers { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
+<div class="indicator" id="ind">01 / 08</div>
+<div class="nav-hint"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>space</kbd> to navigate</div>
+
+<!-- ===== SLIDE 1: Title ===== -->
+<section class="slide s-title">
+  <span class="slide-num">01 / 08</span>
+  <h1 class="hero">VERO</h1>
+  <div class="tagline">Repeatable data platforms for early-stage teams</div>
+  <div class="subtag">From kickoff to production &mdash; in days, not quarters</div>
+
+  <div class="presenter-card">
+    <div class="label">Presented by</div>
+    <div class="names">Hadiqa &amp; Nidal</div>
+    <div class="org">Datumlabs &mdash; BD, Content, Design, GTM</div>
+  </div>
+
+  <div class="footer">datumlabs.io &mdash; 2026</div>
+</section>
+
+<!-- ===== SLIDE 2: Problem ===== -->
+<section class="slide s-problem">
+  <span class="slide-num">02 / 08</span>
+  <h1>What problem Vero solves</h1>
+  <h2>Why clients come to us &mdash; the same complaints, every conversation.</h2>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-num">PAIN #1</div>
+      <div class="pain-title">Data is scattered across systems</div>
+      <div class="pain-desc">HubSpot, Postgres, Stripe, Salesforce, ad platforms &mdash; no warehouse to join them in.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">PAIN #2</div>
+      <div class="pain-title">The numbers don't match</div>
+      <div class="pain-desc">Marketing says X. Finance says Y. The dashboard says Z. Nobody knows which is right.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">PAIN #3</div>
+      <div class="pain-title">No central source of truth</div>
+      <div class="pain-desc">Every team reports off their own CSV export. Reconciliation eats half the week.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">PAIN #4</div>
+      <div class="pain-title">Reports break every release</div>
+      <div class="pain-desc">Manual exports + brittle spreadsheets fall over the moment product ships a schema change.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">PAIN #5</div>
+      <div class="pain-title">AI &amp; dashboards are blocked</div>
+      <div class="pain-desc">Want to ship AI features or exec dashboards &mdash; but the underlying data isn't trustworthy yet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 3: 5 Repeatables ===== -->
+<section class="slide s-repeat">
+  <span class="slide-num">03 / 08</span>
+  <h1>What Vero makes repeatable</h1>
+  <h2>Every new data client rebuilds the same 5 layers. Vero turns each into a one-line skill.</h2>
+
+  <div class="repeat-grid">
+    <div class="repeat-row">
+      <div class="repeat-badge badge-blue">01. &nbsp;Project</div>
+      <div class="repeat-desc"><code>/vero-init</code> &nbsp;&rarr;&nbsp; Dagster code location + dbt project in 60 seconds</div>
+    </div>
+    <div class="repeat-row">
+      <div class="repeat-badge badge-cyan">02. &nbsp;Stack</div>
+      <div class="repeat-desc">dlt + dbt + Dagster + Kubernetes + Vault &nbsp;&rarr;&nbsp; one stack, every project</div>
+    </div>
+    <div class="repeat-row">
+      <div class="repeat-badge badge-green">03. &nbsp;Pipeline</div>
+      <div class="repeat-desc"><code>/vero-add-source</code> &nbsp;&rarr;&nbsp; 25+ catalog sources + agent for new APIs</div>
+    </div>
+    <div class="repeat-row">
+      <div class="repeat-badge badge-amber">04. &nbsp;Analytics</div>
+      <div class="repeat-desc"><code>/vero-generate-staging</code> &nbsp;&rarr;&nbsp; auto stg models + PK tests + descriptions</div>
+    </div>
+    <div class="repeat-row">
+      <div class="repeat-badge badge-purple">05. &nbsp;Infra</div>
+      <div class="repeat-desc"><code>/vero-infra-init</code> + <code>multi-infra/</code> &nbsp;&rarr;&nbsp; GCP / AWS / Azure parity (Terraform)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 4: How Vero solves it ===== -->
+<section class="slide s-workflow">
+  <span class="slide-num">04 / 08</span>
+  <h1>How Vero solves it</h1>
+  <h2>From inbound call to a working data stack &mdash; the actual delivery flow we run.</h2>
+
+  <div class="flow">
+    <div class="flow-step"><span class="stepn">STEP 1</span>Inbound call</div>
+    <div class="flow-step"><span class="stepn">STEP 2</span>Problem statement</div>
+    <div class="flow-step"><span class="stepn">STEP 3</span>Identify sources</div>
+    <div class="flow-step last"><span class="stepn">STEP 4</span>Vero repo bootstrap</div>
+    <div class="flow-step last"><span class="stepn">STEP 5</span>Staging + marts &middot; Ship</div>
+  </div>
+
+  <div class="skills-chain">/vero-init &nbsp;&rarr;&nbsp; /vero-verify-source &nbsp;&rarr;&nbsp; /vero-add-source &nbsp;&rarr;&nbsp; /vero-load-source</div>
+  <div class="skills-chain">&nbsp;&nbsp;&nbsp;&rarr;&nbsp; /vero-generate-staging &nbsp;&rarr;&nbsp; build marts &nbsp;&rarr;&nbsp; /vero-infra-init &nbsp;&rarr;&nbsp; helm install</div>
+  <div class="skills-foot">All skills versioned in <code>.claude/skills/</code> &mdash; same playbook for every customer.</div>
+</section>
+
+<!-- ===== SLIDE 5: Days, not quarters ===== -->
+<section class="slide s-speed">
+  <span class="slide-num">05 / 08</span>
+  <h1>What it means for the developer</h1>
+  <h2>Days, not quarters.</h2>
+
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="timeline-when">Day 0</div>
+      <div class="timeline-what"><code>/vero-init</code>, credentials in <code>.env</code> or Vault, <code>/vero-verify-warehouse</code> passes</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">Day 1</div>
+      <div class="timeline-what">3 sources added and loaded into BigQuery / ClickHouse</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">Day 2</div>
+      <div class="timeline-what">Staging models auto-generated, dbt parses clean, Dagster picks them up</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">Day 3</div>
+      <div class="timeline-what">K8s manifests templated by <code>/vero-infra-init</code>, Dagster on cluster</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-when">Week 1</div>
+      <div class="timeline-what">Production-ready. First dashboards in front of the customer.</div>
+    </div>
+  </div>
+
+  <div class="speed-callout">
+    <span>Before Vero: 4&ndash;6 weeks</span>
+    <span class="arrow">&rarr;</span>
+    <span>After Vero: 3&ndash;5 days</span>
+  </div>
+</section>
+
+<!-- ===== SLIDE 6: Who we're selling to ===== -->
+<section class="slide s-who">
+  <span class="slide-num">06 / 08</span>
+  <h1>Who we're selling to</h1>
+  <h2>Seed / Series-A SaaS that needs a real data stack &mdash; and doesn't have time to build it.</h2>
+
+  <div class="who-cols">
+    <div class="who-card">
+      <div class="who-title">Customer profile</div>
+      <ul>
+        <li>Enterprise companies (no in-house platform team)</li>
+        <li>Startups that just raised funding &mdash; need data infra fast</li>
+        <li>Companies looking for a data team (without hiring one)</li>
+        <li>SaaS / vertical-AI startups with Postgres + CRM + ad spend</li>
+        <li>&ldquo;Just want the dashboards working&rdquo;</li>
+      </ul>
+    </div>
+
+    <div class="who-card clients">
+      <div class="who-title">Sample clients</div>
+      <ul>
+        <li class="c-volter">Volter</li>
+        <li class="c-filed">Filed</li>
+        <li class="c-westwise">Westwise</li>
+        <li class="c-synthflow">Synthflow</li>
+        <li class="c-govplus">GovPlus</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 7: How we sell it ===== -->
+<section class="slide s-sell">
+  <span class="slide-num">07 / 08</span>
+  <h1>How we sell it</h1>
+  <h2>Find them &mdash; quote a real number &mdash; land fast &mdash; expand monthly.</h2>
+
+  <div class="channels">
+    <div class="channel">Upwork</div>
+    <div class="channel">LinkedIn outreach</div>
+    <div class="channel">datumlabs.io / vero</div>
+    <div class="channel">Case studies + email</div>
+  </div>
+
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tname">LAND</div>
+      <p>Fixed-fee setup. Warehouse + 3 sources + dbt staging + 1 mart. A dashboard the customer can see in 2&ndash;6 weeks.</p>
+    </div>
+    <div class="tier">
+      <div class="tname">EXPAND</div>
+      <p>Monthly retainer. New sources, new marts, oncall for the pipeline. Reverse-ETL, embedded analytics, Hex NL later.</p>
+    </div>
+    <div class="tier">
+      <div class="tname">GROW</div>
+      <p>Future BUs. Data Apps + agentic workflows on top of the same Vero stack. Customer keeps own cloud account.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 8: CTA ===== -->
+<section class="slide s-cta">
+  <span class="slide-num">08 / 08</span>
+  <h1 class="big">Talk to us.</h1>
+  <div class="ask">30-minute Vero scoping call</div>
+  <div class="cta-email">vero@datumlabs.io</div>
+  <div class="cta-url">datumlabs.io / vero</div>
+  <div class="footer">Datumlabs Vero playbook &mdash; Hadiqa &amp; Nidal &mdash; 2026</div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('section.slide');
+  const total = slides.length;
+  const pbar = document.getElementById('pbar');
+  const ind  = document.getElementById('ind');
+
+  function currentSlide() {
+    const y = window.scrollY;
+    const h = window.innerHeight;
+    return Math.min(total - 1, Math.round(y / h));
+  }
+  function updateIndicator() {
+    const i = currentSlide();
+    const n = String(i + 1).padStart(2, '0');
+    const t = String(total).padStart(2, '0');
+    ind.textContent = `${n} / ${t}`;
+    pbar.style.width = `${((i + 1) / total) * 100}%`;
+  }
+  function goTo(i) {
+    i = Math.max(0, Math.min(total - 1, i));
+    window.scrollTo({ top: i * window.innerHeight, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', updateIndicator, { passive: true });
+  window.addEventListener('resize', updateIndicator);
+  updateIndicator();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const i = currentSlide();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+      goTo(i + 1); e.preventDefault();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+      goTo(i - 1); e.preventDefault();
+    } else if (e.key === 'Home') {
+      goTo(0); e.preventDefault();
+    } else if (e.key === 'End') {
+      goTo(total - 1); e.preventDefault();
+    } else if (/^[1-9]$/.test(e.key)) {
+      goTo(parseInt(e.key, 10) - 1); e.preventDefault();
+    }
+  });
+
+  // Click to advance (ignore clicks on links / buttons)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a, button, input, textarea')) return;
+    goTo(currentSlide() + 1);
+  });
+</script>
+</body>
+</html>

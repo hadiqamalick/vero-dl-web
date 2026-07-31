@@ -16,12 +16,25 @@ Internal workspace for all Vero context: copy drafts, pricing, case study notes,
 
 ## Repo map
 
+### Root decks
+
+Pitch decks stay at the repo root so `assets/` paths resolve when opened in a browser.
+
+| File | Description |
+|------|-------------|
+| [`vero_v2.html`](vero_v2.html) + [`vero_v2_script.md`](vero_v2_script.md) | Head of Engineering intro deck and narration script |
+| [`vero_v2_technical.html`](vero_v2_technical.html) + [`vero_v2_technical_script.md`](vero_v2_technical_script.md) | Technical deep dive deck and script |
+| [`vero_v1.html`](vero_v1.html) | Prior pitch deck version (kept for reference) |
+| [`streamlit_app.py`](streamlit_app.py) | Streamlit Cloud entry; loads the pricing calculator |
+
 ### `docs/`
 
 - [`pricing/`](docs/pricing/), pricing model, questionnaire, [calculator](docs/pricing/pricing_calculator.html), simple version
 - [`data_audit.html`](docs/data_audit.html), stakeholder discovery (Grain / email / Slack → Answer log → PRD)
 - [`case_studies/impact_metrics.md`](docs/case_studies/impact_metrics.md), internal impact numbers per client
-- [`video_plan.md`](docs/video_plan.md), index to Upwork/Vero video assets
+- [`case_study_context_brief.md`](docs/case_study_context_brief.md), raw verified context for marketing case studies
+- [`hadiqa_linkedin_content_brief.md`](docs/hadiqa_linkedin_content_brief.md), LinkedIn profile content brief
+- [`vero_icp_targeting_brief.md`](docs/vero_icp_targeting_brief.md), ICP and targeting brief
 
 ### `html/`
 
@@ -49,6 +62,7 @@ These folders stay on disk for context but are excluded in `.gitignore`:
 - **`Vero/`**, source `.docx` files, pitch deck, landing copy, competitor notes, PDF exports
 - **`Dashboards/`**, client dashboard PDFs and screenshots (may contain client-specific data)
 - **`upwork/`**, Loom/video scripts and slide decks
+- **`sources/`**, LinkedIn PDF exports and other one-off source dumps
 
 To track a local-only folder, remove its entry from `.gitignore` and commit deliberately.
 
